@@ -1,0 +1,537 @@
+INFO 2025-06-16 15:07:24,936 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 15:08:00,632 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 15:08:33,065 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\models.py changed, reloading.
+INFO 2025-06-16 15:08:36,372 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 15:09:25,842 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\settings.py changed, reloading.
+INFO 2025-06-16 15:09:33,738 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 15:09:45,069 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\settings.py changed, reloading.
+INFO 2025-06-16 15:09:49,423 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 15:10:13,780 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\settings.py changed, reloading.
+INFO 2025-06-16 15:10:22,151 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 15:11:32,375 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 15:11:55,855 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 15:12:11,011 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\settings.py changed, reloading.
+INFO 2025-06-16 15:12:14,478 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:35:41,516 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:35:50,426 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\models.py changed, reloading.
+INFO 2025-06-16 16:35:54,284 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:35:58,904 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\models.py changed, reloading.
+INFO 2025-06-16 16:36:03,355 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:36:31,131 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\models.py changed, reloading.
+INFO 2025-06-16 16:36:34,177 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:36:52,171 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:37:00,675 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\urls.py changed, reloading.
+INFO 2025-06-16 16:37:03,479 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:37:08,848 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\urls.py changed, reloading.
+INFO 2025-06-16 16:37:12,212 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:38:03,814 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\LoginView.py changed, reloading.
+INFO 2025-06-16 16:38:11,403 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:38:26,267 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\urls.py changed, reloading.
+INFO 2025-06-16 16:38:28,879 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:38:41,942 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\urls.py changed, reloading.
+INFO 2025-06-16 16:38:43,997 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:38:52,691 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\urls.py changed, reloading.
+INFO 2025-06-16 16:38:54,425 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:39:48,461 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\models.py changed, reloading.
+INFO 2025-06-16 16:39:52,083 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:40:08,194 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\models.py changed, reloading.
+INFO 2025-06-16 16:40:11,593 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:40:15,982 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\models.py changed, reloading.
+INFO 2025-06-16 16:40:18,048 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:40:49,874 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:41:25,032 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:42:33,078 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 16:44:18,328 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:10:54,704 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\models.py changed, reloading.
+INFO 2025-06-16 18:11:09,104 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:11:19,482 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:11:26,788 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:11:40,386 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:11:49,320 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:12:11,359 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:12:13,336 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:13:39,220 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\urls.py changed, reloading.
+INFO 2025-06-16 18:13:41,536 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:14:10,016 autoreload D:\My Work\urban_salon\Backend\urban_salon\manage.py changed, reloading.
+INFO 2025-06-16 18:14:12,186 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:14:20,135 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 18:14:27,407 log Unauthorized: /base/signup/
+WARNING 2025-06-16 18:14:27,410 basehttp "POST /base/signup/ HTTP/1.1" 401 58
+INFO 2025-06-16 18:14:46,291 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:14:48,770 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:14:52,379 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:14:54,751 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:15:00,357 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:15:02,247 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:15:07,407 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:15:09,460 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:15:16,874 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:15:18,949 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:15:23,910 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:15:26,052 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 18:15:32,419 log Bad Request: /base/signup/
+WARNING 2025-06-16 18:15:32,420 basehttp "POST /base/signup/ HTTP/1.1" 400 36
+WARNING 2025-06-16 18:15:51,412 log Bad Request: /base/signup/
+WARNING 2025-06-16 18:15:51,414 basehttp "POST /base/signup/ HTTP/1.1" 400 36
+WARNING 2025-06-16 18:16:11,689 log Bad Request: /base/signup/
+WARNING 2025-06-16 18:16:11,692 basehttp "POST /base/signup/ HTTP/1.1" 400 25
+INFO 2025-06-16 18:16:25,030 basehttp "GET /admin HTTP/1.1" 301 0
+INFO 2025-06-16 18:16:25,273 basehttp "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-06-16 18:16:25,854 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4181
+INFO 2025-06-16 18:16:26,879 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-06-16 18:16:26,977 basehttp "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+INFO 2025-06-16 18:16:27,050 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-06-16 18:16:27,121 basehttp "GET /static/admin/css/login.css HTTP/1.1" 200 958
+INFO 2025-06-16 18:16:27,134 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+INFO 2025-06-16 18:16:27,153 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-06-16 18:16:27,177 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+WARNING 2025-06-16 18:16:27,368 log Not Found: /favicon.ico
+WARNING 2025-06-16 18:16:27,370 basehttp "GET /favicon.ico HTTP/1.1" 404 2329
+INFO 2025-06-16 18:16:30,729 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-06-16 18:16:30,802 basehttp "GET /admin/ HTTP/1.1" 200 5152
+INFO 2025-06-16 18:16:30,872 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-06-16 18:16:30,889 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-06-16 18:16:30,889 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-06-16 18:16:44,367 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\admin.py changed, reloading.
+INFO 2025-06-16 18:16:46,967 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:16:52,352 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\admin.py changed, reloading.
+INFO 2025-06-16 18:16:55,172 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:17:07,766 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\admin.py changed, reloading.
+INFO 2025-06-16 18:17:10,414 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:17:13,070 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\admin.py changed, reloading.
+INFO 2025-06-16 18:17:14,958 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:17:25,229 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\admin.py changed, reloading.
+INFO 2025-06-16 18:17:27,134 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:17:30,548 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\admin.py changed, reloading.
+INFO 2025-06-16 18:17:32,249 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:17:37,902 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\admin.py changed, reloading.
+INFO 2025-06-16 18:17:39,653 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:17:42,057 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\admin.py changed, reloading.
+INFO 2025-06-16 18:17:43,601 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:17:53,032 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\admin.py changed, reloading.
+INFO 2025-06-16 18:17:55,880 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:17:59,253 basehttp "GET /admin/ HTTP/1.1" 200 10171
+INFO 2025-06-16 18:18:01,650 basehttp "GET /admin/base/role/ HTTP/1.1" 200 10265
+INFO 2025-06-16 18:18:02,139 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:18:02,361 basehttp "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+INFO 2025-06-16 18:18:02,467 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+INFO 2025-06-16 18:18:02,523 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-06-16 18:18:02,645 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-06-16 18:18:02,722 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-06-16 18:18:02,846 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+INFO 2025-06-16 18:18:02,884 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+INFO 2025-06-16 18:18:02,964 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+INFO 2025-06-16 18:18:03,020 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-06-16 18:18:03,031 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+INFO 2025-06-16 18:18:03,096 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-06-16 18:18:04,590 basehttp "GET /admin/base/role/add/ HTTP/1.1" 200 13969
+INFO 2025-06-16 18:18:04,653 basehttp "GET /static/admin/css/forms.css HTTP/1.1" 200 9090
+INFO 2025-06-16 18:18:04,672 basehttp "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-06-16 18:18:04,686 basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 200 11921
+INFO 2025-06-16 18:18:04,729 basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-06-16 18:18:04,847 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:18:10,642 basehttp "POST /admin/base/role/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 18:18:10,730 basehttp "GET /admin/base/role/ HTTP/1.1" 200 11698
+INFO 2025-06-16 18:18:10,777 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:18:10,855 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+ERROR 2025-06-16 18:18:16,541 log Internal Server Error: /base/signup/
+Traceback (most recent call last):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py", line 91, in post
+    username=username,
+NameError: name 'username' is not defined
+ERROR 2025-06-16 18:18:16,560 basehttp "POST /base/signup/ HTTP/1.1" 500 100020
+INFO 2025-06-16 18:18:56,657 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:18:58,894 autoreload Watching for file changes with StatReloader
+ERROR 2025-06-16 18:19:04,999 log Internal Server Error: /base/signup/
+Traceback (most recent call last):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py", line 97, in post
+    token = Token.objects.create(user=user)
+AttributeError: type object 'Token' has no attribute 'objects'
+ERROR 2025-06-16 18:19:05,022 basehttp "POST /base/signup/ HTTP/1.1" 500 100274
+INFO 2025-06-16 18:19:33,585 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:19:36,540 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 18:19:42,595 log Bad Request: /base/signup/
+WARNING 2025-06-16 18:19:42,596 basehttp "POST /base/signup/ HTTP/1.1" 400 47
+INFO 2025-06-16 18:19:49,200 basehttp "GET /admin/base/role/ HTTP/1.1" 200 11472
+INFO 2025-06-16 18:19:49,251 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:19:49,805 basehttp "GET /admin/base/users/ HTTP/1.1" 200 11765
+INFO 2025-06-16 18:19:49,858 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:19:54,956 basehttp "POST /admin/base/users/ HTTP/1.1" 200 10406
+INFO 2025-06-16 18:19:55,366 basehttp "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+ERROR 2025-06-16 18:19:56,396 log Internal Server Error: /admin/base/users/
+Traceback (most recent call last):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\db\backends\base\base.py", line 313, in _commit
+    return self.connection.commit()
+psycopg2.errors.ForeignKeyViolation: update or delete on table "base_users" violates foreign key constraint "base_userrolemapping_user_id_b5d2f248_fk_base_users_id" on table "base_userrolemapping"
+DETAIL:  Key (id)=(deb3d595-a46f-4532-a807-9d43c517e3ac) is still referenced from table "base_userrolemapping".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1983, in changelist_view
+    response = self.response_action(
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1593, in response_action
+    response = func(self, request, queryset)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\actions.py", line 51, in delete_selected
+    modeladmin.delete_queryset(request, queryset)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\contrib\admin\options.py", line 1237, in delete_queryset
+    queryset.delete()
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\db\models\query.py", line 1148, in delete
+    deleted, _rows_count = collector.delete()
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\db\models\deletion.py", line 459, in delete
+    with transaction.atomic(using=self.using, savepoint=False):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\db\transaction.py", line 263, in __exit__
+    connection.commit()
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\db\backends\base\base.py", line 337, in commit
+    self._commit()
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\db\backends\base\base.py", line 312, in _commit
+    with debug_transaction(self, "COMMIT"), self.wrap_database_errors:
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\db\backends\base\base.py", line 313, in _commit
+    return self.connection.commit()
+django.db.utils.IntegrityError: update or delete on table "base_users" violates foreign key constraint "base_userrolemapping_user_id_b5d2f248_fk_base_users_id" on table "base_userrolemapping"
+DETAIL:  Key (id)=(deb3d595-a46f-4532-a807-9d43c517e3ac) is still referenced from table "base_userrolemapping".
+
+ERROR 2025-06-16 18:19:56,431 basehttp "POST /admin/base/users/ HTTP/1.1" 500 162895
+INFO 2025-06-16 18:20:00,232 basehttp "GET /admin/base/users/ HTTP/1.1" 200 11765
+INFO 2025-06-16 18:20:01,468 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 11614
+INFO 2025-06-16 18:20:01,515 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:20:05,010 basehttp "POST /admin/base/userrolemapping/ HTTP/1.1" 200 10492
+INFO 2025-06-16 18:20:05,865 basehttp "POST /admin/base/userrolemapping/ HTTP/1.1" 302 0
+INFO 2025-06-16 18:20:05,896 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 10499
+INFO 2025-06-16 18:20:05,971 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+ERROR 2025-06-16 18:20:10,216 log Internal Server Error: /base/signup/
+Traceback (most recent call last):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py", line 80, in post
+    token, _ = Token.objects.get_or_create(user=user)
+AttributeError: type object 'Token' has no attribute 'objects'
+ERROR 2025-06-16 18:20:10,424 basehttp "POST /base/signup/ HTTP/1.1" 500 100717
+INFO 2025-06-16 18:21:23,707 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:21:30,962 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:21:54,716 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:21:57,910 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:22:10,323 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:22:13,833 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 18:22:17,118 log Bad Request: /base/signup/
+WARNING 2025-06-16 18:22:17,119 basehttp "POST /base/signup/ HTTP/1.1" 400 47
+INFO 2025-06-16 18:22:22,042 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 11614
+INFO 2025-06-16 18:22:22,095 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:22:24,781 basehttp "POST /admin/base/userrolemapping/ HTTP/1.1" 200 10492
+INFO 2025-06-16 18:22:25,648 basehttp "POST /admin/base/userrolemapping/ HTTP/1.1" 302 0
+INFO 2025-06-16 18:22:25,700 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 10499
+INFO 2025-06-16 18:22:25,756 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+ERROR 2025-06-16 18:22:28,492 log Internal Server Error: /base/signup/
+Traceback (most recent call last):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py", line 81, in post
+    token, _ = Token.objects.get_or_create(user=user)
+AttributeError: type object 'Token' has no attribute 'objects'
+ERROR 2025-06-16 18:22:28,505 basehttp "POST /base/signup/ HTTP/1.1" 500 100717
+INFO 2025-06-16 18:22:54,898 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\urls.py changed, reloading.
+INFO 2025-06-16 18:22:57,808 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:23:01,290 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\urls.py changed, reloading.
+INFO 2025-06-16 18:23:03,663 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:23:57,949 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:41:50,928 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\urls.py changed, reloading.
+INFO 2025-06-16 18:42:40,887 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:42:55,551 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\urls.py changed, reloading.
+INFO 2025-06-16 18:43:04,510 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:43:20,660 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\urls.py changed, reloading.
+INFO 2025-06-16 18:43:24,508 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:43:50,886 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\settings.py changed, reloading.
+INFO 2025-06-16 18:43:53,328 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:43:58,688 autoreload D:\My Work\urban_salon\Backend\urban_salon\urban_salon\settings.py changed, reloading.
+INFO 2025-06-16 18:44:01,531 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:45:24,401 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:45:28,585 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:45:48,763 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:45:50,719 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:45:59,708 basehttp - Broken pipe from ('127.0.0.1', 57440)
+INFO 2025-06-16 18:45:59,712 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 11614
+INFO 2025-06-16 18:45:59,712 basehttp - Broken pipe from ('127.0.0.1', 57438)
+INFO 2025-06-16 18:45:59,873 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:46:04,159 basehttp "POST /admin/base/userrolemapping/ HTTP/1.1" 200 10492
+INFO 2025-06-16 18:46:05,059 basehttp "POST /admin/base/userrolemapping/ HTTP/1.1" 302 0
+INFO 2025-06-16 18:46:05,099 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 10499
+INFO 2025-06-16 18:46:05,232 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+ERROR 2025-06-16 18:46:13,209 log Internal Server Error: /base/signup/
+Traceback (most recent call last):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py", line 81, in post
+    token, _ = Token.objects.get_or_create(user=user)
+AttributeError: type object 'Token' has no attribute 'objects'
+ERROR 2025-06-16 18:46:13,235 basehttp "POST /base/signup/ HTTP/1.1" 500 100717
+INFO 2025-06-16 18:46:50,233 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:46:53,190 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:46:55,264 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 11614
+INFO 2025-06-16 18:46:55,325 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:46:57,790 basehttp "POST /admin/base/userrolemapping/ HTTP/1.1" 200 10492
+INFO 2025-06-16 18:46:58,524 basehttp "POST /admin/base/userrolemapping/ HTTP/1.1" 302 0
+INFO 2025-06-16 18:46:58,559 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 10499
+INFO 2025-06-16 18:46:58,621 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:47:03,715 basehttp "POST /base/signup/ HTTP/1.1" 201 689
+INFO 2025-06-16 18:47:15,150 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:47:18,870 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:47:35,030 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:47:37,151 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:47:41,192 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:47:42,861 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 18:47:58,371 log Bad Request: /base/signup/
+WARNING 2025-06-16 18:47:58,376 basehttp "POST /base/signup/ HTTP/1.1" 400 47
+WARNING 2025-06-16 18:48:34,579 log Unauthorized: /base/login/
+WARNING 2025-06-16 18:48:34,582 basehttp "POST /base/login/ HTTP/1.1" 401 38
+WARNING 2025-06-16 18:48:41,393 log Bad Request: /base/login/
+WARNING 2025-06-16 18:48:41,395 basehttp "POST /base/login/ HTTP/1.1" 400 108
+WARNING 2025-06-16 18:48:45,540 log Unauthorized: /base/login/
+WARNING 2025-06-16 18:48:45,542 basehttp "POST /base/login/ HTTP/1.1" 401 38
+INFO 2025-06-16 18:49:07,117 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 11614
+INFO 2025-06-16 18:49:07,178 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:49:08,319 basehttp "GET /admin/base/userrolemapping/bcefd88d-51ec-464a-b531-6249428a806d/change/ HTTP/1.1" 200 16967
+INFO 2025-06-16 18:49:08,583 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:49:08,750 basehttp "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-06-16 18:49:08,807 basehttp "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-06-16 18:49:13,547 basehttp "GET /admin/base/users/ HTTP/1.1" 200 11765
+INFO 2025-06-16 18:49:13,598 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:49:14,809 basehttp "GET /admin/base/users/deb3d595-a46f-4532-a807-9d43c517e3ac/change/ HTTP/1.1" 200 30825
+INFO 2025-06-16 18:49:14,872 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-06-16 18:49:15,102 basehttp "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-06-16 18:49:15,104 basehttp "GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+INFO 2025-06-16 18:49:15,230 basehttp "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-06-16 18:49:15,234 basehttp "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-06-16 18:49:18,667 basehttp "GET /admin/base/users/ HTTP/1.1" 200 11765
+INFO 2025-06-16 18:49:19,505 basehttp "GET /admin/base/userrolemapping/bcefd88d-51ec-464a-b531-6249428a806d/change/ HTTP/1.1" 200 16967
+INFO 2025-06-16 18:49:44,059 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:49:46,069 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:49:51,302 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:49:53,476 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 18:49:54,923 log Unauthorized: /base/login/
+WARNING 2025-06-16 18:49:54,924 basehttp "POST /base/login/ HTTP/1.1" 401 38
+INFO 2025-06-16 18:50:07,599 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:50:09,535 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 18:50:13,259 log Unauthorized: /base/login/
+WARNING 2025-06-16 18:50:13,267 basehttp "POST /base/login/ HTTP/1.1" 401 38
+INFO 2025-06-16 18:50:31,548 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:50:33,511 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:50:40,758 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:50:42,357 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 18:50:45,686 log Unauthorized: /base/login/
+WARNING 2025-06-16 18:50:45,688 basehttp "POST /base/login/ HTTP/1.1" 401 38
+WARNING 2025-06-16 18:50:47,497 log Unauthorized: /base/login/
+WARNING 2025-06-16 18:50:47,503 basehttp "POST /base/login/ HTTP/1.1" 401 38
+INFO 2025-06-16 18:50:56,231 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:50:58,586 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:51:02,778 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:51:04,775 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:51:09,200 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:51:13,670 autoreload Watching for file changes with StatReloader
+ERROR 2025-06-16 18:51:16,584 log Internal Server Error: /base/login/
+Traceback (most recent call last):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py", line 28, in post
+    token, _ = Token.objects.get_or_create(user=user)
+AttributeError: type object 'Token' has no attribute 'objects'
+ERROR 2025-06-16 18:51:16,597 basehttp "POST /base/login/ HTTP/1.1" 500 100068
+INFO 2025-06-16 18:51:32,158 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:51:34,928 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:51:38,483 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:51:41,184 autoreload Watching for file changes with StatReloader
+ERROR 2025-06-16 18:51:50,478 log Internal Server Error: /base/login/
+Traceback (most recent call last):
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Jatin\AppData\Roaming\Python\Python310\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py", line 36, in post
+    'refresh': str(refresh),
+NameError: name 'token' is not defined
+ERROR 2025-06-16 18:51:50,491 basehttp "POST /base/login/ HTTP/1.1" 500 101041
+INFO 2025-06-16 18:52:18,445 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:52:20,847 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:52:30,036 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:52:31,960 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:52:36,697 basehttp "POST /base/login/ HTTP/1.1" 200 670
+INFO 2025-06-16 18:53:01,523 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:53:03,227 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 18:53:06,699 basehttp "POST /base/login/ HTTP/1.1" 200 672
+INFO 2025-06-16 18:53:10,865 basehttp "POST /base/login/ HTTP/1.1" 200 672
+INFO 2025-06-16 18:53:16,234 autoreload D:\My Work\urban_salon\Backend\urban_salon\base\base_views\SignUpView.py changed, reloading.
+INFO 2025-06-16 18:53:17,823 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 19:09:46,193 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 19:11:06,200 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 19:16:44,025 basehttp "GET /admin/base/userrolemapping/bcefd88d-51ec-464a-b531-6249428a806d/change/ HTTP/1.1" 200 19954
+WARNING 2025-06-16 19:16:44,684 log Not Found: /favicon.ico
+WARNING 2025-06-16 19:16:44,688 basehttp "GET /favicon.ico HTTP/1.1" 404 3436
+INFO 2025-06-16 19:19:48,830 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 19:19:51,170 basehttp "GET /admin/base/userrolemapping/bcefd88d-51ec-464a-b531-6249428a806d/change/ HTTP/1.1" 200 19954
+INFO 2025-06-16 19:19:51,257 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:19:53,714 basehttp "GET /admin/company_services/service/ HTTP/1.1" 200 19336
+INFO 2025-06-16 19:19:53,781 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:19:56,065 basehttp "GET /admin/company_services/servicerequest/ HTTP/1.1" 200 12640
+INFO 2025-06-16 19:19:56,110 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:19:58,971 basehttp "GET /admin/company_services/service/ HTTP/1.1" 200 19336
+INFO 2025-06-16 19:19:59,010 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:00,348 basehttp "GET /admin/company_services/service/f8c3a9f4-9e28-4c5c-bd6a-85c906095eb1/change/ HTTP/1.1" 200 20022
+INFO 2025-06-16 19:20:00,404 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:02,173 basehttp "GET /admin/company_services/service/ HTTP/1.1" 200 19336
+INFO 2025-06-16 19:20:10,414 basehttp "GET /admin/company_services/servicecategory/ HTTP/1.1" 200 15150
+INFO 2025-06-16 19:20:10,461 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:14,205 basehttp "GET /admin/company_services/service/ HTTP/1.1" 200 19336
+INFO 2025-06-16 19:20:14,255 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:15,279 basehttp "GET /admin/company_services/service/eecaaf8b-4b52-4b87-9eb9-1485f8886c91/change/ HTTP/1.1" 200 20062
+INFO 2025-06-16 19:20:15,319 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:18,278 basehttp "GET /admin/company_services/service/ HTTP/1.1" 200 19336
+INFO 2025-06-16 19:20:24,703 basehttp "GET /admin/company_services/service/4816ea22-aa11-4717-88e6-2161cbf2b165/change/ HTTP/1.1" 200 20052
+INFO 2025-06-16 19:20:24,748 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:30,379 basehttp "GET /admin/company_services/servicecategory/ HTTP/1.1" 200 15150
+INFO 2025-06-16 19:20:30,423 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:32,664 basehttp "GET /admin/company_services/servicerequest/ HTTP/1.1" 200 12640
+INFO 2025-06-16 19:20:32,704 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:34,698 basehttp "GET /admin/company_services/ratingreview/ HTTP/1.1" 200 12626
+INFO 2025-06-16 19:20:34,751 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:36,895 basehttp "GET /admin/company_services/ratingreview/add/ HTTP/1.1" 200 18136
+INFO 2025-06-16 19:20:36,948 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:20:55,659 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\models.py changed, reloading.
+INFO 2025-06-16 19:20:57,489 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 19:21:03,807 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\models.py changed, reloading.
+INFO 2025-06-16 19:21:05,633 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 19:21:14,436 autoreload D:\My Work\urban_salon\Backend\urban_salon\company_services\models.py changed, reloading.
+INFO 2025-06-16 19:21:16,471 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 19:22:42,634 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 19:22:52,280 basehttp "GET /admin/company_services/servicecategory/ HTTP/1.1" 200 15150
+INFO 2025-06-16 19:22:52,339 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:22:53,714 basehttp "GET /admin/company_services/servicerequest/ HTTP/1.1" 200 12640
+INFO 2025-06-16 19:22:53,756 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:22:55,069 basehttp "GET /admin/company_services/servicerequest/add/ HTTP/1.1" 200 25098
+INFO 2025-06-16 19:22:55,116 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:23:28,862 basehttp "POST /admin/company_services/servicerequest/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 19:23:28,898 basehttp "GET /admin/company_services/servicerequest/ HTTP/1.1" 200 14350
+INFO 2025-06-16 19:23:28,945 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:23:37,546 basehttp "GET /admin/company_services/servicerequest/ec3c38bc-0df3-4039-816b-4a528d580258/change/ HTTP/1.1" 200 25503
+INFO 2025-06-16 19:23:37,596 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 19:24:55,407 basehttp "GET /admin/base/userrolemapping/ HTTP/1.1" 200 15467
+INFO 2025-06-16 19:24:55,469 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342

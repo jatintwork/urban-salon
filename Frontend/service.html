@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Urban Salon - Services | Premium Beauty & Wellness Services</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="nail care services, skin treatments, hair styling, makeup services, spa wellness, beauty salon" name="keywords">
+        <meta content="Discover our premium beauty services including nail care, skin treatments, hair styling, makeup, spa wellness, and bridal packages at Urban Salon" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-secondary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Topbar Start -->
+        <div class="container-fluid bg-primary px-5 d-none d-lg-block">
+            <div class="row gx-0 align-items-center">
+                <div class="col-lg-5 text-center text-lg-start mb-lg-0">
+                    <div class="d-flex">
+                        <a href="#" class="text-muted me-4"><i class="fas fa-envelope text-secondary me-2"></i>info@urbansalon.com</a>
+                        <a href="#" class="text-muted me-0"><i class="fas fa-phone-alt text-secondary me-2"></i>+1 (555) 123-4567</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 row-cols-1 text-center mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center" style="height: 45px;">
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle" href=""><i class="fab fa-youtube fw-normal text-secondary"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end">
+                    <div class="d-inline-flex align-items-center" style="height: 45px;">
+                        <a href="#" class="text-muted me-2"> Book Now</a><small> / </small>
+                        <a href="#" class="text-muted mx-2"> Gift Cards</a><small> / </small>
+                        <a href="#" class="text-muted ms-2"> Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid nav-bar p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
+                <a href="index.html" class="navbar-brand p-0">
+                    <h1 class="display-5 text-secondary m-0">Urban Salon</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <a href="dashboard.html" class="nav-item nav-link d-none" id="dashboardNav">Dashboard</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="service.html" class="nav-item nav-link active">Services</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-bs-toggle="dropdown"><span class="dropdown-toggle">More</span></a>
+                            <div class="dropdown-menu m-0">
+                                
+                                <a href="testimonial.html" class="dropdown-item">Testimonials</a>
+                                <a href="gallery.html" class="dropdown-item">Gallery</a>
+                                <a href="team.html" class="dropdown-item">Team</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="appointment.html" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-2 mb-md-2 mb-lg-0 me-2">Book Appointment</a>
+                    
+                    <!-- User Authentication Section -->
+                    <div id="userAuthSection">
+                        <!-- Show when NOT logged in -->
+                        <div id="loginSection">
+                            <a href="login.html" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-2 mb-md-2 mb-lg-0">Login/Signup</a>
+                        </div>
+                        
+                        <!-- Show when logged in -->
+                        <div id="userSection" class="d-none">
+                            <div class="dropdown">
+                                <a class="btn btn-success border-secondary rounded-pill py-2 px-4 px-lg-3 mb-2 mb-md-2 mb-lg-0 dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user me-1"></i>
+                                    <span id="welcomeText">Welcome!</span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="dashboard.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i>Profile</a></li>
+                                    
+                                    
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar & Hero End -->
+
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-secondary mb-0" id="exampleModalLabel">Search by keyword</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Services</h1>
+                <ol class="breadcrumb justify-content-center text-white mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-white">Pages</a></li>
+                    <li class="breadcrumb-item active text-secondary">Services</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- Services Start -->
+        <div class="container-fluid service overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="sub-style">
+                        <h5 class="sub-title text-primary px-3">Beauty Services</h5>
+                    </div>
+                    <h1 class="display-5 mb-4">Transform Your Look with Our Premium Services</h1>
+                    <p class="mb-0">Discover our comprehensive range of beauty and wellness services designed to enhance your natural beauty. From expert nail care and rejuvenating skin treatments to stunning hair styling and flawless makeup application.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item">
+                            <div class="service-inner">
+                                <div class="service-img">
+                                    <img src="img/nails.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                </div>
+                                <div class="service-title">
+                                    <div class="service-title-name">
+                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+                                            <a href="#" class="h4 text-white mb-0">Nail Care</a>
+                                        </div>
+                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Book Now</a>
+                                    </div>
+                                    <div class="service-content pb-4">
+                                        <a href="#"><h4 class="text-white mb-4 py-3">Nail Care</h4></a>
+                                        <div class="px-4">
+                                            <p class="mb-4">Professional manicures, pedicures, nail art, and extensions. Our skilled nail technicians use premium products to create beautiful, long-lasting results.</p>
+                                            <a class="btn btn-primary border-secondary rounded-pill py-3 px-5" href="#">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="service-item">
+                            <div class="service-inner">
+                                <div class="service-img">
+                                    <img src="img/skin-treatmenr.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                </div>
+                                <div class="service-title">
+                                    <div class="service-title-name">
+                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+                                            <a href="#" class="h4 text-white mb-0">Skin Treatments</a>
+                                        </div>
+                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Book Now</a>
+                                    </div>
+                                    <div class="service-content pb-4">
+                                        <a href="#"><h4 class="text-white mb-4 py-3">Skin Treatments</h4></a>
+                                        <div class="px-4">
+                                            <p class="mb-4">Revitalize your skin with our advanced facials, chemical peels, microdermabrasion, and anti-aging treatments for a glowing, youthful complexion.</p>
+                                            <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="service-item">
+                            <div class="service-inner">
+                                <div class="service-img">
+                                    <img src="img/hair-styling.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                </div>
+                                <div class="service-title">
+                                    <div class="service-title-name">
+                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+                                            <a href="#" class="h4 text-white mb-0">Hair Styling</a>
+                                        </div>
+                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Book Now</a>
+                                    </div>
+                                    <div class="service-content pb-4">
+                                        <a href="#"><h4 class="text-white mb-4 py-3">Hair Styling</h4></a>
+                                        <div class="px-4">
+                                            <p class="mb-4">Transform your look with our expert cuts, colors, highlights, extensions, and special occasion styling. Our stylists create looks that suit your lifestyle.</p>
+                                            <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item">
+                            <div class="service-inner">
+                                <div class="service-img">
+                                    <img src="img/skin.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                </div>
+                                <div class="service-title">
+                                    <div class="service-title-name">
+                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+                                            <a href="#" class="h4 text-white mb-0">Makeup & More</a>
+                                        </div>
+                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Book Now</a>
+                                    </div>
+                                    <div class="service-content pb-4">
+                                        <a href="#"><h4 class="text-white mb-4 py-3">Makeup & More</h4></a>
+                                        <div class="px-4">
+                                            <p class="mb-4">Professional makeup for special occasions, bridal looks, photo shoots, and everyday glam. Plus eyebrow shaping, lash extensions, and beauty consultations.</p>
+                                            <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="service-item">
+                            <div class="service-inner">
+                                <div class="service-img">
+                                    <img src="img/spa.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                </div>
+                                <div class="service-title">
+                                    <div class="service-title-name">
+                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+                                            <a href="#" class="h4 text-white mb-0">Spa Wellness</a>
+                                        </div>
+                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Book Now</a>
+                                    </div>
+                                    <div class="service-content pb-4">
+                                        <a href="#"><h4 class="text-white mb-4 py-3">Spa Wellness</h4></a>
+                                        <div class="px-4">
+                                            <p class="mb-4">Relax and rejuvenate with our full-body treatments, aromatherapy massages, body wraps, and wellness packages designed to restore your inner balance.</p>
+                                            <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="service-item">
+                            <div class="service-inner">
+                                <div class="service-img">
+                                    <img src="img/bridal.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                </div>
+                                <div class="service-title">
+                                    <div class="service-title-name">
+                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+                                            <a href="#" class="h4 text-white mb-0">Bridal Packages</a>
+                                        </div>
+                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Book Now</a>
+                                    </div>
+                                    <div class="service-content pb-4">
+                                        <a href="#"><h4 class="text-white mb-4 py-3">Bridal Packages</h4></a>
+                                        <div class="px-4">
+                                            <p class="mb-4">Complete bridal beauty packages including hair, makeup, nails, and skin prep. Make your special day unforgettable with our luxury bridal services.</p>
+                                            <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Services End -->
+
+
+        <!-- Counter Facts Start -->
+        <div class="container-fluid counter-facts py-5">
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="counter">
+                            <div class="counter-icon">
+                                <i class="fas fa-passport"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3>Beauty Services</h3>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value" data-toggle="counter-up">31</span>
+                                    <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">+</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="counter">
+                            <div class="counter-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3>Beauty Experts</h3>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value" data-toggle="counter-up">25</span>
+                                    <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">+</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="counter">
+                            <div class="counter-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3>Happy Clients</h3>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value" data-toggle="counter-up">4.9</span>
+                                    <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">K</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="counter">
+                            <div class="counter-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3>Satisfaction Rate</h3>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value" data-toggle="counter-up">98</span>
+                                    <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">%</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Counter Facts End -->
+
+        <!-- Countries We Offer Start -->
+        <div class="container-fluid country overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="section-title text-center wow fadeInUp" data-wow-delay="0.1s" style="margin-bottom: 70px;">
+                    <div class="sub-style">
+                        <h5 class="sub-title text-primary px-3">OUR SPECIALTIES</h5>
+                    </div>
+                    <h1 class="display-5 mb-4">Signature Beauty Treatments & Trending Styles</h1>
+                    <p class="mb-0">Explore our most popular beauty specialties and trending treatments that have made Urban Salon the go-to destination for beauty enthusiasts. Each service is designed to enhance your unique beauty.</p>
+                </div>
+                <div class="row g-4 text-center">
+                    <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="country-item">
+                            <div class="rounded overflow-hidden">
+                                <img src="img/country-1.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            </div>
+                            <div class="country-flag">
+                                <img src="img/brazil.jpg" class="img-fluid rounded-circle" alt="Image">
+                            </div>
+                            <div class="country-name">
+                                <a href="#" class="text-white fs-4">Nail Art</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="country-item">
+                            <div class="rounded overflow-hidden">
+                                <img src="img/country-2.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            </div>
+                            <div class="country-flag">
+                                <img src="img/india.jpg" class="img-fluid rounded-circle" alt="Image">
+                            </div>
+                            <div class="country-name">
+                                <a href="#" class="text-white fs-4">Facial Treatments</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="country-item">
+                            <div class="rounded overflow-hidden">
+                                <img src="img/country-3.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            </div>
+                            <div class="country-flag">
+                                <img src="img/usa.jpg" class="img-fluid rounded-circle" alt="Image">
+                            </div>
+                            <div class="country-name">
+                                <a href="#" class="text-white fs-4">Hair Coloring</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="country-item">
+                            <div class="rounded overflow-hidden">
+                                <img src="img/country-4.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            </div>
+                            <div class="country-flag">
+                                <img src="img/italy.jpg" class="img-fluid rounded-circle" alt="Image">
+                            </div>
+                            <div class="country-name">
+                                <a href="#" class="text-white fs-4">Bridal Makeup</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <a class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="#">View All Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Countries We Offer End -->
+
+        <!-- Training Start -->
+        <div class="container-fluid training bg-light overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="sub-style">
+                        <h5 class="sub-title text-primary px-3">BEAUTY WORKSHOPS</h5>
+                    </div>
+                    <h1 class="display-5 mb-4">Master Beauty Skills with Our Professional Workshops</h1>
+                    <p class="mb-0">Enhance your beauty knowledge and skills with our expert-led workshops and masterclasses. Perfect for beauty enthusiasts, aspiring professionals, and anyone wanting to learn advanced techniques.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="training-item">
+                            <div class="training-inner">
+                                <img src="img/nails.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Nail Art</a>
+                                    <a href="#" class="h4 text-white mb-0">Workshop</a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white">Nail Art Workshop</h4></a>
+                                <p class="text-white-50">Learn advanced nail art techniques, design patterns, and creative applications from our master nail technicians.</p>
+                                <a class="btn btn-secondary rounded-pill text-white p-0" href="#">Enroll Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="training-item">
+                            <div class="training-inner">
+                                <img src="img/skin.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Makeup</a>
+                                    <a href="#" class="h4 text-white mb-0">Masterclass</a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white">Makeup Masterclass</h4></a>
+                                <p class="text-white-50">Master professional makeup techniques for all occasions, from everyday looks to glamorous events and bridal makeup.</p>
+                                <a class="btn btn-secondary rounded-pill text-white p-0" href="#">Enroll Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="training-item">
+                            <div class="training-inner">
+                                <img src="img/hair-styling.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Hair Styling</a>
+                                    <a href="#" class="h4 text-white mb-0">Course</a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white">Hair Styling Course</h4></a>
+                                <p class="text-white-50">Learn cutting-edge hair styling techniques, coloring methods, and trend-setting styles from industry experts.</p>
+                                <a class="btn btn-secondary rounded-pill text-white p-0" href="#">Enroll Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="training-item">
+                            <div class="training-inner">
+                                <img src="img/skin-treatmenr.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Skincare</a>
+                                    <a href="#" class="h4 text-white mb-0">Workshop</a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white">Skincare Workshop</h4></a>
+                                <p class="text-white-50">Discover advanced skincare techniques, facial treatments, and anti-aging methods from certified aestheticians.</p>
+                                <a class="btn btn-secondary rounded-pill text-white p-0" href="#">Enroll Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <a class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="#">All Workshops</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Training End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-secondary mb-4">Contact Info</h4>
+                            <a href=""><i class="fa fa-map-marker-alt me-2"></i> 123 Beauty Boulevard, New York, USA</a>
+                            <a href=""><i class="fas fa-envelope me-2"></i> info@urbansalon.com</a>
+                            <a href=""><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</a>
+                            <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +1 (555) 123-4568</a>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-share fa-2x text-secondary me-2"></i>
+                                <a class="btn mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-secondary mb-4">Opening Time</h4>
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-0">Mon - Friday:</h6>
+                                <p class="text-white mb-0">09.00 am to 07.00 pm</p>
+                            </div>
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-0">Saturday:</h6>
+                                <p class="text-white mb-0">09.00 am to 06.00 pm</p>
+                            </div>
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-0">Sunday:</h6>
+                                <p class="text-white mb-0">10.00 am to 04.00 pm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-secondary mb-4">Our Services</h4>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Nail Care</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Skin Treatments</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Hair Styling</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Makeup Services</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Spa Wellness</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Bridal Packages</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-secondary mb-4">Beauty Newsletter</h4>
+                            <p class="text-white mb-3">Stay updated with the latest beauty trends, exclusive offers, and salon news. Subscribe to our newsletter and never miss out on special promotions!</p>
+                            <div class="position-relative mx-auto rounded-pill">
+                                <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                                <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-white"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Urban Salon</a>, All right reserved.</span>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- User Authentication Check -->
+    <script>
+        // Check if user is logged in and update UI
+        function checkUserAuthentication() {
+            // Check both localStorage and sessionStorage
+            let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
+            
+            if (userData) {
+                try {
+                    const user = JSON.parse(userData);
+                    
+                    // Show logged-in state
+                    document.getElementById('loginSection').classList.add('d-none');
+                    document.getElementById('userSection').classList.remove('d-none');
+                    document.getElementById('dashboardNav').classList.remove('d-none');
+                    
+                    // Extract name from email (before @) or use full email
+                    const userName = user.email.split('@')[0];
+                    const welcomeText = `Welcome, ${userName}!`;
+                    
+                    document.getElementById('welcomeText').textContent = welcomeText;
+                    
+                    // Add role badge if admin
+                    if (user.role === 'admin') {
+                        document.getElementById('welcomeText').innerHTML = `Welcome, ${userName}! <span class="badge bg-warning text-dark ms-1">Admin</span>`;
+                    }
+                    
+                } catch (error) {
+                    console.error('Error parsing user data:', error);
+                    // Clear invalid data
+                    localStorage.removeItem('urbanSalonUser');
+                    sessionStorage.removeItem('urbanSalonUser');
+                    showLoginState();
+                }
+            } else {
+                showLoginState();
+            }
+        }
+        
+        function showLoginState() {
+            document.getElementById('loginSection').classList.remove('d-none');
+            document.getElementById('userSection').classList.add('d-none');
+            document.getElementById('dashboardNav').classList.add('d-none');
+        }
+        
+        // Logout function
+        function logout() {
+            // Remove user data
+            localStorage.removeItem('urbanSalonUser');
+            sessionStorage.removeItem('urbanSalonUser');
+            
+            // Show login state
+            showLoginState();
+            
+            // Optional: Show logout message
+            alert('You have been logged out successfully!');
+            
+            // Optional: Redirect to login page
+            // window.location.href = 'login.html';
+        }
+        
+        // Run when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserAuthentication();
+        });
+        
+        // Optional: Check authentication status periodically (every 5 minutes)
+        setInterval(checkUserAuthentication, 300000);
+    </script>
+    </body>
+
+</html>

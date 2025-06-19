@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Urban Salon - Login & Signup</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="beauty salon login, urban salon account, nail care appointments" name="keywords">
+        <meta content="Login to your Urban Salon account to book appointments, manage your beauty services, and access exclusive offers" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-secondary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Topbar Start -->
+        <div class="container-fluid bg-primary px-5 d-none d-lg-block">
+            <div class="row gx-0 align-items-center">
+                <div class="col-lg-5 text-center text-lg-start mb-lg-0">
+                    <div class="d-flex">
+                        <a href="#" class="text-muted me-4"><i class="fas fa-envelope text-secondary me-2"></i>info@urbansalon.com</a>
+                        <a href="#" class="text-muted me-0"><i class="fas fa-phone-alt text-secondary me-2"></i>+1 (555) 123-4567</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 row-cols-1 text-center mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center" style="height: 45px;">
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle" href=""><i class="fab fa-youtube fw-normal text-secondary"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end">
+                    <div class="d-inline-flex align-items-center" style="height: 45px;">
+                        <a href="#" class="text-muted me-2"> Book Now</a><small> / </small>
+                        <a href="#" class="text-muted mx-2"> Gift Cards</a><small> / </small>
+                        <a href="#" class="text-muted ms-2"> Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid nav-bar p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="display-5 text-secondary m-0">Urban Salon</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="service.html" class="nav-item nav-link">Services</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link active" data-bs-toggle="dropdown"><span class="dropdown-toggle">More</span></a>
+                            <div class="dropdown-menu m-0">
+                                <a href="appointment.html" class="dropdown-item active">Appointments</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonials</a>
+                                <a href="gallery.html" class="dropdown-item">Gallery</a>
+                                <a href="team.html" class="dropdown-item">Team</a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-md-square border-secondary mb-3 mb-md-3 mb-lg-0 me-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
+                    <a href="appointment.html" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-3 mb-md-3 mb-lg-0">Book Appointment</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar & Hero End -->
+
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-secondary mb-0" id="exampleModalLabel">Search by keyword</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+<!-- Add a subtle separator line between navbar and login section -->
+<hr class="my-0" style="border-top: 2px solid #e0e0e0; opacity: 2;">
+
+<!-- Login/Signup Start -->
+        <div class="container py-5">
+            <div class="row justify-content-center align-items-center min-vh-60">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-body p-5">
+                            <ul class="nav nav-pills nav-justified mb-4" id="login-signup-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="login-tab" data-bs-toggle="pill" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">
+                                        <i class="fas fa-sign-in-alt me-1"></i> Login
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="signup-tab" data-bs-toggle="pill" data-bs-target="#signup" type="button" role="tab" aria-controls="signup" aria-selected="false">
+                                        <i class="fas fa-user-plus me-1"></i> Sign Up
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="login-signup-tabContent">
+                                <!-- Login Tab -->
+                                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                                    <div id="notLoggedInAlert" class="alert alert-warning d-none" role="alert">
+                                        You are not logged in. Please log in to book an appointment.
+                                    </div>
+                                    <form id="loginForm">
+                                        <div id="loginError" class="alert alert-danger d-none" role="alert"></div>
+                                        <div id="loginSuccess" class="alert alert-success d-none" role="alert"></div>
+                                        <div class="mb-3">
+                                            <label for="loginEmail" class="form-label">Email address</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                                <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="loginPassword" class="form-label">Password</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                                <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                                <label class="form-check-label" for="rememberMe">
+                                                    Remember me
+                                                </label>
+                                            </div>
+                                            <a href="#" class="text-primary small" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a>
+                                        </div>
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-primary rounded-pill py-2" id="loginBtn">
+                                                <span id="loginBtnText">Login</span>
+                                                <span id="loginSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Sign Up Tab -->
+                                <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+                                    <form id="signupForm">
+                                        <div id="signupError" class="alert alert-danger d-none" role="alert"></div>
+                                        <div id="signupSuccess" class="alert alert-success d-none" role="alert"></div>
+                                        <div class="mb-3">
+                                            <label for="signupEmail" class="form-label">Email address</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                                <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signupPassword" class="form-label">Password</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                                <input type="password" class="form-control" id="signupPassword" placeholder="Create a password" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                                <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirm your password" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signupRole" class="form-label">Account Type</label>
+                                            <select class="form-control" id="signupRole" required>
+                                                <option value="">Select Account Type</option>
+                                                <option value="user">User</option>
+                                                <option value="client">Client</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signupFullName" class="form-label">Full Name</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                <input type="text" class="form-control" id="signupFullName" placeholder="Enter your full name" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signupMobile" class="form-label">Mobile Number</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                <input type="tel" class="form-control" id="signupMobile" placeholder="Enter your mobile number" required pattern="[0-9]{10,15}">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signupAddress" class="form-label">Address</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                                <input type="text" class="form-control" id="signupAddress" placeholder="Enter your address" required>
+                                            </div>
+                                        </div>
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-success rounded-pill py-2" id="signupBtn">
+                                                <span id="signupBtnText">Sign Up</span>
+                                                <span id="signupSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <div class="text-center">
+                                <span class="text-muted">Or sign in with</span>
+                                <div class="mt-2">
+                                    <a href="#" class="btn btn-outline-primary btn-sm rounded-circle mx-1"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="btn btn-outline-danger btn-sm rounded-circle mx-1"><i class="fab fa-google"></i></a>
+                                    <a href="#" class="btn btn-outline-info btn-sm rounded-circle mx-1"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forgot Password Modal -->
+        <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-4">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="forgotPasswordModalLabel"><i class="fas fa-unlock-alt me-2"></i>Forgot Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="forgotEmail" class="form-label">Enter your email address</label>
+                                <input type="email" class="form-control" id="forgotEmail" placeholder="Email" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary rounded-pill">Send Reset Link</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-secondary mb-4">Contact Info</h4>
+                            <a href=""><i class="fa fa-map-marker-alt me-2"></i> 123 Beauty Boulevard, New York, USA</a>
+                            <a href=""><i class="fas fa-envelope me-2"></i> info@urbansalon.com</a>
+                            <a href=""><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</a>
+                            <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +1 (555) 123-4568</a>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-share fa-2x text-secondary me-2"></i>
+                                <a class="btn mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-secondary mb-4">Opening Time</h4>
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-0">Mon - Friday:</h6>
+                                <p class="text-white mb-0">09.00 am to 07.00 pm</p>
+                            </div>
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-0">Saturday:</h6>
+                                <p class="text-white mb-0">09.00 am to 06.00 pm</p>
+                            </div>
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-0">Sunday:</h6>
+                                <p class="text-white mb-0">10.00 am to 04.00 pm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-secondary mb-4">Our Services</h4>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Nail Care</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Skin Treatments</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Hair Styling</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Makeup Services</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Spa Wellness</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Bridal Packages</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-secondary mb-4">Beauty Newsletter</h4>
+                            <p class="text-white mb-3">Stay updated with the latest beauty trends, exclusive offers, and salon news. Subscribe to our newsletter and never miss out on special promotions!</p>
+                            <div class="position-relative mx-auto rounded-pill">
+                                <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                                <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-white"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Urban Salon</a>, All right reserved.</span>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Login/Signup API Javascript -->
+    <script>
+        // API Configuration
+        const API_BASE_URL = 'http://127.0.0.1:7002/base';
+        
+        // Utility Functions
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('d-none');
+        }
+        
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.classList.add('d-none');
+        }
+        
+        function showSuccess(elementId, message) {
+            const successElement = document.getElementById(elementId);
+            successElement.textContent = message;
+            successElement.classList.remove('d-none');
+        }
+        
+        function hideSuccess(elementId) {
+            const successElement = document.getElementById(elementId);
+            successElement.classList.add('d-none');
+        }
+        
+        function showLoading(btnId, spinnerId, textId) {
+            document.getElementById(btnId).disabled = true;
+            document.getElementById(spinnerId).classList.remove('d-none');
+            document.getElementById(textId).classList.add('d-none');
+        }
+        
+        function hideLoading(btnId, spinnerId, textId) {
+            document.getElementById(btnId).disabled = false;
+            document.getElementById(spinnerId).classList.add('d-none');
+            document.getElementById(textId).classList.remove('d-none');
+        }
+        
+        // Signup Function
+        async function handleSignup(event) {
+            event.preventDefault();
+            
+            hideError('signupError');
+            hideSuccess('signupSuccess');
+            showLoading('signupBtn', 'signupSpinner', 'signupBtnText');
+            
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            const role = document.getElementById('signupRole').value;
+            const fullName = document.getElementById('signupFullName').value.trim();
+            const mobile = document.getElementById('signupMobile').value.trim();
+            const address = document.getElementById('signupAddress').value.trim();
+            
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                showError('signupError', 'Passwords do not match!');
+                hideLoading('signupBtn', 'signupSpinner', 'signupBtnText');
+                return;
+            }
+            
+            // Validate new fields
+            if (!fullName) {
+                showError('signupError', 'Full Name is required!');
+                hideLoading('signupBtn', 'signupSpinner', 'signupBtnText');
+                return;
+            }
+            if (!mobile.match(/^\d{10,15}$/)) {
+                showError('signupError', 'Please enter a valid mobile number (10-15 digits).');
+                hideLoading('signupBtn', 'signupSpinner', 'signupBtnText');
+                return;
+            }
+            if (!address) {
+                showError('signupError', 'Address is required!');
+                hideLoading('signupBtn', 'signupSpinner', 'signupBtnText');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/signup/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        role: role,
+                        full_name: fullName,
+                        mobile: mobile,
+                        address: address
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showSuccess('signupSuccess', 'Account created successfully! You can now login.');
+                    document.getElementById('signupForm').reset();
+                    // Switch to login tab after 2 seconds
+                    setTimeout(() => {
+                        document.getElementById('login-tab').click();
+                    }, 2000);
+                } else {
+                    showError('signupError', data.message || 'Signup failed. Please try again.');
+                }
+            } catch (error) {
+                showError('signupError', 'Network error. Please check your connection.');
+                console.error('Signup error:', error);
+            }
+            
+            hideLoading('signupBtn', 'signupSpinner', 'signupBtnText');
+        }
+        
+        // Login Function
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            hideError('loginError');
+            hideSuccess('loginSuccess');
+            showLoading('loginBtn', 'loginSpinner', 'loginBtnText');
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/login/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Store user information from your API response
+                    const userData = {
+                        user_id: data.user_id,
+                        email: data.email,
+                        role: data.role,
+                        access_token: data.access,
+                        refresh_token: data.refresh,
+                        loginTime: new Date().toISOString()
+                    };
+                    
+                    // Store in localStorage or sessionStorage based on "Remember Me"
+                    if (rememberMe) {
+                        localStorage.setItem('urbanSalonUser', JSON.stringify(userData));
+                    } else {
+                        sessionStorage.setItem('urbanSalonUser', JSON.stringify(userData));
+                    }
+                    
+                    showSuccess('loginSuccess', `Welcome ${data.email}! Redirecting...`);
+                    
+                    // Redirect to dashboard after 1.5 seconds
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                    
+                } else {
+                    showError('loginError', data.message || 'Login failed. Please check your credentials.');
+                }
+            } catch (error) {
+                showError('loginError', 'Network error. Please check your connection.');
+                console.error('Login error:', error);
+            }
+            
+            hideLoading('loginBtn', 'loginSpinner', 'loginBtnText');
+        }
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('signupForm').addEventListener('submit', handleSignup);
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            if (sessionStorage.getItem('showLoginMessage')) {
+                var alertDiv = document.getElementById('notLoggedInAlert');
+                if (alertDiv) {
+                    alertDiv.classList.remove('d-none');
+                }
+                sessionStorage.removeItem('showLoginMessage');
+            }
+        });
+    </script>
+    </body>
+
+</html>
