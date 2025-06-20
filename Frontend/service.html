@@ -70,61 +70,7 @@
         <!-- Topbar End -->
 
         <!-- Navbar & Hero Start -->
-        <div class="container-fluid nav-bar p-0">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand p-0">
-                    <h1 class="display-5 text-secondary m-0">Urban Salon</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="dashboard.html" class="nav-item nav-link d-none" id="dashboardNav">Dashboard</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link active">Services</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-bs-toggle="dropdown"><span class="dropdown-toggle">More</span></a>
-                            <div class="dropdown-menu m-0">
-                                
-                                <a href="testimonial.html" class="dropdown-item">Testimonials</a>
-                                <a href="gallery.html" class="dropdown-item">Gallery</a>
-                                <a href="team.html" class="dropdown-item">Team</a>
-                            </div>
-                        </div>
-                    </div>
-                        
-                    <!-- User Authentication Section -->
-                    <div id="userAuthSection">
-                        <!-- Show when NOT logged in -->
-                        <div id="loginSection">
-                            <a href="login.html" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-2 mb-md-2 mb-lg-0">Login/Signup</a>
-                        </div>
-                        
-                        <!-- Show when logged in -->
-                        <div id="userSection" class="d-none">
-                            <div class="dropdown">
-                                <a class="btn btn-success border-secondary rounded-pill py-2 px-4 px-lg-3 mb-2 mb-md-2 mb-lg-0 dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user me-1"></i>
-                                    <span id="welcomeText">Welcome!</span>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                                    <li><a class="dropdown-item" href="dashboard.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i>Profile</a></li>
-                                    
-                                    
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
+        <div id="navbar-placeholder"></div>
         <!-- Navbar & Hero End -->
 
         <!-- Modal Search Start -->
@@ -540,81 +486,10 @@
         <!-- Training End -->
 
         <!-- Footer Start -->
-        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-secondary mb-4">Contact Info</h4>
-                            <a href=""><i class="fa fa-map-marker-alt me-2"></i> 123 Beauty Boulevard, New York, USA</a>
-                            <a href=""><i class="fas fa-envelope me-2"></i> info@urbansalon.com</a>
-                            <a href=""><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</a>
-                            <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +1 (555) 123-4568</a>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-share fa-2x text-secondary me-2"></i>
-                                <a class="btn mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-secondary mb-4">Opening Time</h4>
-                            <div class="mb-3">
-                                <h6 class="text-muted mb-0">Mon - Friday:</h6>
-                                <p class="text-white mb-0">09.00 am to 07.00 pm</p>
-                            </div>
-                            <div class="mb-3">
-                                <h6 class="text-muted mb-0">Saturday:</h6>
-                                <p class="text-white mb-0">09.00 am to 06.00 pm</p>
-                            </div>
-                            <div class="mb-3">
-                                <h6 class="text-muted mb-0">Sunday:</h6>
-                                <p class="text-white mb-0">10.00 am to 04.00 pm</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-secondary mb-4">Our Services</h4>
-                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Nail Care</a>
-                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Skin Treatments</a>
-                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Hair Styling</a>
-                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Makeup Services</a>
-                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Spa Wellness</a>
-                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Bridal Packages</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item">
-                            <h4 class="text-secondary mb-4">Beauty Newsletter</h4>
-                            <p class="text-white mb-3">Stay updated with the latest beauty trends, exclusive offers, and salon news. Subscribe to our newsletter and never miss out on special promotions!</p>
-                            <div class="position-relative mx-auto rounded-pill">
-                                <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
-                                <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="footer-placeholder"></div>
         <!-- Footer End -->
         
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright py-4">
-            <div class="container">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-white"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Urban Salon</a>, All right reserved.</span>
-                    </div>
-                  
-                </div>
-            </div>
-        </div>
-        <!-- Copyright End -->
-
+        
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
@@ -631,6 +506,15 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- Navbar Include Script -->
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+    </script>
     
     <!-- User Authentication Check -->
     <script>
@@ -700,6 +584,15 @@
         
         // Optional: Check authentication status periodically (every 5 minutes)
         setInterval(checkUserAuthentication, 300000);
+    </script>
+
+    <!-- Footer Include Script -->
+    <script>
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        });
     </script>
     </body>
 

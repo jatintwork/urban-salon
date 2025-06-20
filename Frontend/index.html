@@ -99,102 +99,7 @@
     <!-- Topbar End -->
 
     <!-- Navbar & Hero Start -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white px-3 px-lg-5 py-2 py-lg-0" style="width: 100%;">
-        <!-- Logo -->
-        <a href="#" class="navbar-brand p-0">
-            <h1 class="display-5 text-secondary m-0">UBeauty</h1>
-        </a>
-    
-        <!-- Spacer to push the right section -->
-        <!-- <div style="flex: 1;"></div> -->
-    
-        <!-- Right Section (Bell + User + Hamburger) -->
-        <div class="d-flex align-items-center" style="gap: 2px; flex-wrap: nowrap;">
-            <!-- Login Section (hidden when logged in) -->
-            <div id="loginSection">
-                <a class="btn btn-outline-primary rounded-pill" href="login.html" style="padding: 6px 16px; font-size: 0.95rem;">Login</a>
-            </div>
-
-            <!-- User Section (hidden when logged out) -->
-            <div id="userSection" class="d-none" style="display: flex; align-items: center; gap: 8px;">
-                <!-- Notification Bell -->
-                <div class="dropdown" id="notificationDropdownContainer">
-                    <button class="btn btn-light position-relative rounded-circle" id="notificationBell"
-                        data-bs-toggle="dropdown" aria-expanded="false"
-                        style="width: 36px; height: 36px; padding: 0; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-bell text-secondary"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                            id="notificationCount" style="font-size: 0.6rem;">3</span>
-                    </button>
-                    <ul class="dropdown-menu p-2 start-50 translate-middle-x" aria-labelledby="notificationBell"
-                        style="min-width: 320px; max-width: 90vw;">
-                        <li class="dropdown-header text-center">Notifications</li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <a class="dropdown-item notification-text" href="#">
-                                Your appointment is confirmed for tomorrow at 2pm.
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item notification-text" href="#">
-                                New offer: 20% off on all spa services!
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item notification-text" href="#">
-                                Your profile was updated successfully.
-                            </a>
-                        </li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-center text-primary" href="#">View all notifications</a></li>
-                    </ul>
-                </div>
-                <!-- User Dropdown -->
-                <div class="dropdown">
-                    <a class="btn btn-success border-secondary rounded-pill dropdown-toggle" href="#"
-                        role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false"
-                        style="padding: 6px 10px; font-size: 0.85rem; display: flex; align-items: center;">
-                        <!-- <i class="fas fa-user me-1"></i> -->
-                        <span id="welcomeText">aadu</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown"
-                        style="min-width: 180px; max-width: 90vw;">
-                        <li><a class="dropdown-item" href="dashboard.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
-                        <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i>Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-    
-            <!-- Hamburger Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
-                style="border: 1px solid #ccc; padding: 6px 10px;">
-                <span class="fa fa-bars"></span>
-            </button>
-        </div>
-    
-        <!-- Collapsible Menu -->
-        <div class="collapse navbar-collapse mt-2 mt-lg-0" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="dashboard.html" class="nav-item nav-link d-none" id="dashboardNav">Dashboard</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">More</a>
-                    <div class="dropdown-menu dropdown-menu-end m-0">
-                        <a href="testimonial.html" class="dropdown-item">Testimonials</a>
-                        <a href="gallery.html" class="dropdown-item">Gallery</a>
-                        <a href="team.html" class="dropdown-item">Team</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
+    <div id="navbar-placeholder"></div>
     <!-- Navbar & Hero End -->
 
 
@@ -932,69 +837,7 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="footer-item d-flex flex-column">
-                        <h4 class="text-secondary mb-4">Contact Info</h4>
-                        <a href=""><i class="fa fa-map-marker-alt me-2"></i> 123 Beauty Boulevard, New York, USA</a>
-                        <a href=""><i class="fas fa-envelope me-2"></i> info@urbansalon.com</a>
-                        <a href=""><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</a>
-                        <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +1 (555) 123-4568</a>
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-share fa-2x text-secondary me-2"></i>
-                            <a class="btn mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn mx-1" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="footer-item d-flex flex-column">
-                        <h4 class="text-secondary mb-4">Opening Time</h4>
-                        <div class="mb-3">
-                            <h6 class="text-muted mb-0">Mon - Friday:</h6>
-                            <p class="text-white mb-0">09.00 am to 07.00 pm</p>
-                        </div>
-                        <div class="mb-3">
-                            <h6 class="text-muted mb-0">Saturday:</h6>
-                            <p class="text-white mb-0">09.00 am to 06.00 pm</p>
-                        </div>
-                        <div class="mb-3">
-                            <h6 class="text-muted mb-0">Sunday:</h6>
-                            <p class="text-white mb-0">10.00 am to 04.00 pm</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="footer-item d-flex flex-column">
-                        <h4 class="text-secondary mb-4">Our Services</h4>
-                        <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Nail Care</a>
-                        <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Skin Treatments</a>
-                        <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Hair Styling</a>
-                        <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Makeup Services</a>
-                        <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Spa Wellness</a>
-                        <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Bridal Packages</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="footer-item">
-                        <h4 class="text-secondary mb-4">Beauty Newsletter</h4>
-                        <p class="text-white mb-3">Stay updated with the latest beauty trends, exclusive offers, and
-                            salon news. Subscribe to our newsletter and never miss out on special promotions!</p>
-                        <div class="position-relative mx-auto rounded-pill">
-                            <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                                placeholder="Enter your email">
-                            <button type="button"
-                                class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="footer-placeholder"></div>
     <!-- Footer End -->
 
 
@@ -1098,6 +941,24 @@
 
         // Optional: Check authentication status periodically (every 5 minutes)
         setInterval(checkUserAuthentication, 300000);
+    </script>
+
+    <!-- Navbar Include Script -->
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+    </script>
+
+    <!-- Footer Include Script -->
+    <script>
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        });
     </script>
 </body>
 
