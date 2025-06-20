@@ -40,34 +40,7 @@
         <!-- Spinner End -->
 
 
-        <!-- Topbar Start -->
-        <div class="container-fluid bg-primary px-5 d-none d-lg-block">
-            <div class="row gx-0 align-items-center">
-                <div class="col-lg-5 text-center text-lg-start mb-lg-0">
-                    <div class="d-flex">
-                        <a href="#" class="text-muted me-4"><i class="fas fa-envelope text-secondary me-2"></i>info@urbansalon.com</a>
-                        <a href="#" class="text-muted me-0"><i class="fas fa-phone-alt text-secondary me-2"></i>+1 (555) 123-4567</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 row-cols-1 text-center mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal text-secondary"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal text-secondary"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal text-secondary"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal text-secondary"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle" href=""><i class="fab fa-youtube fw-normal text-secondary"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center text-lg-end">
-                    <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <a href="#" class="text-muted me-2"> Book Now</a><small> / </small>
-                        <a href="#" class="text-muted mx-2"> Gift Cards</a><small> / </small>
-                        <a href="#" class="text-muted ms-2"> Contact</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Topbar End -->
+        
 
         <!-- Navbar & Hero Start -->
         <div id="navbar-placeholder"></div>
@@ -159,6 +132,22 @@
                                     <form id="signupForm">
                                         <div id="signupError" class="alert alert-danger d-none" role="alert"></div>
                                         <div id="signupSuccess" class="alert alert-success d-none" role="alert"></div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="signupFullName" class="form-label">Full Name</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                <input type="text" class="form-control" id="signupFullName" placeholder="Enter your full name" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signupMobile" class="form-label">Mobile Number</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                <input type="tel" class="form-control" id="signupMobile" placeholder="Enter your mobile number" required pattern="[0-9]{10,15}">
+                                            </div>
+                                        </div>
+                                        
                                         <div class="mb-3">
                                             <label for="signupEmail" class="form-label">Email address</label>
                                             <div class="input-group">
@@ -180,29 +169,8 @@
                                                 <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirm your password" required>
                                             </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="signupRole" class="form-label">Account Type</label>
-                                            <select class="form-control" id="signupRole" required>
-                                                <option value="">Select Account Type</option>
-                                                <option value="user">User</option>
-                                                <option value="client">Client</option>
-                                                <option value="admin">Admin</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="signupFullName" class="form-label">Full Name</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                                <input type="text" class="form-control" id="signupFullName" placeholder="Enter your full name" required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="signupMobile" class="form-label">Mobile Number</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                                <input type="tel" class="form-control" id="signupMobile" placeholder="Enter your mobile number" required pattern="[0-9]{10,15}">
-                                            </div>
-                                        </div>
+
+                                       
                                         <div class="mb-3">
                                             <label for="signupAddress" class="form-label">Address</label>
                                             <div class="input-group">
@@ -220,14 +188,7 @@
                                 </div>
                             </div>
                             <hr class="my-4">
-                            <div class="text-center">
-                                <span class="text-muted">Or sign in with</span>
-                                <div class="mt-2">
-                                    <a href="#" class="btn btn-outline-primary btn-sm rounded-circle mx-1"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="btn btn-outline-danger btn-sm rounded-circle mx-1"><i class="fab fa-google"></i></a>
-                                    <a href="#" class="btn btn-outline-info btn-sm rounded-circle mx-1"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -441,10 +402,10 @@
                     
                     showSuccess('loginSuccess', `Welcome ${data.email}! Redirecting...`);
                     
-                    // Redirect to dashboard after 1.5 seconds
+                    // Redirect to dashboard after 1 seconds
                     setTimeout(() => {
                         window.location.href = 'dashboard.html';
-                    }, 1500);
+                    }, 1000);
                     
                 } else {
                     showError('loginError', data.message || 'Login failed. Please check your credentials.');

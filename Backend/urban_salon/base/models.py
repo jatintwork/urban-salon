@@ -17,6 +17,8 @@ class BaseModelClass(models.Model):
 
 # ================= User Model ===================
 class Users(BaseModelClass, AbstractUser, PermissionsMixin):
+    first_name = models.CharField(max_length=100, null=True, blank=True)
+    last_name = models.CharField(max_length=100, null=True, blank=True)
     username = models.CharField(max_length=150, unique=True)
     password = models.CharField(max_length=150)
     email = models.EmailField(unique=True, max_length=255)

@@ -40,91 +40,10 @@
         <!-- Spinner End -->
 
 
-        <!-- Topbar Start -->
-        <div class="container-fluid bg-primary px-5 d-none d-lg-block">
-            <div class="row gx-0 align-items-center">
-                <div class="col-lg-5 text-center text-lg-start mb-lg-0">
-                    <div class="d-flex">
-                        <a href="#" class="text-muted me-4"><i class="fas fa-envelope text-secondary me-2"></i>info@urbansalon.com</a>
-                        <a href="#" class="text-muted me-0"><i class="fas fa-phone-alt text-secondary me-2"></i>+1 (555) 123-4567</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 row-cols-1 text-center mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal text-secondary"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal text-secondary"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal text-secondary"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal text-secondary"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle" href=""><i class="fab fa-youtube fw-normal text-secondary"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center text-lg-end">
-                    <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <a href="#" class="text-muted me-2"> Book Now</a><small> / </small>
-                        <a href="#" class="text-muted mx-2"> Gift Cards</a><small> / </small>
-                        <a href="#" class="text-muted ms-2"> Contact</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Topbar End -->
+     
 
         <!-- Navbar & Hero Start -->
-        <div class="container-fluid nav-bar p-0">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand p-0">
-                    <h1 class="display-5 text-secondary m-0">Urban Salon</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="dashboard.html" class="nav-item nav-link d-none" id="dashboardNav">Dashboard</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-bs-toggle="dropdown"><span class="dropdown-toggle">More</span></a>
-                            <div class="dropdown-menu m-0">
-                                
-                                <a href="testimonial.html" class="dropdown-item">Testimonials</a>
-                                <a href="gallery.html" class="dropdown-item">Gallery</a>
-                                <a href="team.html" class="dropdown-item">Team</a>
-                            </div>
-                        </div>
-                    </div>
-                        
-                    <!-- User Authentication Section -->
-                    <div id="userAuthSection">
-                        <!-- Show when NOT logged in -->
-                        <div id="loginSection">
-                            <a href="login.html" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-2 mb-md-2 mb-lg-0">Login/Signup</a>
-                        </div>
-                        
-                        <!-- Show when logged in -->
-                        <div id="userSection" class="d-none">
-                            <div class="dropdown">
-                                <a class="btn btn-success border-secondary rounded-pill py-2 px-4 px-lg-3 mb-2 mb-md-2 mb-lg-0 dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user me-1"></i>
-                                    <span id="welcomeText">Welcome!</span>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                                    <li><a class="dropdown-item" href="dashboard.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i>Profile</a></li>
-                                    
-                                    
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
+        <div id="navbar-placeholder"></div>
         <!-- Navbar & Hero End -->
 
         <!-- Modal Search Start -->
@@ -246,6 +165,32 @@
         .then(response => response.text())
         .then(data => {
           document.getElementById('footer-placeholder').innerHTML = data;
+        });
+    </script>
+
+    <!-- Template Javascript -->
+    <script>
+      function updateNavbarForAuth() {
+        let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
+        const loginSection = document.getElementById('loginSection');
+        const userSection = document.getElementById('userSection');
+        const welcomeText = document.getElementById('welcomeText');
+        if (userData) {
+          const user = JSON.parse(userData);
+          if (loginSection) loginSection.classList.add('d-none');
+          if (userSection) userSection.classList.remove('d-none');
+          if (welcomeText) welcomeText.textContent = user.email.split('@')[0];
+        } else {
+          if (loginSection) loginSection.classList.remove('d-none');
+          if (userSection) userSection.classList.add('d-none');
+          if (welcomeText) welcomeText.textContent = '';
+        }
+      }
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+          updateNavbarForAuth();
         });
     </script>
     </body>

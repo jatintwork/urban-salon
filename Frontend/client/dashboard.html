@@ -38,7 +38,7 @@
         </div>
     </div>
     <!-- Spinner End -->
-
+ 
 
         <!-- Navbar & Hero Start -->
         <div id="navbar-placeholder"></div>
@@ -82,26 +82,10 @@
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Service</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
-                                            </tr>
+                                           
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Dec 20, 2024</td>
-                                                <td>Nail Care</td>
-                                                <td><span class="badge bg-success">Confirmed</span></td>
-                                                <td><button class="btn btn-sm btn-outline-primary">View</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Dec 22, 2024</td>
-                                                <td>Hair Styling</td>
-                                                <td><span class="badge bg-warning">Pending</span></td>
-                                                <td><button class="btn btn-sm btn-outline-primary">View</button></td>
-                                            </tr>
+                                           
                                         </tbody>
                                     </table>
                                 </div>
@@ -157,31 +141,37 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card border-0 shadow rounded-4 text-center">
-                            <div class="card-body p-4">
-                                <i class="fas fa-tasks fa-3x text-info mb-3"></i>
-                                <h3 class="text-primary">12</h3>
-                                <p class="mb-0">Work Assigned</p>
+                        <a href="work_assigned.html" style="text-decoration:none;">
+                            <div class="card border-0 shadow rounded-4 text-center hover-shadow" style="cursor:pointer;">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-tasks fa-3x text-info mb-3"></i>
+                                    <h3 class="text-primary">12</h3>
+                                    <p class="mb-0">Work Assigned</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-md-3">
-                        <div class="card border-0 shadow rounded-4 text-center">
-                            <div class="card-body p-4">
-                                <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
-                                <h3 class="text-primary">45</h3>
-                                <p class="mb-0">Completed Works</p>
+                        <a href="completed_works.html" style="text-decoration:none;">
+                            <div class="card border-0 shadow rounded-4 text-center hover-shadow" style="cursor:pointer;">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                                    <h3 class="text-primary">45</h3>
+                                    <p class="mb-0">Completed Works</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-md-3">
-                        <div class="card border-0 shadow rounded-4 text-center">
-                            <div class="card-body p-4">
-                                <i class="fas fa-dollar-sign fa-3x text-success mb-3"></i>
-                                <h3 class="text-primary">$2,450</h3>
-                                <p class="mb-0">Money Earned</p>
+                        <a href="money_earned.html" style="text-decoration:none;">
+                            <div class="card border-0 shadow rounded-4 text-center hover-shadow" style="cursor:pointer;">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-dollar-sign fa-3x text-success mb-3"></i>
+                                    <h3 class="text-primary">$2,450</h3>
+                                    <p class="mb-0">Money Earned</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <!-- Current Work -->
@@ -200,18 +190,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Sarah Johnson</td>
-                                                <td>Nail Art</td>
-                                                <td>Dec 20, 2024</td>
-                                                <td><span class="badge bg-info">In Progress</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Maria Rodriguez</td>
-                                                <td>Hair Color</td>
-                                                <td>Dec 21, 2024</td>
-                                                <td><span class="badge bg-warning">Scheduled</span></td>
-                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -407,37 +386,106 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- Dashboard Logic -->
     <script>
+        async function loadClientDashboard() {
+            const userData = JSON.parse(localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser'));
+    
+            if (!userData || !userData.access_token) {
+                console.warn("No token found. Redirecting...");
+                window.location.href = 'login.html';
+                return;
+            }
+    
+            try {
+                const response = await fetch('http://127.0.0.1:7002/services/client_dashboard/', {
+                    headers: {
+                        'Authorization': `Bearer ${userData.access_token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Failed to fetch client dashboard');
+                }
+    
+                const data = await response.json();
+    
+                // --- Set Stats ---
+                document.querySelector('#clientDashboard .fa-star').closest('.card-body').querySelector('h3').textContent = data.average_rating ?? '0';
+                document.querySelector('#clientDashboard .fa-tasks').closest('.card-body').querySelector('h3').textContent = data.work_assigned_count ?? '0';
+                document.querySelector('#clientDashboard .fa-check-circle').closest('.card-body').querySelector('h3').textContent = data.work_completed_count ?? '0';
+                document.querySelector('#clientDashboard .fa-dollar-sign').closest('.card-body').querySelector('h3').textContent = `$${data.money_earned ?? '0.00'}`;
+    
+                // --- Current Work Assigned Table ---
+                const assignedTableBody = document.querySelector('#clientDashboard table tbody');
+                assignedTableBody.innerHTML = '';
+                
+                data.work_assigned.forEach(req => {
+                    if (req.status !== 'COMPLETED') {
+                    const statusColor = req.status === 'COMPLETED' ? 'success' : req.status === 'PENDING' ? 'warning' : 'info';
+                    assignedTableBody.innerHTML += `
+                        <tr>
+                            <td>${req.client_name}</td>
+                            <td>${req.service.name}</td>
+                            <td>${new Date(req.scheduled_datetime).toLocaleString()}</td>
+                            <td><span class="badge bg-${statusColor}">${req.status}</span></td>
+                        </tr>
+                        
+                    `;
+                }});
+    
+                // --- Recent Work Payments ---
+                const recentWorkList = document.querySelector('#clientDashboard .list-group');
+                recentWorkList.innerHTML = '';
+                data.money_earned_records.forEach(pay => {
+                    recentWorkList.innerHTML += `
+                        <div class="list-group-item d-flex justify-content-between">
+                            <span>${new Date(pay.payment_time).toLocaleDateString()} | ${pay.payment_mode}</span>
+                            <span class="badge bg-success">$${pay.amount}</span>
+                        </div>
+                    `;
+                });
+    
+            } catch (err) {
+                console.error("Client dashboard error:", err);
+            }
+        }
+    
+        function updateNavbarForAuth() {
+            let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
+            const loginSection = document.getElementById('loginSection');
+            const userSection = document.getElementById('userSection');
+            const welcomeText = document.getElementById('welcomeText');
+    
+            if (userData) {
+                const user = JSON.parse(userData);
+                loginSection?.classList.add('d-none');
+                userSection?.classList.remove('d-none');
+                welcomeText.textContent = user.email.split('@')[0];
+            } else {
+                loginSection?.classList.remove('d-none');
+                userSection?.classList.add('d-none');
+            }
+        }
+    
         function checkAuthAndLoadDashboard() {
             let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
             
             if (!userData) {
-                // Redirect to login if not authenticated
                 window.location.href = 'login.html';
                 return;
             }
-            
+    
             try {
                 const user = JSON.parse(userData);
                 const userName = user.email.split('@')[0];
-                
-                // Update welcome texts (defensive)
-                const navWelcome = document.getElementById('navWelcomeText');
-                if (navWelcome) {
-                  navWelcome.textContent = `Welcome, ${userName}!`;
-                  if (user.role === 'admin') {
-                    navWelcome.innerHTML = `Welcome, ${userName}! <span class="badge bg-warning text-dark ms-1">Admin</span>`;
-                  }
-                }
-                const dashWelcome = document.getElementById('dashboardWelcome');
-                if (dashWelcome) {
-                  dashWelcome.textContent = `Welcome to your Dashboard, ${userName}!`;
-                }
-                
-                // Show appropriate dashboard based on role
+                document.getElementById('dashboardWelcome').textContent = `Welcome to your Dashboard, ${userName}!`;
+    
                 showDashboardByRole(user.role);
-                
+    
+                // Call role-based loaders
+                if (user.role === 'client') loadClientDashboard();
+    
             } catch (error) {
                 console.error('Error parsing user data:', error);
                 localStorage.removeItem('urbanSalonUser');
@@ -445,51 +493,45 @@
                 window.location.href = 'login.html';
             }
         }
-        
+    
         function showDashboardByRole(role) {
-            // Hide all dashboards first
             document.getElementById('userDashboard').classList.add('d-none');
             document.getElementById('clientDashboard').classList.add('d-none');
             document.getElementById('adminDashboard').classList.add('d-none');
-            
-            // Show appropriate dashboard
-            switch(role) {
-                case 'user':
-                    document.getElementById('userDashboard').classList.remove('d-none');
-                    break;
-                case 'client':
-                    document.getElementById('clientDashboard').classList.remove('d-none');
-                    break;
-                case 'admin':
-                    document.getElementById('adminDashboard').classList.remove('d-none');
-                    break;
-                default:
-                    document.getElementById('userDashboard').classList.remove('d-none');
+    
+            if (role === 'user') {
+                document.getElementById('userDashboard').classList.remove('d-none');
+            } else if (role === 'client') {
+                document.getElementById('clientDashboard').classList.remove('d-none');
+            } else if (role === 'admin') {
+                document.getElementById('adminDashboard').classList.remove('d-none');
             }
         }
-        
+    
         function logout() {
             localStorage.removeItem('urbanSalonUser');
             sessionStorage.removeItem('urbanSalonUser');
             alert('You have been logged out successfully!');
-            window.location.href = 'index.html';
+            window.location.href = 'login.html';
         }
-        
-        // Load navbar, footer, and dashboard logic after DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-          fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('navbar-placeholder').innerHTML = data;
-              checkAuthAndLoadDashboard();
-            });
-          fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('footer-placeholder').innerHTML = data;
-            });
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                    updateNavbarForAuth();
+                    checkAuthAndLoadDashboard();
+                });
+    
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
         });
     </script>
+    
 </body>
 
 </html> 

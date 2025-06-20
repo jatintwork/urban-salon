@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from company_services.models import Service, ServiceCategory, ServiceRequest, Payment
+from company_services.models import Service, ServiceCategory, ServiceRequest, Payment, RatingReview
 
 class ServiceCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,12 +15,26 @@ class ServiceSerializer(serializers.ModelSerializer):
 
 class ServiceRequestSerializer(serializers.ModelSerializer):
     service = ServiceSerializer(read_only=True)
+    
 
     class Meta:
         model = ServiceRequest
         fields = ['id', 'service', 'scheduled_datetime', 'location', 'status']
+        
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        # Add the client's name (if available)
+        representation['client_name'] = getattr(instance.client, 'first_name', None)
+        # Add the assigned provider's name (if available)
+        representation['provider_name'] = getattr(instance.assigned_provider, 'first_name', None) if instance.assigned_provider else None
+        return representation
 
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
         fields = ['id', 'amount', 'payment_status', 'payment_mode', 'payment_time']
+
+class RatingReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RatingReview
+        fields = ['id', 'rating', 'review', 'service_request']
