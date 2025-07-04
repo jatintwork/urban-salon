@@ -1,212 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>Urban Salon - Premium Beauty & Wellness Services</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="nail care, skin treatments, hair styling, makeup, beauty salon, wellness" name="keywords">
-    <meta
-        content="Transform your look with our premium beauty services including nail care, skin treatments, hair styling, and professional makeup"
-        name="description">
+    <head>
+        <meta charset="utf-8">
+        <title>Urban Salon - Beauty Gallery | Premium Beauty & Wellness Services</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="beauty gallery, nail art, hair styling, makeup, skin treatments, spa services, Urban Salon" name="keywords">
+        <meta content="Browse our stunning gallery showcasing beautiful nail art, hair transformations, makeup looks, and spa treatments at Urban Salon" name="description">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap"
-        rel="stylesheet">
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet"> 
 
-    <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
 
-<body>
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-secondary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+    
 
     <!-- Navbar & Hero Start -->
     <div id="navbar-placeholder"></div>
     <!-- Navbar & Hero End -->
 
-
-
-
-    <!-- Add a subtle separator line between navbar and login section -->
-    <hr class="my-0" style="border-top: 2px solid #e0e0e0; opacity: 2;">
-
-    <!-- User Profile Section Start -->
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-7">
-                <div class="card shadow border-0 rounded-4 mb-4">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="me-3">
-                                <i class="fas fa-user-circle fa-3x text-secondary"></i>
-                            </div>
-                            <div>
-                                <h4 class="mb-0" id="profileName">Full Name</h4>
-                                <span class="badge bg-primary me-2" id="profileRole">Role</span>
-                                <span class="badge bg-success" id="profileStatus">Active</span>
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush mb-3">
-                            <li class="list-group-item"><strong>Username:</strong> <span id="profileUsername"></span>
-                            </li>
-                            <li class="list-group-item"><strong>Email:</strong> <span id="profileEmail"></span></li>
-                            <li class="list-group-item"><strong>Phone:</strong> <span id="profileMobile"></span></li>
-                            <li class="list-group-item"><strong>Address:</strong> <span id="profileAddress"></span></li>
-                            <li class="list-group-item"><strong>Date Joined:</strong> <span
-                                    id="profileDateJoined"></span></li>
-                            <li class="list-group-item"><strong>Last Login:</strong> <span id="profileLastLogin"></span>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Rating:</strong>
-                                <span id="profileRatingStars"></span>
-                                <span id="profileRatingValue" class="ms-2"></span>
-                            </li>
-                        </ul>
-                        <div id="clientOnlySection" style="display:none;">
-                            <hr>
-                            <h5 class="mb-3">Service Provider Details</h5>
-                            <ul class="list-group list-group-flush mb-3">
-                                <li class="list-group-item"><strong>Skills:</strong> <span id="profileSkills"></span>
-                                </li>
-                                <li class="list-group-item"><strong>Availability:</strong> <span
-                                        id="profileAvailability"></span></li>
-                                <li class="list-group-item"><strong>Total Jobs Completed:</strong> <span
-                                        id="profileJobs"></span></li>
-                            </ul>
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-secondary mb-0" id="exampleModalLabel">Search by keyword</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- User Profile Section End -->
+        <!-- Modal Search End -->
 
-    <div id="footer-placeholder"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- Add a subtle separator line between navbar and login section -->
+<hr class="my-0" style="border-top: 2px solid #e0e0e0; opacity: 2;">
+
+        <!-- User Profile Section Start -->
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-7">
+                    <div class="card shadow border-0 rounded-4 mb-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-user-circle fa-3x text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="mb-0" id="profileName">Full Name</h4>
+                                    <span class="badge bg-primary me-2" id="profileRole">Role</span>
+                                    <span class="badge bg-success" id="profileStatus">Active</span>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><strong>Username:</strong> <span id="profileUsername"></span></li>
+                                <li class="list-group-item"><strong>Email:</strong> <span id="profileEmail"></span></li>
+                                <li class="list-group-item"><strong>Phone:</strong> <span id="profileMobile"></span></li>
+                                <li class="list-group-item"><strong>Address:</strong> <span id="profileAddress"></span></li>
+                                <li class="list-group-item"><strong>Date Joined:</strong> <span id="profileDateJoined"></span></li>
+                                <li class="list-group-item"><strong>Last Login:</strong> <span id="profileLastLogin"></span></li>
+                                <li class="list-group-item">
+                                    <strong>Rating:</strong> 
+                                    <span id="profileRatingStars"></span>
+                                    <span id="profileRatingValue" class="ms-2"></span>
+                                </li>
+                            </ul>
+                            <div id="clientOnlySection" style="display:none;">
+                                <hr>
+                                <h5 class="mb-3">Service Provider Details</h5>
+                                <ul class="list-group list-group-flush mb-3">
+                                    <li class="list-group-item"><strong>Skills:</strong> <span id="profileSkills"></span></li>
+                                    <li class="list-group-item"><strong>Availability:</strong> <span id="profileAvailability"></span></li>
+                                    <li class="list-group-item"><strong>Total Jobs Completed:</strong> <span id="profileJobs"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- User Profile Section End -->
+
+        
+  
+        <!-- Footer Start -->
+        <div id="footer-placeholder"></div>
+        <!-- Footer End -->
+        
+       
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+    <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-
-        function logout() {
-            localStorage.removeItem('urbanSalonUser');
-            sessionStorage.removeItem('urbanSalonUser');
-            alert('You have been logged out successfully!');
-            window.location.href = 'login.html';
-        }
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     
-        async function fetchUserProfile() {
-            const userData = JSON.parse(localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser'));
-            const token = userData.access_token || userData.token;
-        
-            if (!token) {
-                window.location.href = 'login.html';
-                return;
-            }
-        
-            try {
-                const response = await fetch('http://127.0.0.1:7002/services/user_profile/', {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+
+    
+        <!-- User Profile JavaScript -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
+                if (userData) {
+                    try {
+                        const user = JSON.parse(userData);
+                        document.getElementById('profileName').textContent = user.full_name || user.username || (user.email ? user.email.split('@')[0] : '');
+                        document.getElementById('profileRole').textContent = user.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : '';
+                        document.getElementById('profileEmail').textContent = user.email || '';
+                        document.getElementById('profileUsername').textContent = user.username || '';
+                        document.getElementById('profileMobile').textContent = user.phone || user.mobile || '';
+                        document.getElementById('profileAddress').textContent = user.address || '';
+                        document.getElementById('profileDateJoined').textContent = user.date_joined ? new Date(user.date_joined).toLocaleDateString() : '';
+                        document.getElementById('profileLastLogin').textContent = user.last_login ? new Date(user.last_login).toLocaleString() : '';
+                        // Account status
+                        document.getElementById('profileStatus').textContent = user.is_active === false ? 'Inactive' : 'Active';
+                        document.getElementById('profileStatus').className = user.is_active === false ? 'badge bg-danger' : 'badge bg-success';
+                        // Rating
+                        let rating = typeof user.rating === 'number' ? user.rating : 0;
+                        document.getElementById('profileRatingValue').textContent = rating.toFixed(1) + ' / 5.0';
+                        let stars = '';
+                        for (let i = 1; i <= 5; i++) {
+                            stars += `<i class="fa${i <= Math.round(rating) ? 's' : 'r'} fa-star text-warning"></i>`;
+                        }
+                        document.getElementById('profileRatingStars').innerHTML = stars;
+                        // Client/Service Provider section
+                        if (user.role === 'client' || user.role === 'service_provider') {
+                            document.getElementById('clientOnlySection').style.display = '';
+                            // Skills (array or string)
+                            let skills = user.skills || [];
+                            if (typeof skills === 'string') {
+                                try { skills = JSON.parse(skills); } catch (e) { skills = [skills]; }
+                            }
+                            if (Array.isArray(skills) && skills.length > 0) {
+                                document.getElementById('profileSkills').innerHTML = skills.map(skill => `<span class='badge bg-info text-dark me-1'>${skill}</span>`).join(' ');
+                            } else {
+                                document.getElementById('profileSkills').textContent = 'N/A';
+                            }
+                            // Availability
+                            let avail = user.availability_status !== undefined ? user.availability_status : user.available;
+                            document.getElementById('profileAvailability').innerHTML = avail ? '<span class="badge bg-success">Available</span>' : '<span class="badge bg-secondary">Unavailable</span>';
+                            // Jobs completed
+                            document.getElementById('profileJobs').textContent = user.total_jobs_completed !== undefined ? user.total_jobs_completed : '0';
+                        }
+                    } catch (e) {
+                        document.getElementById('profileName').textContent = 'Unknown';
                     }
-                });
-        
-                if (response.status === 401) {
-                    window.location.href = 'login.html';
-                    return;
+                } else {
+                    document.getElementById('profileName').textContent = 'Not logged in';
                 }
-        
-                const data = await response.json();
-                console.log(data);
-                const user = data.user;
-        
-                // ✅ Only use user *after* it's declared above
-                const fullName = (user.first_name || user.last_name)
-                    ? `${user.first_name || ''} ${user.last_name || ''}`.trim()
-                    : user.username;
-        
-                document.getElementById('profileName').textContent = fullName;
-                document.getElementById('profileRole').textContent = data.role_name || 'User';
-                document.getElementById('profileStatus').textContent = user.is_active ? 'Active' : 'Inactive';
-                document.getElementById('profileUsername').textContent = user.username;
-                document.getElementById('profileEmail').textContent = user.email;
-                document.getElementById('profileMobile').textContent = user.phone || '-';
-                document.getElementById('profileAddress').textContent = user.address || '-';
-                document.getElementById('profileDateJoined').textContent = user.created_date
-                    ? new Date(user.created_date).toLocaleString()
-                    : '-';
-                document.getElementById('profileLastLogin').textContent = user.last_logged_in
-                    ? new Date(user.last_logged_in).toLocaleString()
-                    : '-';
-        
-                // Rating
-                document.getElementById('profileRatingValue').textContent = `${user.rating?.toFixed(1) || '0.0'} / 5.0`;
-                const rating = Math.round(user.rating || 0);
-                let starsHTML = '';
-                for (let i = 1; i <= 5; i++) {
-                    const starClass = i <= rating ? 'fas' : 'far';
-                    starsHTML += `<i class="${starClass} fa-star text-warning" style="font-size: 1.2em; margin-right: 2px;"></i>`;
-                }
-                document.getElementById('profileRatingStars').innerHTML = starsHTML;
-        
-                // Show provider details if role is provider
-                if (data.role_name.toLowerCase() === 'client') {
-                    document.getElementById('clientOnlySection').style.display = 'block';
-                    document.getElementById('profileSkills').textContent = user.skills?.join(', ') || 'None';
-                    document.getElementById('profileAvailability').textContent = user.availability_status ? 'Available' : 'Unavailable';
-                    document.getElementById('profileJobs').textContent = user.total_jobs_completed || 0;
-                }
-        
-            } catch (err) {
-                console.error('Failed to fetch user profile:', err);
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', fetchUserProfile);
-        function updateNavbarForAuth() {
+            });
+        </script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+          function updateNavbarForAuth() {
             let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
             const loginSection = document.getElementById('loginSection');
             const userSection = document.getElementById('userSection');
             const welcomeText = document.getElementById('welcomeText');
             if (userData) {
-                const user = JSON.parse(userData);
-                if (loginSection) loginSection.classList.add('d-none');
-                if (userSection) userSection.classList.remove('d-none');
-                if (welcomeText) welcomeText.textContent = user.email.split('@')[0];
+              const user = JSON.parse(userData);
+              if (loginSection) loginSection.classList.add('d-none');
+              if (userSection) userSection.classList.remove('d-none');
+              if (welcomeText) welcomeText.textContent = user.email.split('@')[0];
             } else {
-                if (loginSection) loginSection.classList.remove('d-none');
-                if (userSection) userSection.classList.add('d-none');
-                if (welcomeText) welcomeText.textContent = '';
+              if (loginSection) loginSection.classList.remove('d-none');
+              if (userSection) userSection.classList.add('d-none');
+              if (welcomeText) welcomeText.textContent = '';
             }
-        }
-        fetch('navbar.html')
+          }
+          fetch('navbar.html')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-                updateNavbarForAuth();
+              document.getElementById('navbar-placeholder').innerHTML = data;
+              updateNavbarForAuth();
             });
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-       
+        </script>
+    <!-- Footer Include Script -->
+    <script>
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        });
     </script>
-</body>
+    </body>
 
 </html>

@@ -231,7 +231,7 @@
                         <div class="card border-0 shadow rounded-4 text-center">
                             <div class="card-body p-4">
                                 <i class="fas fa-users fa-3x text-primary mb-3"></i>
-                                <h3 class="text-primary"></h3>
+                                <h3 class="text-primary">156</h3>
                                 <p class="mb-0">Total Users</p>
                             </div>
                         </div>
@@ -240,8 +240,8 @@
                         <div class="card border-0 shadow rounded-4 text-center">
                             <div class="card-body p-4">
                                 <i class="fas fa-user-tie fa-3x text-success mb-3"></i>
-                                <h3 class="text-primary"></h3>
-                                <p class="mb-0">Total Clients</p>
+                                <h3 class="text-primary">24</h3>
+                                <p class="mb-0">Active Clients</p>
                             </div>
                         </div>
                     </div>
@@ -249,159 +249,112 @@
                         <div class="card border-0 shadow rounded-4 text-center">
                             <div class="card-body p-4">
                                 <i class="fas fa-clipboard-list fa-3x text-warning mb-3"></i>
-                                <h3 class="text-primary"></h3>
-                                <p class="mb-0">Total User</p>
+                                <h3 class="text-primary">38</h3>
+                                <p class="mb-0">Pending Requests</p>
                             </div>
                         </div>
                     </div>
-                    <!-- 
-                        The issue is that <div class="col-md-3" href="completed_works.html"> is using an invalid attribute 'href' on a div.
-                        If you want the card to be clickable and link to completed_works.html, you should wrap the card in an <a> tag.
-                    -->
                     <div class="col-md-3">
-                        <a href="completed_works.html" style="text-decoration: none;">
-                            <div class="card border-0 shadow rounded-4 text-center">
-                                <div class="card-body p-4">
-                                    <i class="fas fa-chart-line fa-3x text-info mb-3"></i>
-                                    <h3 class="text-primary"></h3>
-                                    <p class="mb-0">Completed Services</p>
-                                </div>
+                        <div class="card border-0 shadow rounded-4 text-center">
+                            <div class="card-body p-4">
+                                <i class="fas fa-chart-line fa-3x text-info mb-3"></i>
+                                <h3 class="text-primary">$12.5K</h3>
+                                <p class="mb-0">Monthly Revenue</p>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                </div>
-                <!-- Recent Service Requests (fixed size, scrollable) -->
-                <div class="row mt-4">
-                    <div class="col-12">
+
+                    <!-- All Users -->
+                    <div class="col-lg-8">
                         <div class="card border-0 shadow rounded-4">
                             <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h5 class="card-title text-primary mb-0"><i class="fas fa-bell me-2"></i>Recent Service Requests</h5>
-                                    <button class="btn btn-success" id="createRequestBtn"><i class="fas fa-plus me-1"></i>Create Request</button>
-                                </div>
-                                <div class="mb-3">
-                                    <select id="serviceRequestStatusFilter" class="form-select w-auto d-inline-block">
-                                        <option value="all">All</option>
-                                        <option value="IN_PROGRESS">In Progress</option>
-                                        <option value="PENDING">Pending</option>
-                                        <option value="ASSIGNED">Assigned</option>
-                                        <option value="COMPLETED">Completed</option>
-                                    </select>
-                                </div>
-                                <div class="table-responsive" style="max-height: 320px; min-height: 180px; overflow-y: auto; width: 100%;">
+                                <h5 class="card-title text-primary"><i class="fas fa-users-cog me-2"></i>User Management</h5>
+                                <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>User</th>
-                                                <th>Service</th>
-                                                <th>Date Requested</th>
-                                                <th>Location</th>
-                                                <th>Price(Rs)</th>
-                                                <th>Assigned To</th>
+                                                <th>Email</th>
+                                                <th>Role</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="recentServiceRequestsTableBody">
-                                            <!-- Dynamic rows by JS -->
+                                        <tbody>
+                                            <tr>
+                                                <td>sarah@email.com</td>
+                                                <td><span class="badge bg-primary">User</span></td>
+                                                <td><span class="badge bg-success">Active</span></td>
+                                                <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>maria@email.com</td>
+                                                <td><span class="badge bg-info">Client</span></td>
+                                                <td><span class="badge bg-success">Active</span></td>
+                                                <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Create Request Modal -->
-                <div class="modal fade" id="createRequestModal" tabindex="-1" aria-labelledby="createRequestModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="createRequestModalLabel">Create New Request</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form id="createRequestForm">
-                          <div class="mb-2">
-                            <label class="form-label">Service Name</label>
-                            <input type="text" class="form-control" id="createServiceName" required>
-                          </div>
-                          <div class="mb-2">
-                            <label class="form-label">Date</label>
-                            <input type="datetime-local" class="form-control" id="createServiceDate" required>
-                          </div>
-                          <div class="mb-2">
-                            <label class="form-label">Location</label>
-                            <input type="text" class="form-control" id="createServiceLocation" required>
-                          </div>
-                          <div class="mb-2">
-                            <label class="form-label">Price (Rs)</label>
-                            <input type="number" class="form-control" id="createServicePrice" required>
-                          </div>
-                          <div class="mb-2">
-                            <label class="form-label">Client Name</label>
-                            <input type="text" class="form-control" id="createClientName" required>
-                          </div>
-                          <div class="mb-2">
-                            <label class="form-label">Provider Name</label>
-                            <input type="text" class="form-control" id="createProviderName" required>
-                          </div>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="submitCreateRequestBtn">Create</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Assign Work Section -->
-                <div class="row mt-4">
+
+                    <!-- Requests & Assignments -->
                     <div class="col-lg-4">
                         <div class="card border-0 shadow rounded-4">
                             <div class="card-body p-4">
-                                <h5 class="card-title text-primary"><i class="fas fa-tasks me-2"></i>Assign/Reassign Work</h5>
+                                <h5 class="card-title text-primary"><i class="fas fa-tasks me-2"></i>Assign Work</h5>
                                 <div class="mb-3">
-                                    <select id="pendingRequestSelect" class="form-control mb-2">
-                                        <option value="">Select Request</option>
+                                    <select class="form-control mb-2">
+                                        <option>Select Request</option>
+                                        <option>Hair Styling - Sarah J.</option>
+                                        <option>Nail Care - Maria R.</option>
                                     </select>
-                                    <select id="assignUserSelect" class="form-control mb-2">
-                                        <option value="">Assign to Client</option>
+                                    <select class="form-control mb-2">
+                                        <option>Assign to Client</option>
+                                        <option>Emily (Hair Specialist)</option>
+                                        <option>Lisa (Nail Technician)</option>
                                     </select>
-                                    <button id="assignWorkBtn" class="btn btn-primary btn-sm" disabled>Assign/Reassign Work</button>
+                                    <button class="btn btn-primary btn-sm">Assign Work</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- User Management Section (moved to bottom) -->
-                <div class="row mt-4">
-                    <div class="col-lg-12">
+
+                    <!-- Recent Requests -->
+                    <div class="col-12">
                         <div class="card border-0 shadow rounded-4">
                             <div class="card-body p-4">
-                                <h5 class="card-title text-primary"><i class="fas fa-users-cog me-2"></i>User Management</h5>
-                                <div class="mb-3">
-                                    <select id="userRoleFilter" class="form-select w-auto d-inline-block">
-                                        <option value="all">All</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
-                                        <option value="client" selected>Client</option>
-                                    </select>
-                                </div>
+                                <h5 class="card-title text-primary"><i class="fas fa-bell me-2"></i>Recent Service Requests</h5>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Email</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Phone</th>
-                                                <th>Role</th>
+                                                <th>User</th>
+                                                <th>Service</th>
+                                                <th>Date Requested</th>
+                                                <th>Assigned To</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="userManagementTableBody">
-                                            <!-- Dynamic rows -->
+                                        <tbody>
+                                            <tr>
+                                                <td>sarah@email.com</td>
+                                                <td>Bridal Makeup</td>
+                                                <td>Dec 15, 2024</td>
+                                                <td>Emily Chen</td>
+                                                <td><span class="badge bg-success">Assigned</span></td>
+                                                <td><button class="btn btn-sm btn-outline-primary">View</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>maria@email.com</td>
+                                                <td>Hair Color</td>
+                                                <td>Dec 16, 2024</td>
+                                                <td>Not Assigned</td>
+                                                <td><span class="badge bg-warning">Pending</span></td>
+                                                <td><button class="btn btn-sm btn-primary">Assign</button></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -451,10 +404,6 @@
                     }
                 });
     
-                if (response.status === 401) {
-                    window.location.href = 'login.html';
-                    return;
-                }
                 if (!response.ok) {
                     throw new Error('Failed to fetch client dashboard');
                 }
@@ -536,7 +485,6 @@
     
                 // Call role-based loaders
                 if (user.role === 'client') loadClientDashboard();
-                else if (user.role === 'admin') loadAdminDashboard();
     
             } catch (error) {
                 console.error('Error parsing user data:', error);
@@ -567,205 +515,6 @@
             window.location.href = 'login.html';
         }
     
-        async function loadAdminDashboard() {
-            const userData = JSON.parse(localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser'));
-            if (!userData || !userData.access_token) {
-                window.location.href = 'login.html';
-                return;
-            }
-            try {
-                const [dashboardRes, userRes, assignRes] = await Promise.all([
-                    fetch('http://127.0.0.1:7002/services/admin_dashboard/', {
-                        headers: {
-                            'Authorization': `Bearer ${userData.access_token}`,
-                            'Content-Type': 'application/json'
-                        }
-                    }),
-                    fetch('http://127.0.0.1:7002/services/user_profile/', {
-                        method: 'POST',
-                        headers: {
-                            'Authorization': `Bearer ${userData.access_token}`,
-                            'Content-Type': 'application/json'
-                        }
-                    }),
-                    fetch('http://127.0.0.1:7002/services/admin_dashboard/', {
-                        method: 'POST',
-                        headers: {
-                            'Authorization': `Bearer ${userData.access_token}`,
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                ]);
-                if (dashboardRes.status === 401 || userRes.status === 401 || assignRes.status === 401) {
-                    window.location.href = 'login.html';
-                    return;
-                }
-                if (!dashboardRes.ok) throw new Error('Failed to fetch admin dashboard');
-                if (!userRes.ok) throw new Error('Failed to fetch user management data');
-                if (!assignRes.ok) throw new Error('Failed to fetch assign work data');
-                const data = await dashboardRes.json();
-                const userDataRes = await userRes.json();
-                const assignData = await assignRes.json();
-                // Update stats cards
-                const stats = [
-                    { selector: '#adminDashboard .fa-users', value: data.total_user_count },
-                    { selector: '#adminDashboard .fa-user-tie', value: data.client_count },
-                    { selector: '#adminDashboard .fa-clipboard-list', value: data.user_count },
-                    { selector: '#adminDashboard .fa-chart-line', value: data.completed_service_count }
-                ];
-                stats.forEach(stat => {
-                    const card = document.querySelector(stat.selector)?.closest('.card-body');
-                    if (card) card.querySelector('h3').textContent = stat.value ?? '0';
-                });
-                // Update user management table
-                function renderUserTable(role) {
-                    const tbody = document.getElementById('userManagementTableBody');
-                    tbody.innerHTML = '';
-                    const roles = ['admin', 'user', 'client'];
-                    let allUsers = [];
-                    roles.forEach(r => {
-                        if (userDataRes[r]) {
-                            userDataRes[r].forEach(item => {
-                                allUsers.push({
-                                    email: item.user.email,
-                                    first_name: item.user.first_name,
-                                    last_name: item.user.last_name ,
-                                    phone: item.user.phone,
-                                    role: item.role_name,
-                                    status: item.user.availability_status ? 'Active' : 'Inactive',
-                                    statusClass: item.user.is_active ? 'success' : 'danger',
-                                });
-                            });
-                        }
-                    });
-                    let filtered = role === 'all' ? allUsers : allUsers.filter(u => u.role === role);
-                    filtered.forEach(u => {
-                        tbody.innerHTML += `
-                            <tr>
-                                <td>${u.email}</td>
-                                <td>${u.first_name ? u.first_name : 'NA'}</td>
-                                <td>${u.last_name ? u.last_name : 'NA'}</td>
-                                <td>${u.phone ? u.phone : 'NA'}</td>
-                                <td><span class="badge bg-primary text-capitalize">${u.role}</span></td>
-                                <td><span class="badge bg-${u.statusClass}">${u.status}</span></td>
-                                <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
-                            </tr>
-                        `;
-                    });
-                }
-                renderUserTable('client');
-                document.getElementById('userRoleFilter').value = 'client';
-                document.getElementById('userRoleFilter').onchange = function() {
-                    renderUserTable(this.value);
-                };
-                // Update recent service requests table
-                function renderRecentServiceRequests(statusFilter) {
-                    const tbody = document.getElementById('recentServiceRequestsTableBody');
-                    tbody.innerHTML = '';
-                    let requests = (data.pending_request_data || []);
-                    if (statusFilter && statusFilter !== 'all') {
-                        requests = requests.filter(req => req.status === statusFilter);
-                    }
-                    requests.forEach(req => {
-                        const statusColor = req.status === 'COMPLETED' ? 'success' : req.status === 'PENDING' ? 'warning' : req.status === 'IN_PROGRESS' ? 'info' : req.status === 'ASSIGNED' ? 'primary' : 'secondary';
-                        tbody.innerHTML += `
-                            <tr>
-                                <td>${req.client_name}</td>
-                                <td>${req.service.name}</td>
-                                <td>${new Date(req.scheduled_datetime).toLocaleString()}</td>
-                                <td>${req.location || ''}</td>
-                                <td>${req.service.price || ''}</td>
-                                <td>${req.provider_name || 'Not Assigned'}</td>
-                                <td><span class="badge bg-${statusColor}">${req.status}</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-danger cancel-request-btn" data-service-id="${req.id}">Cancel</button>
-                                </td>
-                            </tr>
-                        `;
-                    });
-                    // Add event listeners for completed view buttons
-                    document.querySelectorAll('.cancel-request-btn').forEach(btn => {
-                        btn.onclick = async function() {
-                            const serviceId = this.getAttribute('data-service-id');
-                            if (!serviceId) return;
-                            if (!confirm('Are you sure you want to cancel this request?')) return;
-                            const userData = JSON.parse(localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser'));
-                            try {
-                                const res = await fetch('http://127.0.0.1:7002/services/completed_service/', {
-                                    method: 'DELETE',
-                                    headers: {
-                                        'Authorization': `Bearer ${userData.access_token}`,
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({ id: serviceId })
-                                });
-                                if (!res.ok) throw new Error('Failed to cancel request');
-                                alert('Request cancelled successfully!');
-                                loadAdminDashboard();
-                            } catch (err) {
-                                alert('Error cancelling request.');
-                            }
-                        };
-                    });
-                }
-                renderRecentServiceRequests('all');
-                document.getElementById('serviceRequestStatusFilter').onchange = function() {
-                    renderRecentServiceRequests(this.value);
-                };
-                // --- Assign Work Section ---
-                const pendingRequests = assignData.all_pending_requests || [];
-                const clients = assignData.client || [];
-                const pendingRequestSelect = document.getElementById('pendingRequestSelect');
-                const assignUserSelect = document.getElementById('assignUserSelect');
-                const assignWorkBtn = document.getElementById('assignWorkBtn');
-                // Populate pending requests dropdown
-                pendingRequestSelect.innerHTML = '<option value="">Select Request</option>';
-                pendingRequests.forEach(req => {
-                    pendingRequestSelect.innerHTML += `<option value="${req.id}">${req.service.name} (${req.client_name})</option>`;
-                });
-                // Populate users dropdown
-                assignUserSelect.innerHTML = '<option value="">Assign to Client</option>';
-                clients.forEach(client => {
-                    assignUserSelect.innerHTML += `<option value="${client.user.id}">${client.user.email}${client.user.first_name ? ' (' + client.user.first_name + ')' : ''}</option>`;
-                });
-                // Enable button only if both selected
-                function updateAssignBtnState() {
-                    assignWorkBtn.disabled = !(pendingRequestSelect.value && assignUserSelect.value);
-                }
-                pendingRequestSelect.onchange = updateAssignBtnState;
-                assignUserSelect.onchange = updateAssignBtnState;
-                // Assign/Reassign handler
-                assignWorkBtn.onclick = async function() {
-                    if (!pendingRequestSelect.value || !assignUserSelect.value) return;
-                    assignWorkBtn.disabled = true;
-                    assignWorkBtn.textContent = 'Assigning...';
-                    try {
-                        const putRes = await fetch('http://127.0.0.1:7002/services/admin_dashboard/', {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `Bearer ${userData.access_token}`,
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                user_id: assignUserSelect.value,
-                                request_id: pendingRequestSelect.value
-                            })
-                        });
-                        if (!putRes.ok) throw new Error('Failed to assign/reassign work');
-                        alert('Work assigned/reassigned successfully!');
-                        loadAdminDashboard(); // Refresh data
-                    } catch (err) {
-                        alert('Error assigning work.');
-                    } finally {
-                        assignWorkBtn.disabled = false;
-                        assignWorkBtn.textContent = 'Assign/Reassign Work';
-                    }
-                };
-            } catch (err) {
-                console.error('Admin dashboard error:', err);
-            }
-        }
-    
         document.addEventListener('DOMContentLoaded', function () {
             fetch('navbar.html')
                 .then(response => response.text())
@@ -781,85 +530,8 @@
                     document.getElementById('footer-placeholder').innerHTML = data;
                 });
         });
-
-        // Add JS for Create Request button and modal
-        setTimeout(() => {
-            const createBtn = document.getElementById('createRequestBtn');
-            if (createBtn) {
-                createBtn.onclick = function() {
-                    new bootstrap.Modal(document.getElementById('createRequestModal')).show();
-                };
-            }
-            document.getElementById('submitCreateRequestBtn').onclick = async function() {
-                const userData = JSON.parse(localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser'));
-                const serviceName = document.getElementById('createServiceName').value;
-                const serviceDate = document.getElementById('createServiceDate').value;
-                const serviceLocation = document.getElementById('createServiceLocation').value;
-                const servicePrice = document.getElementById('createServicePrice').value;
-                const clientName = document.getElementById('createClientName').value;
-                const providerName = document.getElementById('createProviderName').value;
-                if (!serviceName || !serviceDate || !serviceLocation || !servicePrice || !clientName || !providerName) {
-                    alert('Please fill all required fields.');
-                    return;
-                }
-                try {
-                    const res = await fetch('http://127.0.0.1:7002/services/completed_service/', {
-                        method: 'POST',
-                        headers: {
-                            'Authorization': `Bearer ${userData.access_token}`,
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            service: { name: serviceName, price: servicePrice },
-                            scheduled_datetime: new Date(serviceDate).toISOString(),
-                            location: serviceLocation,
-                            client_name: clientName,
-                            provider_name: providerName,
-                            status: 'PENDING'
-                        })
-                    });
-                    if (!res.ok) throw new Error('Failed to create request');
-                    alert('Request created successfully!');
-                    var bsModal = bootstrap.Modal.getInstance(document.getElementById('createRequestModal'));
-                    bsModal.hide();
-                    loadAdminDashboard();
-                } catch (err) {
-                    alert('Error creating request.');
-                }
-            };
-        }, 0);
     </script>
     
-    <!-- Modal for Completed Service Details -->
-    <div class="modal fade" id="completedServiceModal" tabindex="-1" aria-labelledby="completedServiceModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="completedServiceModalLabel">Completed Service Details</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Service Name</th>
-                    <th>Client</th>
-                    <th>Provider</th>
-                    <th>Date</th>
-                    <th>Location</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="completedServiceTableBody">
-                  <!-- Dynamic rows -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 </body>
 
 </html> 

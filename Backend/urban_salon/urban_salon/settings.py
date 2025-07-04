@@ -95,18 +95,24 @@ WSGI_APPLICATION = 'urban_salon.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 # Configure the database
+# DATABASES = {
+#     "default": {
+#         "ENGINE": env("DATABASE_ENGINE"),
+#         "NAME": env("DATABASE_NAME"),
+#         "USER": env("DATABASE_USER"),
+#         "PASSWORD": env("DATABASE_PASSWORD"),
+#         "HOST": env("DATABASE_HOST"),
+#         "PORT": env("DATABASE_PORT"),
+#         'CONN_MAX_AGE': 60,  # Keep connections open for 60 seconds
+#         'OPTIONS': {
+#             'connect_timeout': 100000,  # Increase timeout for the connection
+#         },
+#     }
+# }
 DATABASES = {
-    "default": {
-        "ENGINE": env("DATABASE_ENGINE"),
-        "NAME": env("DATABASE_NAME"),
-        "USER": env("DATABASE_USER"),
-        "PASSWORD": env("DATABASE_PASSWORD"),
-        "HOST": env("DATABASE_HOST"),
-        "PORT": env("DATABASE_PORT"),
-        'CONN_MAX_AGE': 60,  # Keep connections open for 60 seconds
-        'OPTIONS': {
-            'connect_timeout': 100000,  # Increase timeout for the connection
-        },
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -260,6 +266,10 @@ LOGGING = {
         },
     },
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    ' https://d102-2409-40c0-105f-1389-75f0-1801-d06b-7334.ngrok-free.app'
+]
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': [

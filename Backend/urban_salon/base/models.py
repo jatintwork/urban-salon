@@ -26,7 +26,6 @@ class Users(BaseModelClass, AbstractUser, PermissionsMixin):
     # Common Fields
     phone = models.CharField(max_length=15, null=True, blank=True)
     address = models.TextField(null=True, blank=True)
-    last_logged_in = models.DateTimeField(null=True, blank=True)
 
     # Service Provider Fields
     skills = models.ManyToManyField('company_services.Service', blank=True)
