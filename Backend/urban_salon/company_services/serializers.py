@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from company_services.models import Service, ServiceCategory, ServiceRequest, Payment, RatingReview, Notification
+from base.models import UserRoleMapping, Users
 
 class ServiceCategorySerializer(serializers.ModelSerializer):
     class Meta:
