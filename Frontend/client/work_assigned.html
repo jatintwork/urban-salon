@@ -81,10 +81,6 @@
             'Content-Type': 'application/json'
           }
         });
-        if (response.status === 401) {
-          window.location.href = 'login.html';
-          return null;
-        }
         if (!response.ok) throw new Error('Failed to fetch dashboard data');
         return await response.json();
       } catch (error) {
