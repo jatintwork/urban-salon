@@ -8,7 +8,7 @@ from company_services.views import (
 )
 
 from company_services.services_views.ClientsView import ClientDashboardView
-from company_services.services_views.adminView import AdminDashboardView, AllServiceList, GetUSerProfile, UserListView
+from company_services.services_views.adminView import AdminDashboardView, AllServiceList, GetUSerProfile, UserListView, NotificationListView
 
 urlpatterns = [
     path('services/', ServiceListAPIView.as_view()),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('assign_work/', AdminDashboardView.as_view()),
     path('users/', UserListView.as_view()),
     path('completed_service/', AllServiceList.as_view()),
+    path('notifications/', NotificationListView.as_view()),
 ]

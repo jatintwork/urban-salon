@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from company_services.models import Service, ServiceCategory, ServiceRequest, Payment, RatingReview
+from company_services.models import Service, ServiceCategory, ServiceRequest, Payment, RatingReview, Notification
 
 from company_services.models import Service, ServiceRequest, Payment, RatingReview
 from base.models import UserRoleMapping, Users
@@ -70,5 +70,10 @@ class UserRoleMappingSerializer(serializers.ModelSerializer):
         representation['user'] = (UserSerializer(instance.user)).data
         
         return representation
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = ['id', 'message', 'created_at', 'is_read', 'service_request']
 
 

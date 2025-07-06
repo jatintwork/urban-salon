@@ -38,7 +38,7 @@ class ServiceRequest(BaseModelClass):
     assigned_provider = models.ForeignKey(Users, on_delete=models.SET_NULL, null=True, blank=True, related_name="assigned_jobs")
 
     def __str__(self):
-        return f"{self.service.name} for {self.client.username}"
+        return f"{self.service.name} for {self.client.username} by {self.assigned_provider.username}"
 
 
 # ================= Payment ===================
@@ -65,5 +65,16 @@ class RatingReview(BaseModelClass):
 
     def __str__(self):
         return f"{self.rating} by {self.service_request.client.username}"
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='notifications')
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+    service_request = models.ForeignKey(ServiceRequest, on_delete=models.CASCADE, null=True, blank=True, related_name='notifications')
+
+    def __str__(self):
+        return f"Notification for {self.user.username}: {self.message[:30]}"
 
 

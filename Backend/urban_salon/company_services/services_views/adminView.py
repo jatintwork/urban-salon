@@ -5,14 +5,15 @@ from rest_framework import status
 from decimal import Decimal
 from django.db import models
 
-from company_services.models import Service, ServiceRequest, Payment, RatingReview
-from company_services.serializers import ServiceSerializer, ServiceRequestSerializer, PaymentSerializer, RatingReviewSerializer, UserRoleMappingSerializer, UserSerializer
+from company_services.models import Service, ServiceRequest, Payment, RatingReview, Notification
+from company_services.serializers import ServiceSerializer, ServiceRequestSerializer, PaymentSerializer, RatingReviewSerializer, UserRoleMappingSerializer, UserSerializer, NotificationSerializer
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Sum, Avg
 from rest_framework import serializers
 from base.models import Users, UserRoleMapping, Role
 from collections import defaultdict
+from rest_framework.pagination import PageNumberPagination
 
 from base.commonCRUD import requestDelete
 
@@ -171,3 +172,18 @@ class UserListView(APIView):
         user_roles = UserRoleMapping.objects.filter(delete_flag=False, role__name__iexact=role)
         serializer = UserRoleMappingSerializer(user_roles, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+class NotificationPagination(PageNumberPagination):
+    page_size = 1
+    page_size_query_param = 'page_size'
+    max_page_size = 1
+
+@method_decorator(csrf_exempt, name='dispatch')
+class NotificationListView(APIView):
+
+    def get(self, request):
+        notifications = Notification.objects.filter(user=request.user).order_by('-created_at')
+        paginator = NotificationPagination()
+        page = paginator.paginate_queryset(notifications, request)
+        serializer = NotificationSerializer(page, many=True)
+        return paginator.get_paginated_response(serializer.data)
