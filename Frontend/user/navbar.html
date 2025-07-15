@@ -92,4 +92,41 @@
             </div>
         </div>
     </div>
-</nav> 
+</nav>
+<script>
+// Utility: Get user from storage
+function getUrbanSalonUser() {
+  let user = null;
+  try {
+    user = JSON.parse(localStorage.getItem('urbanSalonUser'));
+    if (!user) user = JSON.parse(sessionStorage.getItem('urbanSalonUser'));
+  } catch (e) { user = null; }
+  return user;
+}
+
+// Show/hide login/profile in navbar
+function updateNavbarLoginStatus() {
+  const user = getUrbanSalonUser();
+  const loginSection = document.getElementById('loginSection');
+  const userSection = document.getElementById('userSection');
+  const welcomeText = document.getElementById('welcomeText');
+
+  if (user && user.email) {
+    if (loginSection) loginSection.classList.add('d-none');
+    if (userSection) userSection.classList.remove('d-none');
+    if (welcomeText) welcomeText.textContent = user.email;
+  } else {
+    if (loginSection) loginSection.classList.remove('d-none');
+    if (userSection) userSection.classList.add('d-none');
+  }
+}
+
+// Logout function
+function logout() {
+  localStorage.removeItem('urbanSalonUser');
+  sessionStorage.removeItem('urbanSalonUser');
+  window.location.href = 'login.html';
+}
+
+document.addEventListener('DOMContentLoaded', updateNavbarLoginStatus);
+</script> 

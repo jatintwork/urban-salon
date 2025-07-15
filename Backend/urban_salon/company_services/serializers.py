@@ -3,24 +3,42 @@ from company_services.models import Service, ServiceCategory, ServiceRequest, Pa
 from base.models import UserRoleMapping, Users
 
 class ServiceCategorySerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    def get_image(self, obj):
+        return obj.image.url if obj.image else None
+
     class Meta:
         model = ServiceCategory
-        fields = ['id', 'name', 'description']
+        fields = ['id', 'name', 'description', 'image']
 
+
+    
 class ServiceSerializer(serializers.ModelSerializer):
     category = ServiceCategorySerializer(read_only=True)
+    image = serializers.SerializerMethodField()
+
 
     class Meta:
         model = Service
-        fields = ['id', 'name', 'description', 'price', 'duration_minutes', 'category']
+        fields = ['id', 'name', 'description', 'price', 'duration_minutes', 'category', 'image', 'precaution']
+        
+    def get_image(self, obj):
+        return obj.image.url if obj.image else None
+
+
 
 class ServiceRequestSerializer(serializers.ModelSerializer):
     service = ServiceSerializer(read_only=True)
-    
+    image = serializers.SerializerMethodField()
+
 
     class Meta:
         model = ServiceRequest
-        fields = ['id', 'service', 'scheduled_datetime', 'location', 'status']
+        fields = ['id', 'service', 'scheduled_datetime', 'location', 'status', 'image']
+
+    def get_image(self, obj):
+        return obj.image.url
         
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -31,16 +49,29 @@ class ServiceRequestSerializer(serializers.ModelSerializer):
         return representation
 
 class PaymentSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = Payment
-        fields = ['id', 'amount', 'payment_status', 'payment_mode', 'payment_time']
+        fields = ['id', 'amount', 'payment_status', 'payment_mode', 'payment_time', 'image' ]
+
+    def get_image(self, obj):
+        return obj.image.url if obj.image else None
 
 class RatingReviewSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    def get_image(self, obj):
+        return obj.image.url if obj.image else None
+
     class Meta:
         model = RatingReview
         fields = ['id', 'rating', 'review', 'service_request']
 
 
+
+
+    
 class UserSerializer(serializers.ModelSerializer):
     skills = ServiceSerializer(many=True, read_only=True)
 

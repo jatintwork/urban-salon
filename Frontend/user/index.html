@@ -335,6 +335,7 @@
                     your natural beauty. From expert nail care and rejuvenating skin treatments to stunning hair styling
                     and flawless makeup application.</p>
             </div>
+            <div class="row g-4" id="service-categories"></div>
             <div class="row g-4">
                 <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
@@ -872,6 +873,12 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/services.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        renderCategories('service-categories');
+      });
+    </script>
 
     <!-- User Authentication Check -->
     <script>

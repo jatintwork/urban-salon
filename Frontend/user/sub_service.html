@@ -206,6 +206,18 @@
       <span>Cart</span>
       <span class="cart-count" id="mobile-cart-count">0</span>
     </button>
+    <!-- Precaution Modal -->
+    <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="precautionModalLabel">Precautions</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="precautionModalBody"></div>
+        </div>
+      </div>
+    </div>
     <script>
       fetch('navbar.html')
         .then(response => response.text())
@@ -219,199 +231,76 @@
         });
     </script>
     <script>
-      // All sub-services data from the image
-      const allServices = [
-        {category:'facial', description:'O3+ Skin Premium', time:40, price:1149, precautions:'Avoid sun exposure for 24 hours; Use SPF 50; No hot water wash', bespoke:'Premium facial with O3+ products for glowing skin.'},
-        {category:'facial', description:'O3+ Brida Luxurious', time:140, price:1649, precautions:'Book 2-3 days before event; Avoid new products 48 hours prior; Patch test recommended', bespoke:'Luxurious bridal facial for special occasions.'},
-        {category:'facial', description:'Lotus Pea Pearl-infi', time:60, price:649, precautions:'Suitable for all skin types; Avoid if allergic to pearls; Use gentle cleanser post-treatment', bespoke:'Pearl-infused facial for radiant skin.'},
-        {category:'facial', description:'Lotus Gol 24K gold', time:60, price:639, precautions:'Not recommended for sensitive skin; Avoid 15 days gap between treatments; Stay hydrated', bespoke:'24K gold facial for anti-aging and glow.'},
-        {category:'facial', description:'Radiant F Basic cle', time:40, price:449, precautions:'Gentle treatment; Can be done monthly; Use mild products at home', bespoke:'Basic cleansing facial for all skin types.'},
-        {category:'facial', description:'VLCC Fruit Fruit-bas', time:40, price:449, precautions:'Check for fruit allergies; Avoid citrus if skin is sensitive; Moisturize well after treatment', bespoke:'Fruit-based facial for nourishment and glow.'},
-        {category:'facial', description:'VLCC Insti Quick glo', time:40, price:449, precautions:'Temporary results; Ideal before events; Follow with proper skincare routine', bespoke:'Quick glow facial for instant radiance.'},
-        {category:'waxing', description:'Back Wax Complete', time:15, price:349, precautions:'Exfoliate 24 hours before; Avoid hot shower for 6 hours; Apply cooling gel', bespoke:'Complete back waxing for smooth skin.'},
-        {category:'waxing', description:'Back Wax Premium', time:15, price:499, precautions:'Suitable for sensitive skin; Avoid sun exposure; Use soothing lotion post-treatment', bespoke:'Premium back waxing for sensitive skin.'},
-        {category:'waxing', description:'Back Wax Luxurious', time:15, price:449, precautions:'Check chocolate allergy; Moisturize well; Avoid tight clothing for 24 hours', bespoke:'Luxurious chocolate wax for the back.'},
-        {category:'waxing', description:'Stomach Gentle st', time:10, price:349, precautions:'Avoid during menstruation; Don\'t apply pressure; Use talcum powder before treatment', bespoke:'Gentle stomach waxing for delicate skin.'},
-        {category:'waxing', description:'Stomach Premium', time:10, price:449, precautions:'Test on small area first; Avoid heavy meals before treatment; Stay relaxed', bespoke:'Premium stomach waxing for best results.'},
-        {category:'waxing', description:'Bikini We Professiona', time:30, price:699, precautions:'Maintain personal hygiene; Avoid 2 days before/after periods; Wear loose clothing', bespoke:'Professional bikini waxing for hygiene and comfort.'},
-        {category:'waxing', description:'Bikini We Premium', time:30, price:599, precautions:'Professional service only; Follow aftercare instructions; Avoid swimming for 24 hours', bespoke:'Premium bikini waxing for sensitive skin.'},
-        {category:'waxing', description:'Bikini Lin Basic bik', time:15, price:199, precautions:'Less invasive than full bikini; Still requires hygiene precautions; Use antibacterial wash', bespoke:'Basic bikini line waxing for easy maintenance.'},
-        {category:'waxing', description:'Bikini Lin Premium', time:15, price:199, precautions:'Higher quality wax, less skin irritation; Follow professional advice', bespoke:'Premium bikini line waxing for smooth results.'},
-        {category:'waxing', description:'Full Body Compreh', time:90, price:1499, precautions:'Schedule adequate time; Stay hydrated; Avoid strenuous activity for 24 hours', bespoke:'Comprehensive full body waxing.'},
-        {category:'waxing', description:'Full Body Luxury ful', time:90, price:1299, precautions:'Premium service; Skin conditioning benefits; longer lasting results', bespoke:'Luxury full body waxing for silky skin.'},
-        {category:'threading', description:'Eyebrow Precise e', time:5, price:40, precautions:'Avoid makeup for 2 hours; Don\'t touch with dirty hands; Apply aloe vera if irritated', bespoke:'Precise eyebrow threading for perfect shape.'},
-        {category:'threading', description:'Forehead Clean for', time:10, price:40, precautions:'Clean area beforehand; Avoid harsh products; Use ice for swelling', bespoke:'Forehead threading for a clean look.'},
-        {category:'threading', description:'Full Face Complete', time:20, price:249, precautions:'Patch test recommended; Avoid sun for 24 hours; Use gentle skincare products', bespoke:'Full face threading for smooth skin.'},
-        {category:'threading', description:'Side Lock Side hair', time:10, price:29, precautions:'Clean the area well; Avoid oil-based products; Check for ingrown hairs', bespoke:'Side lock hair threading for neat finish.'},
-        {category:'threading', description:'Upper Lip Gentle up', time:5, price:29, precautions:'Very sensitive area; Avoid spicy food for few hours; Apply ice if needed', bespoke:'Gentle upper lip threading.'},
-        {category:'threading', description:'Neck Thre Neck area', time:10, price:99, precautions:'Gentle treatment needed; Avoid tight collars; Moisturize after treatment', bespoke:'Neck area threading for smooth finish.'},
-        {category:'threading', description:'Jawline T Jawline a', time:10, price:99, precautions:'Sensitive area; Personal technique required; Follow aftercare advice', bespoke:'Jawline threading for defined look.'},
-        {category:'threading', description:'Chin Thre Precise ch', time:5, price:29, precautions:'Common area for ingrown hairs; Keep clean; Exfoliate gently later', bespoke:'Precise chin threading.'},
-        {category:'bleach', description:'Bleach & Bleach Face', time:20, price:249, precautions:'Patch test mandatory; Avoid sun for 24 hours; Use SPF 50 daily after treatment', bespoke:'Face bleach for instant brightness.'},
-        {category:'bleach', description:'Bleach & Full Arms Complete', time:30, price:299, precautions:'Don\'t expose to direct sunlight; Moisturize well; Avoid scrubbing for 48 hours', bespoke:'Full arms bleach for even skin tone.'},
-        {category:'bleach', description:'Bleach & Full Legs Compreh', time:30, price:379, precautions:'Avoid tight clothing; Don\'t use harsh soaps; Apply sunscreen when going out', bespoke:'Full legs bleach for smooth, bright skin.'},
-        {category:'bleach', description:'Bleach & Back Blee Back area', time:30, price:249, precautions:'Professional application needed; Avoid sweating for few hours; Wear loose clothing', bespoke:'Back area bleach for clear skin.'},
-        {category:'bleach', description:'Bleach & Full Body Complete', time:60, price:999, precautions:'Comprehensive treatment; Avoid all sun exposure; Follow complete aftercare routine; Use prescribed products only', bespoke:'Full body bleach for overall brightness.'}
-      ];
-
-      // Sample ratings and reviews
-      const sampleRatings = [
-        {rating: 4.91, reviews: '125K'},
-        {rating: 4.90, reviews: '19K'},
-        {rating: 4.88, reviews: '8K'},
-        {rating: 4.95, reviews: '22K'},
-        {rating: 4.92, reviews: '15K'}
-      ];
-      const placeholderImages = [
-        'https://randomuser.me/api/portraits/men/32.jpg',
-        'https://randomuser.me/api/portraits/women/44.jpg',
-        'https://randomuser.me/api/portraits/men/45.jpg',
-        'https://randomuser.me/api/portraits/women/65.jpg',
-        'https://randomuser.me/api/portraits/men/67.jpg'
-      ];
-
-      // Get query parameter
+      // --- Dynamic Sub-Services Fetch & Render ---
       function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
       }
 
-      function showDetails(bespoke, title) {
-        document.getElementById('detailsModalLabel').textContent = title;
-        document.getElementById('detailsModalBody').textContent = bespoke;
-        var modal = new bootstrap.Modal(document.getElementById('detailsModal'));
+      async function fetchSubServices(categoryId) {
+        try {
+          const response = await fetch(`http://127.0.0.1:7002/services/sub-services/?category_id=${categoryId}`);
+          if (!response.ok) throw new Error('Failed to fetch sub-services');
+          return await response.json();
+        } catch (error) {
+          console.error(error);
+          return [];
+        }
+      }
+
+      // Default values for missing data
+      const DEFAULT_IMAGE = 'img/gallery-1.jpg';
+      const DEFAULT_RATING = 4.9;
+      const DEFAULT_REVIEWS = '1.2K';
+
+      function formatPrecaution(precaution) {
+        if (!precaution) return '';
+        // Split by /b and trim, ignore empty
+        const points = precaution.split('/b').map(p => p.trim()).filter(Boolean);
+        if (points.length === 0) return '';
+        return '<ul>' + points.map(p => `<li>${p}</li>`).join('') + '</ul>';
+      }
+
+      function showPrecautionModal(serviceName, precaution) {
+        document.getElementById('precautionModalLabel').textContent = `Precautions for ${serviceName}`;
+        document.getElementById('precautionModalBody').innerHTML = formatPrecaution(precaution);
+        var modal = new bootstrap.Modal(document.getElementById('precautionModal'));
         modal.show();
       }
 
-      let cart = {};
-
-      // Load cart from localStorage if present
-      if (localStorage.getItem('urbanSalonCart')) {
-        try {
-          cart = JSON.parse(localStorage.getItem('urbanSalonCart')) || {};
-        } catch (e) { cart = {}; }
-      }
-
-      function saveCart() {
-        localStorage.setItem('urbanSalonCart', JSON.stringify(cart));
-      }
-
-      function updateAllCartUI() {
-        updateCartBox();
-        updateCartDrawer();
-        updateMobileCartBtn();
-        updateCardQtyUI();
-        // Hide coupon UI if cart is empty
-        const couponSection = document.getElementById('coupon-section');
-        if (couponSection) {
-          if (Object.keys(cart).length === 0) {
-            couponSection.classList.add('d-none');
-          } else {
-            couponSection.classList.remove('d-none');
-          }
-        }
-      }
-
-      function updateCartBox() {
-        const cartBox = document.getElementById('cart-box');
-        const cartItemsDiv = document.getElementById('cart-items');
-        const cartTotalSpan = document.getElementById('cart-total');
-        let total = 0;
-        let html = '';
-        const keys = Object.keys(cart);
-        if (keys.length === 0) {
-          cartBox.style.display = 'none';
-          return;
-        } else {
-          cartBox.style.display = 'block';
-        }
-        keys.forEach(key => {
-          const item = cart[key];
-          total += item.price * item.qty;
-          html += `<div class='d-flex justify-content-between align-items-center mb-2'>
-            <span>${item.name}</span>
-            <div class='input-group input-group-sm' style='width:110px;'>
-              <button class='btn btn-outline-primary' onclick='changeQty("${key}",-1)'>-</button>
-              <input type='text' class='form-control text-center' value='${item.qty}' readonly style='max-width:40px;'>
-              <button class='btn btn-outline-primary' onclick='changeQty("${key}",1)'>+</button>
-            </div>
-            <span>₹${item.price * item.qty}</span>
-          </div>`;
-        });
-        cartItemsDiv.innerHTML = html;
-        cartTotalSpan.textContent = `₹${total}`;
-        saveCart();
-      }
-
-      function changeQty(key, delta, fromDrawer) {
-        if (!cart[key]) return;
-        cart[key].qty += delta;
-        if (cart[key].qty <= 0) delete cart[key];
-        saveCart();
-        updateAllCartUI();
-      }
-
-      function updateCardQtyUI() {
-        Object.keys(cart).forEach(key => {
-          const qty = cart[key].qty;
-          const qtyDiv = document.getElementById('qty-ui-' + key);
-          if (qtyDiv) {
-            qtyDiv.innerHTML = `
-              <div class='input-group input-group-sm' style='width:110px;'>
-                <button class='btn btn-outline-primary' onclick='changeQty("${key}",-1)'>-</button>
-                <input type='text' class='form-control text-center' value='${qty}' readonly style='max-width:40px;'>
-                <button class='btn btn-outline-primary' onclick='changeQty("${key}",1)'>+</button>
-              </div>
-            `;
-          }
-        });
-        // For cards not in cart, show Add button
-        document.querySelectorAll('[data-add-btn]').forEach(btn => {
-          const key = btn.getAttribute('data-add-btn');
-          if (!cart[key]) btn.classList.remove('d-none');
-          else btn.classList.add('d-none');
-        });
-      }
-
-      function addToCart(key, name, price) {
-        if (!cart[key]) cart[key] = { name, price, qty: 1 };
-        else cart[key].qty++;
-        saveCart();
-        updateAllCartUI();
-      }
-
-      function renderSubServices(category) {
-        const filtered = allServices.filter(s => s.category.toLowerCase() === category);
+      function renderSubServicesFromAPI(services) {
         const container = document.getElementById('service-details');
-        if (!filtered.length) {
+        if (!services.length) {
           container.innerHTML = '<div class="alert alert-danger">No services found for this category.</div>';
           return;
         }
-        let html = `<h1 class="display-4 mb-4 text-capitalize">${category} Services</h1>`;
+        const categoryName = services[0].category && services[0].category.name ? services[0].category.name : 'Sub Services';
+        let html = `<h1 class="display-4 mb-4 text-capitalize">${categoryName}</h1>`;
         html += '<div class="row">';
-        filtered.forEach((s, i) => {
-          const rating = sampleRatings[i % sampleRatings.length];
-          const img = placeholderImages[i % placeholderImages.length];
-          const collapseId = `bespokeCollapse${i}`;
-          const key = `${category}-${i}`;
+        services.forEach((s, i) => {
+          const img = s.image ? s.image : DEFAULT_IMAGE;
+          const key = s.id;
+          const rating = s.rating || DEFAULT_RATING;
+          const reviews = s.reviews || DEFAULT_REVIEWS;
+          // Precaution link if available
+          const precautionLink = s.precaution
+            ? `<a href="#" class="text-primary ms-2" onclick="showPrecautionModal('${s.name.replace(/'/g, "\\'")}', \`${s.precaution ? s.precaution.replace(/`/g, '\\`') : ''}\`);return false;">View Precautions</a>`
+            : '';
           html += `
             <div class="col-12 mb-4">
               <div class="card shadow-sm flex-row align-items-center p-3">
                 <div class="flex-grow-1">
-                  <h4 class="mb-1">${s.description}</h4>
+                  <h4 class="mb-1">${s.name}</h4>
                   <div class="mb-2">
-                    <span class="badge bg-light text-dark me-2"><i class="bi bi-star-fill text-warning"></i> ${rating.rating} <span class="text-muted">(${rating.reviews} reviews)</span></span>
+                    <span class="badge bg-light text-dark me-2"><i class="bi bi-star-fill text-warning"></i> ${rating} <span class="text-muted">(${reviews} reviews)</span></span>
                     <span class="fw-bold">₹${s.price}</span>
                     <span class="mx-2">•</span>
-                    <span>${s.time} mins</span>
+                    <span>${s.duration_minutes} mins</span>
                   </div>
-                  <div class="mb-2 text-muted small">${s.precautions}</div>
-                  <a href="#" class="text-primary me-3" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}">View details</a>
+                  <div class="mb-2 text-muted small">${s.description}</div>
+                  ${precautionLink}
                   <span id="qty-ui-${key}"></span>
-                  <button class="btn btn-outline-primary btn-sm ms-2" data-add-btn="${key}" onclick="addToCart('${key}','${s.description.replace(/'/g, "&#39;")}',${s.price})">Add</button>
-                  <div class="collapse mt-2" id="${collapseId}">
-                    <div class="card card-body border-0 p-2 bg-light">${s.bespoke}</div>
-                  </div>
+                  <button class="btn btn-outline-primary btn-sm ms-2" data-add-btn="${key}" onclick="addToCart('${key}','${s.name.replace(/'/g, "&#39;")}',${s.price})">Add</button>
                 </div>
                 <img src="${img}" alt="Service" class="rounded ms-4" style="width:100px;height:100px;object-fit:cover;">
               </div>
@@ -423,163 +312,27 @@
         updateCardQtyUI();
       }
 
-      // On page load
-      document.addEventListener('DOMContentLoaded', function() {
-        const serviceKey = getQueryParam('service');
-        renderSubServices(serviceKey);
-        // Set Add More Items button to current category
+      // Make showPrecautionModal available globally
+      window.showPrecautionModal = showPrecautionModal;
+
+      document.addEventListener('DOMContentLoaded', async function() {
+        const categoryId = getQueryParam('category_id');
+        if (!categoryId) {
+          document.getElementById('service-details').innerHTML = '<div class="alert alert-danger">No category selected.</div>';
+          return;
+        }
+        const services = await fetchSubServices(categoryId);
+        renderSubServicesFromAPI(services);
         const addMoreBtn = document.getElementById('add-more-items-btn');
-        if (addMoreBtn && serviceKey) {
-          addMoreBtn.href = `sub_service.html?service=${serviceKey}`;
+        if (addMoreBtn && categoryId) {
+          addMoreBtn.href = `sub_service.html?category_id=${categoryId}`;
         }
         updateAllCartUI();
       });
-
-      window.addToCart = addToCart;
-      window.changeQty = changeQty;
-
-      let appliedCoupon = null;
-      let couponDiscount = 0;
-
-      function showCouponList() {
-        document.getElementById('coupon-list').classList.remove('d-none');
-      }
-      function hideCouponList() {
-        document.getElementById('coupon-list').classList.add('d-none');
-      }
-      document.getElementById('show-coupons-btn').onclick = showCouponList;
-
-      function applyCoupon(code) {
-        appliedCoupon = code;
-        hideCouponList();
-        document.getElementById('applied-coupon').classList.remove('d-none');
-        document.getElementById('applied-coupon-code').textContent = code;
-        updateAllCartUI();
-      }
-      function removeCoupon() {
-        appliedCoupon = null;
-        couponDiscount = 0;
-        document.getElementById('applied-coupon').classList.add('d-none');
-        updateAllCartUI();
-      }
-
-      function getCouponDiscount(total) {
-        if (!appliedCoupon) return 0;
-        if (appliedCoupon === 'SAVE50' && total >= 500) return 50;
-        if (appliedCoupon === 'FIRST10') return Math.min(Math.round(total * 0.10), 100);
-        if (appliedCoupon === 'FREESERVICE') return 100;
-        return 0;
-      }
-
-      function updateCartDrawer() {
-        const drawer = document.getElementById('cart-drawer');
-        const itemsDiv = document.getElementById('cart-drawer-items');
-        let total = 0;
-        let html = '';
-        const keys = Object.keys(cart);
-        const timeSlots = [
-          '10:00 AM - 11:00 AM',
-          '11:00 AM - 12:00 PM',
-          '12:00 PM - 1:00 PM',
-          '1:00 PM - 2:00 PM',
-          '2:00 PM - 3:00 PM',
-          '3:00 PM - 4:00 PM'
-        ];
-        if (keys.length === 0) {
-          itemsDiv.innerHTML = '<div class="text-center text-muted">Your cart is empty.</div>';
-          if (typeof updateAllCartUI === 'function') updateAllCartUI();
-          return;
-        }
-        keys.forEach(key => {
-          const item = cart[key];
-          total += item.price * item.qty;
-          if (!item.timeSlot) item.timeSlot = timeSlots[0];
-          let slotOptions = timeSlots.map(slot => `<option value="${slot}"${item.timeSlot === slot ? ' selected' : ''}>${slot}</option>`).join('');
-          html += `<div class='cart-item-row d-flex align-items-start'>
-            <img src="${item.img || 'https://randomuser.me/api/portraits/men/32.jpg'}" alt="${item.name}" class="cart-item-img">
-            <div class='ms-3 flex-grow-1'>
-              <div class='cart-item-title mb-1'>${item.name}</div>
-              <div class='cart-item-price mb-1'>₹${item.price}</div>
-              <div class='cart-item-controls'>
-                <div class='cart-item-qty-group'>
-                  <button onclick='changeQty("${key}",-1,true)'>-</button>
-                  <input type='text' value='${item.qty}' readonly>
-                  <button onclick='changeQty("${key}",1,true)'>+</button>
-                </div>
-                <button class='cart-remove-btn' data-key='${key}'>Remove</button>
-              </div>
-              <select class='form-select form-select-sm mt-2' onchange='setTimeSlot("${key}", this.value)' style='max-width:180px;'>${slotOptions}</select>
-            </div>
-          </div>`;
-        });
-        couponDiscount = getCouponDiscount(total);
-        if (appliedCoupon && couponDiscount > 0) {
-          document.getElementById('coupon-discount-msg').textContent = `Discount: -₹${couponDiscount}`;
-        } else if (appliedCoupon) {
-          document.getElementById('coupon-discount-msg').textContent = 'Coupon not applicable for this cart.';
-        }
-        html += `<div class='d-flex justify-content-between align-items-center border-top pt-3 mt-3'>
-          <span class='fw-bold text-secondary' style='font-size:1.1rem;'>Total</span>
-          <span class='fw-bold' style='font-size:1.2rem;'>₹${Math.max(total - couponDiscount, 0)}</span>
-        </div>`;
-        if (appliedCoupon && couponDiscount > 0) {
-          html += `<div class='d-flex justify-content-between align-items-center text-success'><span>Coupon Discount</span><span>-₹${couponDiscount}</span></div>`;
-        }
-        itemsDiv.innerHTML = html;
-      }
-
-      function setTimeSlot(key, value) {
-        if (cart[key]) cart[key].timeSlot = value;
-        saveCart();
-        updateAllCartUI();
-      }
-
-      function openCartDrawer() {
-        document.getElementById('cart-drawer').classList.add('open');
-        document.getElementById('cart-drawer-backdrop').classList.add('open');
-        updateCartDrawer();
-      }
-
-      function closeCartDrawer() {
-        document.getElementById('cart-drawer').classList.remove('open');
-        document.getElementById('cart-drawer-backdrop').classList.remove('open');
-      }
-
-      function removeFromCart(key) {
-        delete cart[key];
-        saveCart();
-        updateAllCartUI();
-      }
-
-      document.getElementById('view-cart-btn').onclick = openCartDrawer;
-      document.getElementById('cart-drawer-backdrop').onclick = closeCartDrawer;
-
-      function updateMobileCartBtn() {
-        const btn = document.getElementById('mobile-cart-btn');
-        const count = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
-        document.getElementById('mobile-cart-count').textContent = count;
-        btn.style.display = (window.innerWidth < 992 && count > 0) ? 'flex' : 'none';
-      }
-
-      window.addEventListener('resize', updateMobileCartBtn);
-      document.getElementById('mobile-cart-btn').onclick = openCartDrawer;
-
-      // Event delegation for remove button in cart drawer
-      if (typeof window !== 'undefined') {
-        document.addEventListener('DOMContentLoaded', function() {
-          var cartDrawerItems = document.getElementById('cart-drawer-items');
-          if (cartDrawerItems) {
-            cartDrawerItems.addEventListener('click', function(e) {
-              if (e.target && e.target.classList.contains('cart-remove-btn')) {
-                var key = e.target.getAttribute('data-key');
-                if (key && typeof removeFromCart === 'function') removeFromCart(key);
-              }
-            });
-          }
-        });
-      }
     </script>
     <!-- Bootstrap JS for modal functionality -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/services.js"></script>
+
 </body>
 </html> 

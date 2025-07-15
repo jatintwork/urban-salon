@@ -1,4 +1,5 @@
 from django.urls import path
+from company_services.services_views.userView import AllServicesView, SubServicesView
 from company_services.views import (
     ServiceListAPIView,
     BookServiceAPIView,
@@ -23,4 +24,9 @@ urlpatterns = [
     path('users/', UserListView.as_view()),
     path('completed_service/', AllServiceList.as_view()),
     path('notifications/', NotificationListView.as_view()),
+    
+    
+    path('all-services/', AllServicesView.as_view()),
+    path('sub-services/', SubServicesView.as_view()),
+    
 ]
