@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Urban Salon - Book Appointment | Premium Beauty & Wellness Services</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="book appointment urban salon, beauty appointments, nail care booking, hair styling appointment" name="keywords">
+        <meta content="Book your appointment at Urban Salon for premium beauty services including nail care, skin treatments, hair styling, makeup, and spa wellness treatments" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-secondary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Topbar Start -->
+        <div class="container-fluid bg-primary px-5 d-none d-lg-block">
+            <div class="row gx-0 align-items-center">
+                <div class="col-lg-5 text-center text-lg-start mb-lg-0">
+                    <div class="d-flex">
+                        <a href="#" class="text-muted me-4"><i class="fas fa-envelope text-secondary me-2"></i>info@urbansalon.com</a>
+                        <a href="#" class="text-muted me-0"><i class="fas fa-phone-alt text-secondary me-2"></i>+1 (555) 123-4567</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 row-cols-1 text-center mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center" style="height: 45px;">
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal text-secondary"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-square rounded-circle" href=""><i class="fab fa-youtube fw-normal text-secondary"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end">
+                    <div class="d-inline-flex align-items-center" style="height: 45px;">
+                        <a href="#" class="text-muted me-2"> Book Now</a><small> / </small>
+                        <a href="#" class="text-muted mx-2"> Gift Cards</a><small> / </small>
+                        <a href="#" class="text-muted ms-2"> Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+
+        <!-- Navbar & Hero Start -->
+        <div id="navbar-placeholder"></div>
+        <!-- Navbar & Hero End -->
+
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-secondary mb-0" id="exampleModalLabel">Search by keyword</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">Book Appointment</h1>
+                <ol class="breadcrumb justify-content-center text-white mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-white">More</a></li>
+                    <li class="breadcrumb-item active text-secondary">Appointments</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- Appointment Booking Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="sub-style">
+                        <h5 class="sub-title text-primary px-3">BOOK APPOINTMENT</h5>
+                    </div>
+                    <h1 class="display-5 mb-4">Schedule Your Beauty Transformation</h1>
+                    <p class="mb-0">Ready to experience premium beauty services? Book your appointment today and let our expert team enhance your natural beauty with personalized treatments.</p>
+                </div>
+                
+                <div class="row g-5">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="card border-0 shadow rounded-4">
+                            <div class="card-body p-5">
+                                <h3 class="mb-4 text-primary">Book Your Appointment</h3>
+                                <form id="appointmentForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                                                <label for="firstName">First Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                                                <label for="lastName">Last Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                                <label for="email">Email Address</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
+                                                <label for="phone">Phone Number</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <select class="form-control" id="service" required>
+                                                    <option value="">Select Service</option>
+                                                    <option value="nail-care">Nail Care</option>
+                                                    <option value="skin-treatment">Skin Treatment</option>
+                                                    <option value="hair-styling">Hair Styling</option>
+                                                    <option value="makeup">Makeup Services</option>
+                                                    <option value="spa-wellness">Spa Wellness</option>
+                                                    <option value="bridal-package">Bridal Package</option>
+                                                </select>
+                                                <label for="service">Service</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <select class="form-control" id="location" required>
+                                                    <option value="">Select Location</option>
+                                                    <option value="downtown">Downtown Location</option>
+                                                    <option value="uptown">Uptown Spa</option>
+                                                    <option value="westside">Westside Studio</option>
+                                                    <option value="eastside">Eastside Boutique</option>
+                                                </select>
+                                                <label for="location">Salon Location</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input type="date" class="form-control" id="appointmentDate" required>
+                                                <label for="appointmentDate">Preferred Date</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <select class="form-control" id="appointmentTime" required>
+                                                    <option value="">Select Time</option>
+                                                    <option value="09:00">09:00 AM</option>
+                                                    <option value="10:00">10:00 AM</option>
+                                                    <option value="11:00">11:00 AM</option>
+                                                    <option value="12:00">12:00 PM</option>
+                                                    <option value="13:00">01:00 PM</option>
+                                                    <option value="14:00">02:00 PM</option>
+                                                    <option value="15:00">03:00 PM</option>
+                                                    <option value="16:00">04:00 PM</option>
+                                                    <option value="17:00">05:00 PM</option>
+                                                    <option value="18:00">06:00 PM</option>
+                                                </select>
+                                                <label for="appointmentTime">Preferred Time</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Any special requests or notes" id="notes" style="height: 120px"></textarea>
+                                                <label for="notes">Special Requests (Optional)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill">
+                                                <i class="fas fa-calendar-plus me-2"></i>Book Appointment
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
+                        <div class="h-100">
+                            <div class="mb-5">
+                                <h3 class="text-primary mb-4">Why Choose Urban Salon?</h3>
+                                <div class="d-flex mb-3">
+                                    <i class="fas fa-check-circle text-secondary fa-2x me-3"></i>
+                                    <div>
+                                        <h5>Expert Professionals</h5>
+                                        <p class="mb-0">Our certified beauty experts are trained in the latest techniques and trends.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <i class="fas fa-check-circle text-secondary fa-2x me-3"></i>
+                                    <div>
+                                        <h5>Premium Products</h5>
+                                        <p class="mb-0">We use only the finest beauty products for exceptional results.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <i class="fas fa-check-circle text-secondary fa-2x me-3"></i>
+                                    <div>
+                                        <h5>Relaxing Environment</h5>
+                                        <p class="mb-0">Enjoy a tranquil, luxurious atmosphere designed for your comfort.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <i class="fas fa-check-circle text-secondary fa-2x me-3"></i>
+                                    <div>
+                                        <h5>Flexible Scheduling</h5>
+                                        <p class="mb-0">Convenient appointment times to fit your busy lifestyle.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-light rounded p-4">
+                                <h4 class="text-primary mb-3">Contact Information</h4>
+                                <div class="d-flex mb-2">
+                                    <i class="fas fa-phone text-secondary me-3"></i>
+                                    <span>+1 (555) 123-4567</span>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="fas fa-envelope text-secondary me-3"></i>
+                                    <span>info@urbansalon.com</span>
+                                </div>
+                                <div class="d-flex">
+                                    <i class="fas fa-clock text-secondary me-3"></i>
+                                    <div>
+                                        <div>Mon-Fri: 9:00 AM - 7:00 PM</div>
+                                        <div>Sat: 9:00 AM - 6:00 PM</div>
+                                        <div>Sun: 10:00 AM - 4:00 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Appointment Booking End -->
+
+        <!-- Services Preview Start -->
+        <div class="container-fluid service bg-light overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="sub-style">
+                        <h5 class="sub-title text-primary px-3">Our Services</h5>
+                    </div>
+                    <h1 class="display-5 mb-4">What We Offer</h1>
+                    <p class="mb-0">Choose from our wide range of premium beauty services designed to enhance your natural beauty.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item text-center p-4 bg-white rounded">
+                            <i class="fas fa-hand-paper fa-4x text-primary mb-3"></i>
+                            <h4>Nail Care</h4>
+                            <p>Professional manicures, pedicures, nail art, and extensions.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="service-item text-center p-4 bg-white rounded">
+                            <i class="fas fa-spa fa-4x text-primary mb-3"></i>
+                            <h4>Skin Treatments</h4>
+                            <p>Advanced facials, chemical peels, and anti-aging treatments.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="service-item text-center p-4 bg-white rounded">
+                            <i class="fas fa-cut fa-4x text-primary mb-3"></i>
+                            <h4>Hair Styling</h4>
+                            <p>Expert cuts, colors, highlights, and special occasion styling.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Services Preview End -->
+
+        <!-- Footer Start -->
+        <div id="footer-placeholder"></div>
+        <!-- Footer End -->
+        
+        
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Navbar Include Script -->
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+    </script>
+    
+    <!-- User Authentication Check -->
+    <script>
+        // Check if user is logged in and update UI
+        function checkUserAuthentication() {
+            // Check both localStorage and sessionStorage
+            let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
+            
+            if (userData) {
+                try {
+                    const user = JSON.parse(userData);
+                    
+                    // Show logged-in state
+                    document.getElementById('loginSection').classList.add('d-none');
+                    document.getElementById('userSection').classList.remove('d-none');
+                    document.getElementById('dashboardNav').classList.remove('d-none');
+                    
+                    // Extract name from email (before @) or use full email
+                    const userName = user.email.split('@')[0];
+                    const welcomeText = `Welcome, ${userName}!`;
+                    
+                    document.getElementById('welcomeText').textContent = welcomeText;
+                    
+                    // Add role badge if admin
+                    if (user.role === 'admin') {
+                        document.getElementById('welcomeText').innerHTML = `Welcome, ${userName}! <span class="badge bg-warning text-dark ms-1">Admin</span>`;
+                    }
+                    
+                } catch (error) {
+                    console.error('Error parsing user data:', error);
+                    // Clear invalid data
+                    localStorage.removeItem('urbanSalonUser');
+                    sessionStorage.removeItem('urbanSalonUser');
+                    showLoginState();
+                }
+            } else {
+                showLoginState();
+            }
+        }
+        
+        function showLoginState() {
+            document.getElementById('loginSection').classList.remove('d-none');
+            document.getElementById('userSection').classList.add('d-none');
+            document.getElementById('dashboardNav').classList.add('d-none');
+        }
+        
+        // Logout function
+        function logout() {
+            // Remove user data
+            localStorage.removeItem('urbanSalonUser');
+            sessionStorage.removeItem('urbanSalonUser');
+            
+            // Show login state
+            showLoginState();
+            
+            // Optional: Show logout message
+            alert('You have been logged out successfully!');
+            
+            // Optional: Redirect to login page
+            // window.location.href = 'login.html';
+        }
+        
+        // Run when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserAuthentication();
+        });
+        
+        // Optional: Check authentication status periodically (every 5 minutes)
+        setInterval(checkUserAuthentication, 300000);
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('appointmentForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
+                if (!userData) {
+                    e.preventDefault();
+                    alert('You are not logged in. Please log in to book an appointment.');
+                    sessionStorage.setItem('showLoginMessage', '1');
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+    });
+    </script>
+    <!-- Footer Include Script -->
+    <script>
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        });
+    </script>
+    </body>
+
+</html>
