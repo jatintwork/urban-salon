@@ -291,7 +291,6 @@
             const email = document.getElementById('signupEmail').value;
             const password = document.getElementById('signupPassword').value;
             const confirmPassword = document.getElementById('signupConfirmPassword').value;
-            const role = document.getElementById('signupRole').value;
             const fullName = document.getElementById('signupFullName').value.trim();
             const mobile = document.getElementById('signupMobile').value.trim();
             const address = document.getElementById('signupAddress').value.trim();
@@ -329,7 +328,7 @@
                     body: JSON.stringify({
                         email: email,
                         password: password,
-                        role: role,
+                        role: 'client',
                         full_name: fullName,
                         mobile: mobile,
                         address: address
@@ -367,6 +366,7 @@
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
             const rememberMe = document.getElementById('rememberMe').checked;
+            const user_role = 'admin';
             
             try {
                 const response = await fetch(`${API_BASE_URL}/login/`, {
@@ -376,7 +376,8 @@
                     },
                     body: JSON.stringify({
                         email: email,
-                        password: password
+                        password: password,
+                        user_role: user_role
                     })
                 });
                 

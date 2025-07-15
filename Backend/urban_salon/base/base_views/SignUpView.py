@@ -16,30 +16,44 @@ class LoginAPIView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        email = request.data.get("email")
-        password = request.data.get("password")
+        try:
+            email = request.data.get("email")
+            password = request.data.get("password")
+            user_role = request.data.get("user_role")
 
-        user = authenticate(username=email, password=password)  # Django's default authenticate uses username field
-        if user:
-            if not user.is_active:
-                return Response({"detail": "User is inactive"}, status=status.HTTP_403_FORBIDDEN)
-            
-            refresh = RefreshToken.for_user(user)
-            access_token = str(refresh.access_token)
-            
-            # Fetch role from UserRoleMapping
-            user_role = UserRoleMapping.objects.filter(user=user, delete_flag=False).first()
-            role_name = user_role.role.name if user_role else "Not Assigned"
+            user = authenticate(username=email, password=password)  # Django's default authenticate uses username field
+            if user:
+                if not user.is_active:
+                    return Response({"detail": "User is inactive"}, status=status.HTTP_403_FORBIDDEN)
+                
+                refresh = RefreshToken.for_user(user)
+                access_token = str(refresh.access_token)
+                
+                # Fetch role from UserRoleMapping
+                user_role = UserRoleMapping.objects.filter(user=user, delete_flag=False).first()
+                role_name = user_role.role.name if user_role else "Not Assigned"
+                
+                # user_role comes from client: "user" or "admin"
+                # role_name is from DB: e.g. "user", "admin", etc.
+                # if user_role == "user" and role_name != "user":
+                #     return Response({"detail": "User Not Found"}, status=status.HTTP_400_BAD_REQUEST)
+                # elif user_role == "admin" and role_name != "admin":
+                #     return Response({"detail": "Admin User Not Found"}, status=status.HTTP_400_BAD_REQUEST)
+                # elif user_role == "admin" and role_name != "client":
+                #     return Response({"detail": "Client User Not Found"}, status=status.HTTP_400_BAD_REQUEST)
 
-            return Response({
-                'refresh': str(refresh),
-                'access': str(access_token),
-                "user_id": str(user.id),
-                "email": user.email,
-                "role": role_name
-            }, status=status.HTTP_200_OK)
-        else:
-            return Response({"detail": "Invalid email or password"}, status=status.HTTP_401_UNAUTHORIZED)
+                
+                return Response({
+                    'refresh': str(refresh),
+                    'access': str(access_token),
+                    "user_id": str(user.id),
+                    "email": user.email,
+                    "role": role_name
+                }, status=status.HTTP_200_OK)
+            else:
+                return Response({"detail": "Invalid email or password"}, status=status.HTTP_401_UNAUTHORIZED)
+        except Exception as e:
+            return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
 
