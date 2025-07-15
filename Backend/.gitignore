@@ -6,13 +6,10 @@
 
 
 debug.log
-db.sqlite3
 /templates/
 /staticfiles/
-media/
 *.env
 venv
-media/
 # Node artifact files
 node_modules/
 dist/
@@ -20,7 +17,6 @@ dist/
 # Folders
 __pycache__/
 /__pycache__ 
-*.sqlite3  
 /files
 /logs/
 /tempFiles
