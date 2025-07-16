@@ -254,10 +254,10 @@
       const DEFAULT_REVIEWS = '1.2K';
 
       function formatPrecaution(precaution) {
-        if (!precaution) return '';
+        if (!precaution) return '<div class="text-muted">No specific precautions for this service.</div>';
         // Split by /b and trim, ignore empty
         const points = precaution.split('/b').map(p => p.trim()).filter(Boolean);
-        if (points.length === 0) return '';
+        if (points.length === 0) return '<div class="text-muted">No specific precautions for this service.</div>';
         return '<ul>' + points.map(p => `<li>${p}</li>`).join('') + '</ul>';
       }
 
@@ -283,9 +283,7 @@
           const rating = s.rating || DEFAULT_RATING;
           const reviews = s.reviews || DEFAULT_REVIEWS;
           // Precaution link if available
-          const precautionLink = s.precaution
-            ? `<a href="#" class="text-primary ms-2" onclick="showPrecautionModal('${s.name.replace(/'/g, "\\'")}', \`${s.precaution ? s.precaution.replace(/`/g, '\\`') : ''}\`);return false;">View Precautions</a>`
-            : '';
+          const precautionLink = `<a href="#" class="text-primary ms-2" onclick="showPrecautionModal('${s.name.replace(/'/g, "\\'")}', \`${s.precaution ? s.precaution.replace(/`/g, '\\`') : ''}\`);return false;">View Precautions</a>`;
           html += `
             <div class="col-12 mb-4">
               <div class="card shadow-sm flex-row align-items-center p-3">
