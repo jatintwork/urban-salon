@@ -134,6 +134,173 @@ async function renderSubServices(containerId) {
     }
 }
 
+// --- Cart Logic ---
+
+const CART_KEY = 'urbanSalonCart';
+
+function getCart() {
+    try {
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    } catch {
+        return [];
+    }
+}
+
+function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function addToCart(id, name, price) {
+    let cart = getCart();
+    const idx = cart.findIndex(item => item.id === id);
+    if (idx > -1) {
+        cart[idx].qty += 1;
+    } else {
+        cart.push({ id, name, price, qty: 1 });
+    }
+    saveCart(cart);
+    updateAllCartUI();
+}
+
+function removeFromCart(id) {
+    let cart = getCart();
+    cart = cart.filter(item => item.id !== id);
+    saveCart(cart);
+    updateAllCartUI();
+}
+
+function changeCartQty(id, delta) {
+    let cart = getCart();
+    const idx = cart.findIndex(item => item.id === id);
+    if (idx > -1) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty < 1) cart[idx].qty = 1;
+        saveCart(cart);
+        updateAllCartUI();
+    }
+}
+
+function getCartTotal() {
+    return getCart().reduce((sum, item) => sum + item.price * item.qty, 0);
+}
+
+function updateCardQtyUI() {
+    // Update the quantity UI for each service card
+    const cart = getCart();
+    cart.forEach(item => {
+        const qtySpan = document.getElementById(`qty-ui-${item.id}`);
+        if (qtySpan) {
+            qtySpan.innerHTML = `
+                <div class='cart-item-qty-group d-inline-flex align-items-center ms-2'>
+                    <button onclick="changeCartQty('${item.id}', -1)">-</button>
+                    <input type='text' value='${item.qty}' readonly />
+                    <button onclick="changeCartQty('${item.id}', 1)">+</button>
+                    <button class='cart-remove-btn' onclick="removeFromCart('${item.id}')">&times;</button>
+                </div>
+            `;
+        }
+    });
+}
+
+function updateCartBoxUI() {
+    // For desktop cart box
+    const cartBox = document.getElementById('cart-box');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const cart = getCart();
+    if (!cartBox || !cartItems || !cartTotal) return;
+    if (cart.length === 0) {
+        cartBox.classList.add('d-none');
+        cartItems.innerHTML = '<div class="text-muted">Cart is empty.</div>';
+        cartTotal.textContent = '₹0';
+        return;
+    }
+    cartBox.classList.remove('d-none');
+    cartItems.innerHTML = cart.map(item => `
+        <div class='cart-item-row d-flex align-items-center'>
+            <div class='flex-grow-1'>
+                <div class='cart-item-title'>${item.name}</div>
+                <div class='cart-item-controls'>
+                    <div class='cart-item-qty-group'>
+                        <button onclick="changeCartQty('${item.id}', -1)">-</button>
+                        <input type='text' value='${item.qty}' readonly />
+                        <button onclick="changeCartQty('${item.id}', 1)">+</button>
+                    </div>
+                    <span class='cart-item-price ms-2'>₹${item.price * item.qty}</span>
+                    <button class='cart-remove-btn' onclick="removeFromCart('${item.id}')">Remove</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    cartTotal.textContent = '₹' + getCartTotal();
+}
+
+function updateCartDrawerUI() {
+    // For mobile cart drawer
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartDrawerItems = document.getElementById('cart-drawer-items');
+    const mobileCartCount = document.getElementById('mobile-cart-count');
+    const cart = getCart();
+    if (mobileCartCount) mobileCartCount.textContent = cart.length;
+    if (!cartDrawer || !cartDrawerItems) return;
+    if (cart.length === 0) {
+        cartDrawerItems.innerHTML = '<div class="text-muted">Cart is empty.</div>';
+        return;
+    }
+    cartDrawerItems.innerHTML = cart.map(item => `
+        <div class='cart-item-row d-flex align-items-center'>
+            <div class='flex-grow-1'>
+                <div class='cart-item-title'>${item.name}</div>
+                <div class='cart-item-controls'>
+                    <div class='cart-item-qty-group'>
+                        <button onclick="changeCartQty('${item.id}', -1)">-</button>
+                        <input type='text' value='${item.qty}' readonly />
+                        <button onclick="changeCartQty('${item.id}', 1)">+</button>
+                    </div>
+                    <span class='cart-item-price ms-2'>₹${item.price * item.qty}</span>
+                    <button class='cart-remove-btn' onclick="removeFromCart('${item.id}')">Remove</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function updateAllCartUI() {
+    updateCardQtyUI();
+    updateCartBoxUI();
+    updateCartDrawerUI();
+}
+
+// Cart drawer open/close for mobile
+function openCartDrawer() {
+    document.getElementById('cart-drawer').classList.add('open');
+    document.getElementById('cart-drawer-backdrop').classList.add('open');
+}
+function closeCartDrawer() {
+    document.getElementById('cart-drawer').classList.remove('open');
+    document.getElementById('cart-drawer-backdrop').classList.remove('open');
+}
+
+// Attach openCartDrawer to mobile cart button
+window.addEventListener('DOMContentLoaded', function() {
+    const mobileCartBtn = document.getElementById('mobile-cart-btn');
+    if (mobileCartBtn) {
+        mobileCartBtn.addEventListener('click', openCartDrawer);
+    }
+    // Add event for desktop 'View Cart' button
+    const viewCartBtn = document.getElementById('view-cart-btn');
+    if (viewCartBtn) {
+        viewCartBtn.addEventListener('click', openCartDrawer);
+    }
+    // Initial UI update
+    updateAllCartUI();
+});
+
 // Expose functions globally
 window.renderCategories = renderCategories;
-window.renderSubServices = renderSubServices; 
+window.renderSubServices = renderSubServices;
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.changeCartQty = changeCartQty;
+window.updateAllCartUI = updateAllCartUI;
+window.closeCartDrawer = closeCartDrawer; 
