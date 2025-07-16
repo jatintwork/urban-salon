@@ -77,11 +77,11 @@
     <!-- Collapsible Menu -->
     <div class="collapse navbar-collapse mt-2 mt-lg-0" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="index.html" class="nav-item nav-link" id="homeNav">Home</a>
             <a href="dashboard.html" class="nav-item nav-link d-none" id="dashboardNav">Dashboard</a>
-            <a href="about.html" class="nav-item nav-link">About</a>
-            <a href="service.html" class="nav-item nav-link">Services</a>
-            <a href="contact.html" class="nav-item nav-link">Contact</a>
+            <a href="about.html" class="nav-item nav-link" id="aboutNav">About</a>
+            <a href="service.html" class="nav-item nav-link" id="serviceNav">Services</a>
+            <a href="contact.html" class="nav-item nav-link" id="contactNav">Contact</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">More</a>
                 <div class="dropdown-menu dropdown-menu-end m-0">
@@ -93,4 +93,53 @@
         </div>
     </div>
 </nav>
+
+<script>
+// Function to set active navigation based on current page
+function setActiveNavigation() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Remove active class from all nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Set active class based on current page
+    switch(currentPage) {
+        case 'index.html':
+        case '':
+            document.getElementById('homeNav')?.classList.add('active');
+            break;
+        case 'dashboard.html':
+            document.getElementById('dashboardNav')?.classList.add('active');
+            break;
+        case 'about.html':
+            document.getElementById('aboutNav')?.classList.add('active');
+            break;
+        case 'service.html':
+            document.getElementById('serviceNav')?.classList.add('active');
+            break;
+        case 'contact.html':
+            document.getElementById('contactNav')?.classList.add('active');
+            break;
+        case 'sub_service.html':
+            document.getElementById('serviceNav')?.classList.add('active');
+            break;
+        case 'payment.html':
+            document.getElementById('serviceNav')?.classList.add('active');
+            break;
+        case 'profile.html':
+            document.getElementById('dashboardNav')?.classList.add('active');
+            break;
+        case 'appointment.html':
+            document.getElementById('serviceNav')?.classList.add('active');
+            break;
+        default:
+            document.getElementById('homeNav')?.classList.add('active');
+    }
+}
+
+// Set active navigation when DOM is loaded
+document.addEventListener('DOMContentLoaded', setActiveNavigation);
+</script>
  

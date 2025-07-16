@@ -173,9 +173,28 @@ function addToCartAndStoreId(id, name, price) {
 
 function removeFromCart(id) {
     let cart = getCart();
+    const itemToRemove = cart.find(item => item.id === id);
     cart = cart.filter(item => item.id !== id);
     saveCart(cart);
+    
+    // Add visual feedback - flash the service card briefly
+    const serviceCard = document.querySelector(`[data-add-btn="${id}"]`)?.closest('.service-card');
+    if (serviceCard) {
+        serviceCard.style.transition = 'all 0.3s ease';
+        serviceCard.style.transform = 'scale(0.98)';
+        serviceCard.style.opacity = '0.7';
+        setTimeout(() => {
+            serviceCard.style.transform = 'scale(1)';
+            serviceCard.style.opacity = '1';
+        }, 300);
+    }
+    
     updateAllCartUI();
+    
+    // Show notification
+    if (itemToRemove) {
+        showNotification(`${itemToRemove.name} removed from cart`, 'success');
+    }
 }
 
 function changeCartQty(id, delta) {
@@ -194,17 +213,23 @@ function getCartTotal() {
 }
 
 function updateCardQtyUI() {
-    // Update the quantity UI for each service card
+    // Get all quantity UI spans and clear them first
+    const allQtySpans = document.querySelectorAll('[id^="qty-ui-"]');
+    allQtySpans.forEach(span => {
+        span.innerHTML = '';
+    });
+    
+    // Update the quantity UI for each service card that's in cart
     const cart = getCart();
     cart.forEach(item => {
         const qtySpan = document.getElementById(`qty-ui-${item.id}`);
         if (qtySpan) {
             qtySpan.innerHTML = `
                 <div class='cart-item-qty-group d-inline-flex align-items-center ms-2'>
-                    <button onclick="changeCartQty('${item.id}', -1)">-</button>
-                    <input type='text' value='${item.qty}' readonly />
-                    <button onclick="changeCartQty('${item.id}', 1)">+</button>
-                    <button class='cart-remove-btn' onclick="removeFromCart('${item.id}')">&times;</button>
+                    <button onclick="changeCartQty('${item.id}', -1)" style="border: none; background: none; color: #0d6efd; font-size: 1.2rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">-</button>
+                    <input type='text' value='${item.qty}' readonly style="border: none; background: transparent; width: 32px; text-align: center; font-size: 1rem; font-weight: 500; color: #222;" />
+                    <button onclick="changeCartQty('${item.id}', 1)" style="border: none; background: none; color: #0d6efd; font-size: 1.2rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">+</button>
+                    <button class='cart-remove-btn' onclick="removeFromCart('${item.id}')" style="color: #d32f2f; font-weight: 500; font-size: 1rem; border: none; background: none; padding: 0 0.5rem; margin-left: 0.5rem;">&times;</button>
                 </div>
             `;
         }
@@ -231,12 +256,12 @@ function updateCartBoxUI() {
                 <div class='cart-item-title'>${item.name}</div>
                 <div class='cart-item-controls'>
                     <div class='cart-item-qty-group'>
-                        <button onclick="changeCartQty('${item.id}', -1)">-</button>
-                        <input type='text' value='${item.qty}' readonly />
-                        <button onclick="changeCartQty('${item.id}', 1)">+</button>
+                        <button onclick="changeCartQty('${item.id}', -1)" style="border: none; background: none; color: #0d6efd; font-size: 1.2rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">-</button>
+                        <input type='text' value='${item.qty}' readonly style="border: none; background: transparent; width: 32px; text-align: center; font-size: 1rem; font-weight: 500; color: #222;" />
+                        <button onclick="changeCartQty('${item.id}', 1)" style="border: none; background: none; color: #0d6efd; font-size: 1.2rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">+</button>
                     </div>
                     <span class='cart-item-price ms-2'>₹${item.price * item.qty}</span>
-                    <button class='cart-remove-btn' onclick="removeFromCart('${item.id}')">Remove</button>
+                    <button class='cart-remove-btn' onclick="removeFromCart('${item.id}')" style="color: #d32f2f; font-weight: 500; font-size: 1rem; border: none; background: none; padding: 0 0.5rem; margin-left: 0.5rem;">Remove</button>
                 </div>
             </div>
         </div>
@@ -262,12 +287,12 @@ function updateCartDrawerUI() {
                 <div class='cart-item-title'>${item.name}</div>
                 <div class='cart-item-controls'>
                     <div class='cart-item-qty-group'>
-                        <button onclick="changeCartQty('${item.id}', -1)">-</button>
-                        <input type='text' value='${item.qty}' readonly />
-                        <button onclick="changeCartQty('${item.id}', 1)">+</button>
+                        <button onclick="changeCartQty('${item.id}', -1)" style="border: none; background: none; color: #0d6efd; font-size: 1.2rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">-</button>
+                        <input type='text' value='${item.qty}' readonly style="border: none; background: transparent; width: 32px; text-align: center; font-size: 1rem; font-weight: 500; color: #222;" />
+                        <button onclick="changeCartQty('${item.id}', 1)" style="border: none; background: none; color: #0d6efd; font-size: 1.2rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">+</button>
                     </div>
                     <span class='cart-item-price ms-2'>₹${item.price * item.qty}</span>
-                    <button class='cart-remove-btn' onclick="removeFromCart('${item.id}')">Remove</button>
+                    <button class='cart-remove-btn' onclick="removeFromCart('${item.id}')" style="color: #d32f2f; font-weight: 500; font-size: 1rem; border: none; background: none; padding: 0 0.5rem; margin-left: 0.5rem;">Remove</button>
                 </div>
             </div>
         </div>

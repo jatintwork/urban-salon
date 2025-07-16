@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
       @media (min-width: 992px) {
         #cart-box { position: fixed; top: 100px; right: 40px; width: 340px; z-index: 1000; display: block !important; }
@@ -146,10 +147,179 @@
         color: #222;
         pointer-events: none;
       }
+      /* Enhanced Service Card Styling */
+      .service-card {
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      }
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      }
+      .service-card .card-body {
+        padding: 2rem;
+      }
+      .service-image {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+      }
+      .service-card:hover .service-image {
+        transform: scale(1.05);
+      }
+      .service-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+      .service-price {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #e74c3c;
+        margin-bottom: 0.5rem;
+      }
+      .service-duration {
+        color: #7f8c8d;
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+      .service-description {
+        color: #5a6c7d;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      .precaution-link {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+      .precaution-link:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+      .add-btn {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        border: none;
+        border-radius: 25px;
+        padding: 0.8rem 2rem;
+        font-weight: 700;
+        font-size: 1rem;
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .add-btn:hover {
+        background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        color: white;
+      }
+      .add-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(40, 167, 69, 0.3);
+      }
+      .add-btn .btn-icon {
+        font-size: 1.2rem;
+      }
+      .page-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 3rem;
+        border-radius: 0 0 20px 20px;
+        text-align: center;
+      }
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .page-subtitle {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        font-weight: 300;
+      }
+      /* Navbar Styling to match other pages */
+      .navbar {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      .navbar-brand h1 {
+        color: white !important;
+        font-weight: 700;
+      }
+      .nav-link {
+        color: rgba(255,255,255,0.9) !important;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover, .nav-link.active {
+        color: white !important;
+      }
+      .dropdown-menu {
+        border: none;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        border-radius: 12px;
+      }
+      .btn-outline-primary {
+        border-color: rgba(255,255,255,0.5);
+        color: white;
+      }
+      .btn-outline-primary:hover {
+        background-color: white;
+        color: #667eea;
+        border-color: white;
+      }
+      .btn-success {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        border: none;
+        color: white;
+      }
+      .btn-light {
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: white;
+      }
+      .btn-light:hover {
+        background: rgba(255,255,255,0.3);
+        color: white;
+      }
+      .navbar-toggler {
+        border-color: rgba(255,255,255,0.5);
+        color: white;
+      }
+      .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.25);
+      }
     </style>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
+    
+    <!-- Enhanced Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title" id="page-title">Our Services</h1>
+            <p class="page-subtitle">Discover our premium beauty treatments</p>
+        </div>
+    </div>
+    
     <div class="container py-5">
         <div class="row">
           <div class="col-lg-8" id="service-list-col">
@@ -268,32 +438,58 @@
           return;
         }
         const categoryName = services[0].category && services[0].category.name ? services[0].category.name : 'Sub Services';
-        let html = `<h1 class="display-4 mb-4 text-capitalize">${categoryName}</h1>`;
-        html += '<div class="row">';
+        
+        // Update page title
+        document.getElementById('page-title').textContent = categoryName;
+        
+        let html = '<div class="row">';
         services.forEach((s, i) => {
-          const img = s.image ? s.image : DEFAULT_IMAGE;
           const key = s.id;
-          const rating = s.rating || DEFAULT_RATING;
-          const reviews = s.reviews || DEFAULT_REVIEWS;
+          
+          // Handle backend image paths properly
+          let img = DEFAULT_IMAGE;
+          if (s.image) {
+            // If image path starts with /media/, it's a backend media file
+            if (s.image.startsWith('/media/')) {
+              img = `http://127.0.0.1:7002${s.image}`;
+            } else {
+              img = s.image;
+            }
+          }
+          
+          // Console log the full image path for debugging
+          console.log('Service:', s.name);
+          console.log('Backend image path:', s.image);
+          console.log('Processed image path:', img);
+          console.log('Full image URL:', img);
+          console.log('---');
+          
           // Precaution link if available
-          const precautionLink = `<a href="#" class="text-primary ms-2" onclick="showPrecautionModal('${s.name.replace(/'/g, "\\'")}', \`${s.precaution ? s.precaution.replace(/`/g, '\\`') : ''}\`);return false;">View Precautions</a>`;
+          const precautionLink = s.precaution ? 
+            `<a href="#" class="precaution-link ms-2" onclick="showPrecautionModal('${s.name.replace(/'/g, "\\'")}', \`${s.precaution.replace(/`/g, '\\`')}\`);return false;">View Precautions</a>` : '';
+          
           html += `
             <div class="col-12 mb-4">
-              <div class="card shadow-sm flex-row align-items-center p-3">
-                <div class="flex-grow-1">
-                  <h4 class="mb-1">${s.name}</h4>
-                  <div class="mb-2">
-                    <span class="badge bg-light text-dark me-2"><i class="bi bi-star-fill text-warning"></i> ${rating} <span class="text-muted">(${reviews} reviews)</span></span>
-                    <span class="fw-bold">₹${s.price}</span>
-                    <span class="mx-2">•</span>
-                    <span>${s.duration_minutes} mins</span>
+              <div class="card service-card">
+                <div class="card-body d-flex align-items-center">
+                  <div class="flex-grow-1">
+                    <h4 class="service-title mb-2">${s.name}</h4>
+                    <div class="mb-3">
+                      <span class="service-price">₹${s.price}</span>
+                      <span class="service-duration ms-3">${s.duration_minutes} mins</span>
+                    </div>
+                    <div class="service-description mb-3">${s.description}</div>
+                    ${precautionLink}
+                    <div class="d-flex align-items-center mt-3">
+                      <span id="qty-ui-${key}"></span>
+                      <button class="btn add-btn" data-add-btn="${key}" onclick="addToCartAndStoreId('${key}','${s.name.replace(/'/g, "&#39;")}',${s.price})">
+                        <span class="btn-icon">+</span>
+                        <span>Add to Cart</span>
+                      </button>
+                    </div>
                   </div>
-                  <div class="mb-2 text-muted small">${s.description}</div>
-                  ${precautionLink}
-                  <span id="qty-ui-${key}"></span>
-                  <button class="btn btn-outline-primary btn-sm ms-2" data-add-btn="${key}" onclick="addToCartAndStoreId('${key}','${s.name.replace(/'/g, "&#39;")}',${s.price})">Add</button>
+                  <img src="${img}" alt="${s.name}" class="service-image ms-4" onerror="console.log('Image failed to load:', this.src); this.src='${DEFAULT_IMAGE}';">
                 </div>
-                <img src="${img}" alt="Service" class="rounded ms-4" style="width:100px;height:100px;object-fit:cover;">
               </div>
             </div>
           `;
