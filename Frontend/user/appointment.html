@@ -123,55 +123,31 @@
                                 <h3 class="mb-4 text-primary">Book Your Appointment</h3>
                                 <form id="appointmentForm">
                                     <div class="row g-3">
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" id="address" placeholder="Enter your address" style="height: 100px" required></textarea>
+                                                <label for="address"><i class="fas fa-map-marker-alt me-2"></i>Service Address</label>
+                                            </div>
+                                            <div id="addressInfo" class="mt-2"></div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
-                                                <label for="firstName">First Name</label>
+                                                <select class="form-control" id="serviceCategory" required>
+                                                    <option value="">Select Category</option>
+                                                </select>
+                                                <label for="serviceCategory">Service Category</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-                                                <label for="lastName">Last Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-floating">
-                                                <input type="email" class="form-control" id="email" placeholder="Email" required>
-                                                <label for="email">Email Address</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-floating">
-                                                <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
-                                                <label for="phone">Phone Number</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-floating">
-                                                <select class="form-control" id="service" required>
+                                                <select class="form-control" id="subService" required>
                                                     <option value="">Select Service</option>
-                                                    <option value="nail-care">Nail Care</option>
-                                                    <option value="skin-treatment">Skin Treatment</option>
-                                                    <option value="hair-styling">Hair Styling</option>
-                                                    <option value="makeup">Makeup Services</option>
-                                                    <option value="spa-wellness">Spa Wellness</option>
-                                                    <option value="bridal-package">Bridal Package</option>
                                                 </select>
-                                                <label for="service">Service</label>
+                                                <label for="subService">Sub Service</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-floating">
-                                                <select class="form-control" id="location" required>
-                                                    <option value="">Select Location</option>
-                                                    <option value="downtown">Downtown Location</option>
-                                                    <option value="uptown">Uptown Spa</option>
-                                                    <option value="westside">Westside Studio</option>
-                                                    <option value="eastside">Eastside Boutique</option>
-                                                </select>
-                                                <label for="location">Salon Location</label>
-                                            </div>
+                                        <div class="col-12" id="serviceDetails" style="display: none;">
+                                            <!-- Service details will be displayed here -->
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
@@ -183,26 +159,11 @@
                                             <div class="form-floating">
                                                 <select class="form-control" id="appointmentTime" required>
                                                     <option value="">Select Time</option>
-                                                    <option value="09:00">09:00 AM</option>
-                                                    <option value="10:00">10:00 AM</option>
-                                                    <option value="11:00">11:00 AM</option>
-                                                    <option value="12:00">12:00 PM</option>
-                                                    <option value="13:00">01:00 PM</option>
-                                                    <option value="14:00">02:00 PM</option>
-                                                    <option value="15:00">03:00 PM</option>
-                                                    <option value="16:00">04:00 PM</option>
-                                                    <option value="17:00">05:00 PM</option>
-                                                    <option value="18:00">06:00 PM</option>
                                                 </select>
                                                 <label for="appointmentTime">Preferred Time</label>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Any special requests or notes" id="notes" style="height: 120px"></textarea>
-                                                <label for="notes">Special Requests (Optional)</label>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill">
                                                 <i class="fas fa-calendar-plus me-2"></i>Book Appointment
@@ -332,6 +293,9 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/appointment.js"></script>
 
     <!-- Navbar Include Script -->
     <script>
@@ -339,94 +303,19 @@
         .then(response => response.text())
         .then(data => {
           document.getElementById('navbar-placeholder').innerHTML = data;
+          // Trigger auth check after navbar is loaded
+          if (typeof checkUserAuthentication === 'function') {
+            checkUserAuthentication();
+          }
         });
     </script>
     
     <!-- User Authentication Check -->
     <script>
-        // Check if user is logged in and update UI
-        function checkUserAuthentication() {
-            // Check both localStorage and sessionStorage
-            let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
-            
-            if (userData) {
-                try {
-                    const user = JSON.parse(userData);
-                    
-                    // Show logged-in state
-                    document.getElementById('loginSection').classList.add('d-none');
-                    document.getElementById('userSection').classList.remove('d-none');
-                    document.getElementById('dashboardNav').classList.remove('d-none');
-                    
-                    // Extract name from email (before @) or use full email
-                    const userName = user.email.split('@')[0];
-                    const welcomeText = `Welcome, ${userName}!`;
-                    
-                    document.getElementById('welcomeText').textContent = welcomeText;
-                    
-                    // Add role badge if admin
-                    if (user.role === 'admin') {
-                        document.getElementById('welcomeText').innerHTML = `Welcome, ${userName}! <span class="badge bg-warning text-dark ms-1">Admin</span>`;
-                    }
-                    
-                } catch (error) {
-                    console.error('Error parsing user data:', error);
-                    // Clear invalid data
-                    localStorage.removeItem('urbanSalonUser');
-                    sessionStorage.removeItem('urbanSalonUser');
-                    showLoginState();
-                }
-            } else {
-                showLoginState();
-            }
-        }
-        
-        function showLoginState() {
-            document.getElementById('loginSection').classList.remove('d-none');
-            document.getElementById('userSection').classList.add('d-none');
-            document.getElementById('dashboardNav').classList.add('d-none');
-        }
-        
-        // Logout function
-        function logout() {
-            // Remove user data
-            localStorage.removeItem('urbanSalonUser');
-            sessionStorage.removeItem('urbanSalonUser');
-            
-            // Show login state
-            showLoginState();
-            
-            // Optional: Show logout message
-            alert('You have been logged out successfully!');
-            
-            // Optional: Redirect to login page
-            // window.location.href = 'login.html';
-        }
-        
-        // Run when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            checkUserAuthentication();
-        });
-        
-        // Optional: Check authentication status periodically (every 5 minutes)
-        setInterval(checkUserAuthentication, 300000);
+        // Authentication is handled by auth.js which is included above
+        // This script is kept for any page-specific authentication logic if needed
     </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('appointmentForm');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
-                if (!userData) {
-                    e.preventDefault();
-                    alert('You are not logged in. Please log in to book an appointment.');
-                    sessionStorage.setItem('showLoginMessage', '1');
-                    window.location.href = 'login.html';
-                }
-            });
-        }
-    });
-    </script>
+    <!-- Appointment form handling is now managed by appointment.js -->
     <!-- Footer Include Script -->
     <script>
       fetch('footer.html')

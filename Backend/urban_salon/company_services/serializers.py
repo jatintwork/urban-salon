@@ -21,7 +21,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        fields = ['id', 'name', 'description', 'price', 'duration_minutes', 'category', 'image', 'precaution']
+        fields = ['id', 'name', 'description', 'price', 'duration_minutes', 'category', 'image', 'precaution', 'new_location']
         
     def get_image(self, obj):
         return obj.image.url if obj.image else None

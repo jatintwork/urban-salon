@@ -54,7 +54,7 @@
                     role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false"
                     style="padding: 6px 10px; font-size: 0.85rem; display: flex; align-items: center;">
                     <!-- <i class="fas fa-user me-1"></i> -->
-                    <span id="welcomeText">aadu</span>
+                    <span id="navWelcomeText">User</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown"
                     style="min-width: 180px; max-width: 90vw;">
@@ -86,47 +86,11 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">More</a>
                 <div class="dropdown-menu dropdown-menu-end m-0">
                     <a href="testimonial.html" class="dropdown-item">Testimonials</a>
-                    <a href="gallery.html" class="dropdown-item">Gallery</a>
-                    <a href="team.html" class="dropdown-item">Team</a>
+                    <!-- <a href="gallery.html" class="dropdown-item">Gallery</a> -->
+                    <!-- <a href="team.html" class="dropdown-item">Team</a> -->
                 </div>
             </div>
         </div>
     </div>
 </nav>
-<script>
-// Utility: Get user from storage
-function getUrbanSalonUser() {
-  let user = null;
-  try {
-    user = JSON.parse(localStorage.getItem('urbanSalonUser'));
-    if (!user) user = JSON.parse(sessionStorage.getItem('urbanSalonUser'));
-  } catch (e) { user = null; }
-  return user;
-}
-
-// Show/hide login/profile in navbar
-function updateNavbarLoginStatus() {
-  const user = getUrbanSalonUser();
-  const loginSection = document.getElementById('loginSection');
-  const userSection = document.getElementById('userSection');
-  const welcomeText = document.getElementById('welcomeText');
-
-  if (user && user.email) {
-    if (loginSection) loginSection.classList.add('d-none');
-    if (userSection) userSection.classList.remove('d-none');
-    if (welcomeText) welcomeText.textContent = user.email;
-  } else {
-    if (loginSection) loginSection.classList.remove('d-none');
-    if (userSection) userSection.classList.add('d-none');
-  }
-}
-
-// Logout function
-function logout() {
-  localStorage.removeItem('urbanSalonUser');
-  sessionStorage.removeItem('urbanSalonUser');
-  window.location.href = 'login.html';
-}
-
-document.addEventListener('DOMContentLoaded', updateNavbarLoginStatus);
-</script> 
+ 

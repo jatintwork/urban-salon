@@ -209,46 +209,8 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
-    <!-- User Authentication JavaScript -->
-    <script>
-        // Check if user is logged in when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            checkUserLogin();
-        });
-
-        function checkUserLogin() {
-            const user = localStorage.getItem('currentUser');
-            const loginSection = document.getElementById('loginSection');
-            const userSection = document.getElementById('userSection');
-            const dashboardNav = document.getElementById('dashboardNav');
-            const welcomeText = document.getElementById('welcomeText');
-            
-            if (user) {
-                const userData = JSON.parse(user);
-                loginSection.classList.add('d-none');
-                userSection.classList.remove('d-none');
-                dashboardNav.classList.remove('d-none');
-                welcomeText.textContent = `Welcome, ${userData.firstName || userData.username}!`;
-            } else {
-                loginSection.classList.remove('d-none');
-                userSection.classList.add('d-none');
-                dashboardNav.classList.add('d-none');
-            }
-        }
-
-        function logout() {
-            localStorage.removeItem('currentUser');
-            localStorage.removeItem('userToken');
-            checkUserLogin();
-            
-            // Show logout message
-            alert('You have been logged out successfully!');
-            
-            // Redirect to home page
-            window.location.href = 'index.html';
-        }
-    </script>
+    <script src="js/auth.js"></script>
+    <script src="js/notifications.js"></script>
 
     <!-- Navbar Include Script -->
     <script>
@@ -256,6 +218,10 @@
         .then(response => response.text())
         .then(data => {
           document.getElementById('navbar-placeholder').innerHTML = data;
+          // Trigger auth check after navbar is loaded
+          if (typeof checkUserAuthentication === 'function') {
+            checkUserAuthentication();
+          }
         });
     </script>
 

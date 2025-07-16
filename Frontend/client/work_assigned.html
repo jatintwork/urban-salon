@@ -64,7 +64,8 @@
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="js/main.js"></script>
+      <script src="js/main.js"></script>
+    <script src="js/notification.js"></script>
   <script>
     async function fetchClientDashboardData() {
       let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
@@ -110,6 +111,16 @@
         .then(data => {
           document.getElementById('navbar-placeholder').innerHTML = data;
           updateNavbarForAuth();
+          
+          // Initialize notification system after navbar loads
+          setTimeout(() => {
+            if (window.notificationManager) {
+              window.notificationManager.init();
+              console.log('✅ Notification system initialized on work assigned page');
+            } else {
+              console.log('❌ Notification manager not found on work assigned page');
+            }
+          }, 500);
         });
       fetchClientDashboardData().then(data => {
         if (!data) return;

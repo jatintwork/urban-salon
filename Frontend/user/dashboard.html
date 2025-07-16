@@ -69,49 +69,9 @@
     </div>
     <!-- Topbar End -->
 
-    <!-- Navbar Start -->
-    <div class="container-fluid nav-bar p-0">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
-            <a href="index.html" class="navbar-brand p-0">
-                                    <h1 class="display-5 text-secondary m-0">Urban Salon</h1>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="dashboard.html" class="nav-item nav-link d-none" id="dashboardNav">Dashboard</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                                            <a href="service.html" class="nav-item nav-link">Services</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-bs-toggle="dropdown"><span class="dropdown-toggle">More</span></a>
-                            <div class="dropdown-menu m-0">
-                                
-                                <a href="testimonial.html" class="dropdown-item">Testimonials</a>
-                                <a href="gallery.html" class="dropdown-item">Gallery</a>
-                                <a href="team.html" class="dropdown-item">Team</a>
-                            </div>
-                        </div>
-                </div>
-                
-                <div class="dropdown">
-                    <a class="btn btn-success border-secondary rounded-pill py-2 px-4 px-lg-3 mb-2 mb-md-2 mb-lg-0 dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user me-1"></i>
-                        <span id="navWelcomeText">Welcome!</span>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i>Profile</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!-- Navbar End -->
+    <!-- Navbar & Hero Start -->
+    <div id="navbar-placeholder"></div>
+    <!-- Navbar & Hero End -->
 
     <!-- Dashboard Content Start -->
     <div class="container-fluid py-5">
@@ -136,7 +96,7 @@
                                 <div class="d-grid gap-2">
                                     <a href="appointment.html" class="btn btn-primary rounded-pill">Book Appointment</a>
                                     <a href="service.html" class="btn btn-outline-primary rounded-pill">View Services</a>
-                                    <a href="gallery.html" class="btn btn-outline-secondary rounded-pill">Gallery</a>
+                                    <a href="contact.html" class="btn btn-outline-secondary rounded-pill">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +138,7 @@
                     </div>
 
                     <!-- Service Requests -->
-                    <div class="col-12">
+                    <!-- <div class="col-12">
                         <div class="card border-0 shadow rounded-4">
                             <div class="card-body p-4">
                                 <h5 class="card-title text-primary"><i class="fas fa-clipboard-list me-2"></i>Request Services</h5>
@@ -207,7 +167,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -485,74 +445,19 @@
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/notifications.js"></script>
 
-    <!-- Dashboard Logic -->
+    <!-- Navbar Include Script -->
     <script>
-        function checkAuthAndLoadDashboard() {
-            let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
-            
-            if (!userData) {
-                // Redirect to login if not authenticated
-                window.location.href = 'login.html';
-                return;
-            }
-            
-            try {
-                const user = JSON.parse(userData);
-                const userName = user.email.split('@')[0];
-                
-                // Update welcome texts
-                document.getElementById('navWelcomeText').textContent = `Welcome, ${userName}!`;
-                document.getElementById('dashboardWelcome').textContent = `Welcome to your Dashboard, ${userName}!`;
-                
-                // Add role badge for admin
-                if (user.role === 'admin') {
-                    document.getElementById('navWelcomeText').innerHTML = `Welcome, ${userName}! <span class="badge bg-warning text-dark ms-1">Admin</span>`;
-                }
-                
-                // Show appropriate dashboard based on role
-                showDashboardByRole(user.role);
-                
-            } catch (error) {
-                console.error('Error parsing user data:', error);
-                localStorage.removeItem('urbanSalonUser');
-                sessionStorage.removeItem('urbanSalonUser');
-                window.location.href = 'login.html';
-            }
-        }
-        
-        function showDashboardByRole(role) {
-            // Hide all dashboards first
-            document.getElementById('userDashboard').classList.add('d-none');
-            document.getElementById('clientDashboard').classList.add('d-none');
-            document.getElementById('adminDashboard').classList.add('d-none');
-            
-            // Show appropriate dashboard
-            switch(role) {
-                case 'user':
-                    document.getElementById('userDashboard').classList.remove('d-none');
-                    break;
-                case 'client':
-                    document.getElementById('clientDashboard').classList.remove('d-none');
-                    break;
-                case 'admin':
-                    document.getElementById('adminDashboard').classList.remove('d-none');
-                    break;
-                default:
-                    document.getElementById('userDashboard').classList.remove('d-none');
-            }
-        }
-        
-        function logout() {
-            localStorage.removeItem('urbanSalonUser');
-            sessionStorage.removeItem('urbanSalonUser');
-            alert('You have been logged out successfully!');
-            window.location.href = 'index.html';
-        }
-        
-        // Load dashboard when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAuthAndLoadDashboard();
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+          // Trigger auth check after navbar is loaded
+          if (typeof checkUserAuthentication === 'function') {
+            checkUserAuthentication();
+          }
         });
     </script>
 

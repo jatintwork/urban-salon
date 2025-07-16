@@ -35,24 +35,29 @@
 
         <!-- User Section -->
         <div id="userSection" class="d-none" style="display: flex; align-items: center; gap: 8px;">
-            <!-- Notification Bell -->
+            <!-- Notification Bell - Centralized -->
             <div class="dropdown" id="notificationDropdownContainer">
                 <button class="btn btn-light position-relative rounded-circle" id="notificationBell"
                         data-bs-toggle="dropdown" aria-expanded="false"
-                        style="width: 36px; height: 36px; padding: 0; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-bell text-secondary"></i>
+                        style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center; border: 2px solid #e9ecef; transition: all 0.3s ease;">
+                    <i class="fas fa-bell text-secondary" style="font-size: 1.1rem;"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                          id="notificationCount" style="font-size: 0.6rem;">3</span>
+                          id="notificationCount" style="font-size: 0.7rem; min-width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;">0</span>
                 </button>
                 <ul class="dropdown-menu p-2 start-50 translate-middle-x" aria-labelledby="notificationBell"
-                    style="min-width: 320px; max-width: 90vw;">
-                    <li class="dropdown-header text-center">Notifications</li>
+                    style="min-width: 350px; max-width: 90vw; margin-top: 8px;">
+                    <li class="dropdown-header text-center">
+                        <i class="fas fa-bell me-2"></i>Notifications
+                        <small class="text-muted d-block">Last updated: <span id="lastUpdateTime">Just now</span></small>
+                    </li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item notification-text" href="#">Your appointment is confirmed for tomorrow at 2pm.</a></li>
-                    <li><a class="dropdown-item notification-text" href="#">New offer: 20% off on all spa services!</a></li>
-                    <li><a class="dropdown-item notification-text" href="#">Your profile was updated successfully.</a></li>
+                    <li><a class="dropdown-item notification-text text-muted text-center" href="#">
+                        <i class="fas fa-check-circle me-2"></i>No new notifications
+                    </a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-center text-primary" href="#">View all notifications</a></li>
+                    <li><a class="dropdown-item text-center text-primary" href="#" onclick="viewAllNotifications()">
+                        <i class="fas fa-list me-2"></i>View all notifications
+                    </a></li>
                 </ul>
             </div>
 

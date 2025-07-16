@@ -223,6 +223,10 @@
         .then(response => response.text())
         .then(data => {
           document.getElementById('navbar-placeholder').innerHTML = data;
+          // Trigger auth check after navbar is loaded
+          if (typeof checkUserAuthentication === 'function') {
+            checkUserAuthentication();
+          }
         });
       fetch('footer.html')
         .then(response => response.text())
@@ -333,6 +337,7 @@
     <!-- Bootstrap JS for modal functionality -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/services.js"></script>
-
+    <script src="js/auth.js"></script>
+    <script src="js/notifications.js"></script>
 </body>
 </html> 

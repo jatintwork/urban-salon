@@ -39,6 +39,10 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = [env('ALLOWED_HOSTS')]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:5501",
+    "http://localhost:5501",  # optional
+]
 
 # Application definition
 

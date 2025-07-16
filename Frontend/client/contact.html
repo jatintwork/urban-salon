@@ -292,6 +292,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/notification.js"></script>
 
     <!-- Navbar Include Script -->
     <script>
@@ -366,6 +367,16 @@
         // Run when page loads
         document.addEventListener('DOMContentLoaded', function() {
             checkUserAuthentication();
+            
+            // Initialize notification system after navbar loads
+            setTimeout(() => {
+                if (window.notificationManager) {
+                    window.notificationManager.init();
+                    console.log('✅ Notification system initialized on contact page');
+                } else {
+                    console.log('❌ Notification manager not found on contact page');
+                }
+            }, 500);
         });
         
         // Optional: Check authentication status periodically (every 5 minutes)

@@ -444,6 +444,10 @@
                         user_id: data.user_id,
                         email: data.email,
                         role: data.role,
+                        address: data.address,
+                        first_name: data.first_name,
+                        last_name: data.last_name,
+                        phone: data.phone,
                         access_token: data.access,
                         refresh_token: data.refresh,
                         loginTime: new Date().toISOString()
@@ -453,7 +457,7 @@
                     if (rememberMe) {
                         localStorage.setItem('urbanSalonUser', JSON.stringify(userData));
                     } else {
-                        sessionStorage.setItem('urbanSalonUser', JSON.stringify(userData));
+                        localStorage.setItem('urbanSalonUser', JSON.stringify(userData));
                     }
                     
                     showSuccess('loginSuccess', `Welcome ${data.email}! Redirecting...`);

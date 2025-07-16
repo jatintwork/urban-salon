@@ -430,6 +430,16 @@
                 }
                 sessionStorage.removeItem('showLoginMessage');
             }
+            
+            // Initialize notification system after navbar loads (for logged-in users)
+            setTimeout(() => {
+                if (window.notificationManager) {
+                    window.notificationManager.init();
+                    console.log('✅ Notification system initialized on login page');
+                } else {
+                    console.log('❌ Notification manager not found on login page');
+                }
+            }, 500);
         });
     </script>
     <!-- Footer Include Script -->

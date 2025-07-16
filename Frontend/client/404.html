@@ -118,12 +118,23 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/notification.js"></script>
 
     <!-- User Authentication JavaScript -->
     <script>
         // Check if user is logged in when page loads
         document.addEventListener('DOMContentLoaded', function() {
             checkUserLogin();
+            
+            // Initialize notification system after navbar loads
+            setTimeout(() => {
+                if (window.notificationManager) {
+                    window.notificationManager.init();
+                    console.log('✅ Notification system initialized on 404 page');
+                } else {
+                    console.log('❌ Notification manager not found on 404 page');
+                }
+            }, 500);
         });
 
         function checkUserLogin() {

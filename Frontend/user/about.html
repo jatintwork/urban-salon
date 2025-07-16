@@ -326,6 +326,8 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/notifications.js"></script>
 
     <!-- Navbar Include Script -->
     <script>
@@ -333,77 +335,11 @@
         .then(response => response.text())
         .then(data => {
           document.getElementById('navbar-placeholder').innerHTML = data;
-        });
-    </script>
-    
-    <!-- User Authentication Check -->
-    <script>
-        // Check if user is logged in and update UI
-        function checkUserAuthentication() {
-            // Check both localStorage and sessionStorage
-            let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
-            
-            if (userData) {
-                try {
-                    const user = JSON.parse(userData);
-                    
-                    // Show logged-in state
-                    document.getElementById('loginSection').classList.add('d-none');
-                    document.getElementById('userSection').classList.remove('d-none');
-                    document.getElementById('dashboardNav').classList.remove('d-none');
-                    
-                    // Extract name from email (before @) or use full email
-                    const userName = user.email.split('@')[0];
-                    const welcomeText = `Welcome, ${userName}!`;
-                    
-                    document.getElementById('welcomeText').textContent = welcomeText;
-                    
-                    // Add role badge if admin
-                    if (user.role === 'admin') {
-                        document.getElementById('welcomeText').innerHTML = `Welcome, ${userName}! <span class="badge bg-warning text-dark ms-1">Admin</span>`;
-                    }
-                    
-                } catch (error) {
-                    console.error('Error parsing user data:', error);
-                    // Clear invalid data
-                    localStorage.removeItem('urbanSalonUser');
-                    sessionStorage.removeItem('urbanSalonUser');
-                    showLoginState();
-                }
-            } else {
-                showLoginState();
-            }
-        }
-        
-        function showLoginState() {
-            document.getElementById('loginSection').classList.remove('d-none');
-            document.getElementById('userSection').classList.add('d-none');
-            document.getElementById('dashboardNav').classList.add('d-none');
-        }
-        
-        // Logout function
-        function logout() {
-            // Remove user data
-            localStorage.removeItem('urbanSalonUser');
-            sessionStorage.removeItem('urbanSalonUser');
-            
-            // Show login state
-            showLoginState();
-            
-            // Optional: Show logout message
-            alert('You have been logged out successfully!');
-            
-            // Optional: Redirect to login page
-            // window.location.href = 'login.html';
-        }
-        
-        // Run when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+          // Trigger auth check after navbar is loaded
+          if (typeof checkUserAuthentication === 'function') {
             checkUserAuthentication();
+          }
         });
-        
-        // Optional: Check authentication status periodically (every 5 minutes)
-        setInterval(checkUserAuthentication, 300000);
     </script>
 
     <!-- Footer Include Script -->

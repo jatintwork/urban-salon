@@ -48,7 +48,12 @@ class LoginAPIView(APIView):
                     'access': str(access_token),
                     "user_id": str(user.id),
                     "email": user.email,
-                    "role": role_name
+                    "role": role_name,
+                    "address": user.address,
+                    "first_name": user.first_name,
+                    "last_name": user.last_name,
+                    "phone": user.phone,
+                    
                 }, status=status.HTTP_200_OK)
             else:
                 return Response({"detail": "Invalid email or password"}, status=status.HTTP_401_UNAUTHORIZED)

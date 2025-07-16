@@ -397,6 +397,7 @@
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/notification.js"></script>
 
     <script>
         async function loadClientDashboard() {
@@ -527,16 +528,26 @@
             window.location.href = 'login.html';
         }
     
-        document.addEventListener('DOMContentLoaded', function () {
+                document.addEventListener('DOMContentLoaded', function () {
             fetch('navbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('navbar-placeholder').innerHTML = data;
                     updateNavbarForAuth();
-                    window.initNotificationBell && window.initNotificationBell();
+                    
+                    // Initialize notification system after navbar loads
+                    setTimeout(() => {
+                        if (window.notificationManager) {
+                            window.notificationManager.init();
+                            console.log('✅ Notification system initialized');
+                        } else {
+                            console.log('❌ Notification manager not found');
+                        }
+                    }, 500);
+                    
                     checkAuthAndLoadDashboard();
                 });
-    
+
             fetch('footer.html')
                 .then(response => response.text())
                 .then(data => {
