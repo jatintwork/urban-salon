@@ -66,15 +66,28 @@ class CreateServiceRequest(APIView):
 
     def post(self, request):
         try:
-            user = request.user
-            service_id = request.data.get('sub_service_id')
-            service = Service.objects.get(id=service_id, delete_flag=False)
-            service_request = ServiceRequest.objects.create(
-                service=service,
-                client=user,
-                scheduled_datetime=request.data.get('scheduled_datetime'),
-                location=request.data.get('location')
-            )
+            bulk_create_flag = request.data.get('bulk_create_flag', False)
+            if bulk_create_flag:
+                service_requests = request.data.get('service_requests', [])
+                for data in service_requests:
+                    service_id = data.get('sub_service_id')
+                    service = Service.objects.get(id=service_id, delete_flag=False)
+                    service_request = ServiceRequest.objects.create(
+                        service=service,
+                        client=request.user,
+                        scheduled_datetime=data.get('scheduled_datetime'),
+                        location=data.get('location')
+                    )
+            else:
+                user = request.user
+                service_id = request.data.get('sub_service_id')
+                service = Service.objects.get(id=service_id, delete_flag=False)
+                service_request = ServiceRequest.objects.create(
+                    service=service,
+                    client=user,
+                    scheduled_datetime=request.data.get('scheduled_datetime'),
+                    location=request.data.get('location')
+                )
             return Response("Service Request Has Been Accepted", status=status.HTTP_201_CREATED)
         except Service.DoesNotExist:
             return Response({"detail": "Service not found"}, status=status.HTTP_404_NOT_FOUND)

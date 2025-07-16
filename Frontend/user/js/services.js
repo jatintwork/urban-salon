@@ -162,6 +162,15 @@ function addToCart(id, name, price) {
     updateAllCartUI();
 }
 
+// Add to cart and store selected service ID
+function addToCartAndStoreId(id, name, price) {
+    // Store the selected service ID
+    localStorage.setItem('selectedServiceId', id);
+    
+    // Add to cart
+    addToCart(id, name, price);
+}
+
 function removeFromCart(id) {
     let cart = getCart();
     cart = cart.filter(item => item.id !== id);
@@ -300,6 +309,7 @@ window.addEventListener('DOMContentLoaded', function() {
 window.renderCategories = renderCategories;
 window.renderSubServices = renderSubServices;
 window.addToCart = addToCart;
+window.addToCartAndStoreId = addToCartAndStoreId;
 window.removeFromCart = removeFromCart;
 window.changeCartQty = changeCartQty;
 window.updateAllCartUI = updateAllCartUI;
