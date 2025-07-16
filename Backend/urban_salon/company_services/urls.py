@@ -1,5 +1,5 @@
 from django.urls import path
-from company_services.services_views.userView import AllServicesView, CreateServiceRequest, SubServicesView
+from company_services.services_views.userView import AllServicesView, CreateServiceRequest, SubServicesView, UserCRUD
 from company_services.views import (
     ServiceListAPIView,
     BookServiceAPIView,
@@ -29,5 +29,6 @@ urlpatterns = [
     path('all-services/', AllServicesView.as_view()),
     path('sub-services/', SubServicesView.as_view()),
     path('create-service-request/', CreateServiceRequest.as_view(), name='create_service_request'),
+    path('user_crud/', UserCRUD.as_view()),
     
 ]

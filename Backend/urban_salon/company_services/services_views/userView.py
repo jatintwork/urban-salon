@@ -3,10 +3,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-from decimal import Decimal
 
-from company_services.models import Service, ServiceCategory, ServiceRequest, Payment
-from company_services.serializers import ServiceCategorySerializer, ServiceSerializer, ServiceRequestSerializer, PaymentSerializer
+from company_services.models import Service, ServiceCategory, ServiceRequest
+from company_services.serializers import ServiceCategorySerializer, ServiceSerializer, UserSerializer
 from rest_framework.permissions import AllowAny
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -91,5 +90,28 @@ class CreateServiceRequest(APIView):
             return Response("Service Request Has Been Accepted", status=status.HTTP_201_CREATED)
         except Service.DoesNotExist:
             return Response({"detail": "Service not found"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserCRUD(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        try:
+            user = request.user
+            serializer = UserSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request):
+        try:
+            user = request.user
+            serializer = UserSerializer(user, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)

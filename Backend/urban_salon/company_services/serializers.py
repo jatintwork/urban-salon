@@ -38,7 +38,7 @@ class ServiceRequestSerializer(serializers.ModelSerializer):
         fields = ['id', 'service', 'scheduled_datetime', 'location', 'status', 'image']
 
     def get_image(self, obj):
-        return obj.image.url
+        return obj.image.url if obj.image else None
         
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -79,7 +79,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = Users
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'phone', 
                  'address', 'skills', 'rating', 'total_jobs_completed', 
-                 'availability_status', 'is_active', 'created_date', 'last_logged_in']
+                 'availability_status', 'is_active', 'created_date']
         
 
 class UserRoleMappingSerializer(serializers.ModelSerializer):

@@ -340,11 +340,24 @@
         </div>
         <!-- Training End -->
 
-        <!-- Footer Start -->
-        <div id="footer-placeholder"></div>
-        <!-- Footer End -->
-        
-        
+     <!-- Footer Start -->
+     <div id="footer-placeholder"></div>
+     <!-- Footer End -->
+ 
+    <!-- Footer Include Script -->
+    <script>
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error loading footer:', error);
+        });
+    </script>
+ 
+ 
+ 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
@@ -364,23 +377,47 @@
     <script src="js/services.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/notifications.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        renderCategories('service-categories');
-      });
-    </script>
-
+    
     <!-- Navbar Include Script -->
     <script>
+      // Load navbar with error handling
       fetch('navbar.html')
-        .then(response => response.text())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to load navbar');
+          }
+          return response.text();
+        })
         .then(data => {
           document.getElementById('navbar-placeholder').innerHTML = data;
           // Trigger auth check after navbar is loaded
           if (typeof checkUserAuthentication === 'function') {
             checkUserAuthentication();
           }
+        })
+        .catch(error => {
+          console.error('Error loading navbar:', error);
+          // Fallback navbar
+          document.getElementById('navbar-placeholder').innerHTML = `
+            <nav class="navbar navbar-expand-lg navbar-light bg-white px-3 px-lg-5 py-2 py-lg-0">
+              <a href="#" class="navbar-brand p-0">
+                <h1 class="display-5 text-secondary m-0">UBeauty</h1>
+              </a>
+              <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="service.html" class="nav-item nav-link active">Services</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+              </div>
+            </nav>
+          `;
         });
+    </script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        renderCategories('service-categories');
+      });
     </script>
     </body>
 

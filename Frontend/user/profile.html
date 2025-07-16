@@ -182,35 +182,63 @@
 
     <!-- User Profile JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
-            if (userData) {
-                try {
-                    const user = JSON.parse(userData);
-                    document.getElementById('profileName').textContent = user.full_name || user.username || (user.email ? user.email.split('@')[0] : '');
-                    document.getElementById('profileRole').textContent = user.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : '';
-                    document.getElementById('profileEmail').textContent = user.email || '';
-                    document.getElementById('profileUsername').textContent = user.username || '';
-                    document.getElementById('profileMobile').textContent = user.phone || user.mobile || '';
-                    document.getElementById('profileAddress').textContent = user.address || '';
-                    document.getElementById('profileDateJoined').textContent = user.date_joined ? new Date(user.date_joined).toLocaleDateString() : '';
-                    document.getElementById('profileLastLogin').textContent = user.last_login ? new Date(user.last_login).toLocaleString() : '';
+        async function fetchUserProfile() {
+            const userData = localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser');
+            if (!userData) {
+                document.getElementById('profileName').textContent = 'Not logged in';
+                return;
+            }
+
+            try {
+                const user = JSON.parse(userData);
+                
+                // Fetch user profile from API
+                const response = await fetch('http://127.0.0.1:7002/services/user_profile/', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${user.access_token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const profileData = await response.json();
+                    console.log('Profile data from API:', profileData);
+                    
+                    // Extract user data from nested structure
+                    const userData = profileData.user || profileData;
+                    
+                    // Update profile with API data
+                    document.getElementById('profileName').textContent = userData.first_name && userData.last_name ? 
+                        `${userData.first_name} ${userData.last_name}` : 
+                        userData.username || (userData.email ? userData.email.split('@')[0] : '');
+                    document.getElementById('profileRole').textContent = profileData.role_name ? profileData.role_name.charAt(0).toUpperCase() + profileData.role_name.slice(1) : '';
+                    document.getElementById('profileEmail').textContent = userData.email || '';
+                    document.getElementById('profileUsername').textContent = userData.username || '';
+                    document.getElementById('profileMobile').textContent = userData.phone || '';
+                    document.getElementById('profileAddress').textContent = userData.address || '';
+                    document.getElementById('profileDateJoined').textContent = userData.created_date ? new Date(userData.created_date).toLocaleDateString() : '';
+                    document.getElementById('profileLastLogin').textContent = userData.last_login ? new Date(userData.last_login).toLocaleString() : 'N/A';
+                    
                     // Account status
-                    document.getElementById('profileStatus').textContent = user.is_active === false ? 'Inactive' : 'Active';
-                    document.getElementById('profileStatus').className = user.is_active === false ? 'badge bg-danger' : 'badge bg-success';
+                    document.getElementById('profileStatus').textContent = userData.is_active === false ? 'Inactive' : 'Active';
+                    document.getElementById('profileStatus').className = userData.is_active === false ? 'badge bg-danger' : 'badge bg-success';
+                    
                     // Rating
-                    let rating = typeof user.rating === 'number' ? user.rating : 0;
+                    let rating = typeof userData.rating === 'number' ? userData.rating : 0;
                     document.getElementById('profileRatingValue').textContent = rating.toFixed(1) + ' / 5.0';
                     let stars = '';
                     for (let i = 1; i <= 5; i++) {
                         stars += `<i class="fa${i <= Math.round(rating) ? 's' : 'r'} fa-star text-warning"></i>`;
                     }
                     document.getElementById('profileRatingStars').innerHTML = stars;
+                    
                     // Client/Service Provider section
-                    if (user.role === 'client' || user.role === 'service_provider') {
+                    if (profileData.role_name === 'client' || profileData.role_name === 'service_provider') {
                         document.getElementById('clientOnlySection').style.display = '';
+                        
                         // Skills (array or string)
-                        let skills = user.skills || [];
+                        let skills = userData.skills || [];
                         if (typeof skills === 'string') {
                             try { skills = JSON.parse(skills); } catch (e) { skills = [skills]; }
                         }
@@ -219,18 +247,89 @@
                         } else {
                             document.getElementById('profileSkills').textContent = 'N/A';
                         }
+                        
                         // Availability
-                        let avail = user.availability_status !== undefined ? user.availability_status : user.available;
+                        let avail = userData.availability_status !== undefined ? userData.availability_status : true;
                         document.getElementById('profileAvailability').innerHTML = avail ? '<span class="badge bg-success">Available</span>' : '<span class="badge bg-secondary">Unavailable</span>';
+                        
                         // Jobs completed
-                        document.getElementById('profileJobs').textContent = user.total_jobs_completed !== undefined ? user.total_jobs_completed : '0';
+                        document.getElementById('profileJobs').textContent = userData.total_jobs_completed !== undefined ? userData.total_jobs_completed : '0';
                     }
-                } catch (e) {
-                    document.getElementById('profileName').textContent = 'Unknown';
+                    
+                    // Update localStorage with fresh data
+                    const updatedUserData = { 
+                        ...user, 
+                        ...userData,
+                        role: profileData.role_name,
+                        role_name: profileData.role_name
+                    };
+                    localStorage.setItem('urbanSalonUser', JSON.stringify(updatedUserData));
+                    sessionStorage.setItem('urbanSalonUser', JSON.stringify(updatedUserData));
+                    
+                } else {
+                    console.error('Failed to fetch profile data:', response.status);
+                    // Fallback to localStorage data
+                    displayUserData(user);
                 }
-            } else {
-                document.getElementById('profileName').textContent = 'Not logged in';
+                
+            } catch (error) {
+                console.error('Error fetching user profile:', error);
+                // Fallback to localStorage data
+                const user = JSON.parse(userData);
+                displayUserData(user);
             }
+        }
+
+        function displayUserData(user) {
+            // Fallback function using localStorage data
+            document.getElementById('profileName').textContent = user.full_name || user.username || (user.email ? user.email.split('@')[0] : '');
+            document.getElementById('profileRole').textContent = user.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : '';
+            document.getElementById('profileEmail').textContent = user.email || '';
+            document.getElementById('profileUsername').textContent = user.username || '';
+            document.getElementById('profileMobile').textContent = user.phone || user.mobile || '';
+            document.getElementById('profileAddress').textContent = user.address || '';
+            document.getElementById('profileDateJoined').textContent = user.date_joined ? new Date(user.date_joined).toLocaleDateString() : '';
+            document.getElementById('profileLastLogin').textContent = user.last_login ? new Date(user.last_login).toLocaleString() : '';
+            
+            // Account status
+            document.getElementById('profileStatus').textContent = user.is_active === false ? 'Inactive' : 'Active';
+            document.getElementById('profileStatus').className = user.is_active === false ? 'badge bg-danger' : 'badge bg-success';
+            
+            // Rating
+            let rating = typeof user.rating === 'number' ? user.rating : 0;
+            document.getElementById('profileRatingValue').textContent = rating.toFixed(1) + ' / 5.0';
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += `<i class="fa${i <= Math.round(rating) ? 's' : 'r'} fa-star text-warning"></i>`;
+            }
+            document.getElementById('profileRatingStars').innerHTML = stars;
+            
+            // Client/Service Provider section
+            if (user.role === 'client' || user.role === 'service_provider') {
+                document.getElementById('clientOnlySection').style.display = '';
+                
+                // Skills (array or string)
+                let skills = user.skills || [];
+                if (typeof skills === 'string') {
+                    try { skills = JSON.parse(skills); } catch (e) { skills = [skills]; }
+                }
+                if (Array.isArray(skills) && skills.length > 0) {
+                    document.getElementById('profileSkills').innerHTML = skills.map(skill => `<span class='badge bg-info text-dark me-1'>${skill}</span>`).join(' ');
+                } else {
+                    document.getElementById('profileSkills').textContent = 'N/A';
+                }
+                
+                // Availability
+                let avail = user.availability_status !== undefined ? user.availability_status : user.available;
+                document.getElementById('profileAvailability').innerHTML = avail ? '<span class="badge bg-success">Available</span>' : '<span class="badge bg-secondary">Unavailable</span>';
+                
+                // Jobs completed
+                document.getElementById('profileJobs').textContent = user.total_jobs_completed !== undefined ? user.total_jobs_completed : '0';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchUserProfile();
         });
     </script>
 
