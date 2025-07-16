@@ -51,3 +51,35 @@ class ClientDashboardView(APIView):
 
         except Exception as e:
             return Response({'error': 'Something went wrong', 'details': str(e)}, status=500)
+
+
+class ClientWorkUpdateView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            service_id = request.data.get('request_id')
+            print(service_id)
+            service_obj = ServiceRequest.objects.get(id=service_id)
+
+            if request.data.get('status') == 'CANCELLED':
+                service_obj.status = 'PENDING'
+                service_obj.assigned_provider  = None
+                service_obj.save()
+                return Response("Service Request Cancelled", status=status.HTTP_200_OK)
+            elif request.data.get('status') == 'COMPLETED':
+                service_obj.status = 'COMPLETED'
+                service_obj.save()
+                # Optionally, you can handle payment creation here if needed
+                return Response("Service Request Completed", status=status.HTTP_200_OK)
+            elif request.data.get('status') == 'IN_PROGRESS':
+                service_obj.status = 'IN_PROGRESS'
+                service_obj.save()
+                return Response("Service Request Status Updated to IN_PROGRESS", status=status.HTTP_200_OK)
+
+            return Response("Service Request Status Updated", status=status.HTTP_400_BAD_REQUEST)
+
+        except ServiceRequest.DoesNotExist:
+            return Response({"detail": "Work not found"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"detail": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

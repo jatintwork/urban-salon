@@ -8,7 +8,7 @@ from company_services.views import (
     PaymentAPIView
 )
 
-from company_services.services_views.ClientsView import ClientDashboardView
+from company_services.services_views.ClientsView import ClientDashboardView, ClientWorkUpdateView
 from company_services.services_views.adminView import AdminDashboardView, AllServiceList, GetUSerProfile, UserListView, NotificationListView
 
 urlpatterns = [
@@ -30,5 +30,6 @@ urlpatterns = [
     path('sub-services/', SubServicesView.as_view()),
     path('create-service-request/', CreateServiceRequest.as_view(), name='create_service_request'),
     path('user_crud/', UserCRUD.as_view()),
+    path('service_status_update/', ClientWorkUpdateView.as_view(), name='service_categories'),
     
 ]

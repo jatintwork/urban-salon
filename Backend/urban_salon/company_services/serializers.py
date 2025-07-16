@@ -44,6 +44,9 @@ class ServiceRequestSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         # Add the client's name (if available)
         representation['client_name'] = getattr(instance.client, 'first_name', None)
+        representation['client_phone_number'] = getattr(instance.client, 'phone', None)
+        representation['client_email'] = getattr(instance.client, 'email', None)
+        representation['client_address'] = getattr(instance.client, 'address', None)
         # Add the assigned provider's name (if available)
         representation['provider_name'] = getattr(instance.assigned_provider, 'first_name', None) if instance.assigned_provider else None
         return representation

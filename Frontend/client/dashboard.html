@@ -187,9 +187,10 @@
                                                 <th>Service</th>
                                                 <th>Date</th>
                                                 <th>Status</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="clientWorkAssignedTableBody">
 
                                         </tbody>
                                     </table>
@@ -469,22 +470,52 @@
                 document.querySelector('#clientDashboard .fa-dollar-sign').closest('.card-body').querySelector('h3').textContent = `$${data.money_earned ?? '0.00'}`;
     
                 // --- Current Work Assigned Table ---
-                const assignedTableBody = document.querySelector('#clientDashboard table tbody');
+                const assignedTableBody = document.getElementById('clientWorkAssignedTableBody');
                 assignedTableBody.innerHTML = '';
                 
                 data.work_assigned.forEach(req => {
                     if (req.status !== 'COMPLETED') {
-                    const statusColor = req.status === 'COMPLETED' ? 'success' : req.status === 'PENDING' ? 'warning' : 'info';
-                    assignedTableBody.innerHTML += `
-                        <tr>
-                            <td>${req.client_name}</td>
-                            <td>${req.service.name}</td>
-                            <td>${new Date(req.scheduled_datetime).toLocaleString()}</td>
-                            <td><span class="badge bg-${statusColor}">${req.status}</span></td>
-                        </tr>
+                        const statusColor = req.status === 'COMPLETED' ? 'success' : req.status === 'PENDING' ? 'warning' : 'info';
                         
-                    `;
-                }});
+                        // Generate action buttons based on status
+                        let actionButtons = '';
+                        if (req.status === 'PENDING') {
+                            actionButtons = `
+                                <button class="btn btn-success btn-sm me-1" onclick="updateServiceStatus('${req.id}', 'IN_PROGRESS')">
+                                    <i class="fas fa-check me-1"></i>Accept
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="updateServiceStatus('${req.id}', 'CANCELLED')">
+                                    <i class="fas fa-times me-1"></i>Cancel
+                                </button>
+                            `;
+                        } else if (req.status === 'IN_PROGRESS') {
+                            actionButtons = `
+                                <button class="btn btn-primary btn-sm me-1" onclick="updateServiceStatus('${req.id}', 'COMPLETED')">
+                                    <i class="fas fa-check-double me-1"></i>Complete
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="updateServiceStatus('${req.id}', 'CANCELLED')">
+                                    <i class="fas fa-times me-1"></i>Cancel
+                                </button>
+                            `;
+                        } else {
+                            actionButtons = `
+                                <button class="btn btn-danger btn-sm" onclick="updateServiceStatus('${req.id}', 'CANCELLED')">
+                                    <i class="fas fa-times me-1"></i>Cancel
+                                </button>
+                            `;
+                        }
+                        
+                        assignedTableBody.innerHTML += `
+                            <tr>
+                                <td>${req.client_name || 'N/A'}</td>
+                                <td>${req.service.name}</td>
+                                <td>${new Date(req.scheduled_datetime).toLocaleString()}</td>
+                                <td><span class="badge bg-${statusColor}">${req.status}</span></td>
+                                <td>${actionButtons}</td>
+                            </tr>
+                        `;
+                    }
+                });
     
                 // --- Recent Work Payments ---
                 const recentWorkList = document.querySelector('#clientDashboard .list-group');
@@ -840,6 +871,47 @@
                 }
             };
         }, 0);
+
+        async function updateServiceStatus(requestId, newStatus) {
+            const userData = JSON.parse(localStorage.getItem('urbanSalonUser') || sessionStorage.getItem('urbanSalonUser'));
+            if (!userData || !userData.access_token) {
+                alert('Please log in to update service status.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                const res = await fetch('http://127.0.0.1:7002/services/service_status_update/', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${userData.access_token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        request_id: requestId,
+                        status: newStatus
+                    })
+                });
+
+                if (res.status === 401) {
+                    alert('Session expired. Please log in again.');
+                    localStorage.removeItem('urbanSalonUser');
+                    sessionStorage.removeItem('urbanSalonUser');
+                    window.location.href = 'login.html';
+                    return;
+                }
+                if (!res.ok) {
+                    throw new Error('Failed to update service status');
+                }
+
+                alert(`Service status updated to ${newStatus} successfully!`);
+                loadClientDashboard(); // Refresh client dashboard to show updated status
+
+            } catch (err) {
+                alert('Error updating service status.');
+                console.error(err);
+            }
+        }
     </script>
     
     <!-- Modal for Completed Service Details -->
