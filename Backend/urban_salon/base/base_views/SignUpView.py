@@ -68,6 +68,7 @@ class SignupAPIView(APIView):
         email = request.data.get("email")
         password = request.data.get("password")
         role_name = request.data.get("role")
+        full_name = request.data.get("full_name")
 
         if not role_name or not password or not email:
             return Response({"detail": "All fields are required"}, status=status.HTTP_400_BAD_REQUEST)
@@ -116,7 +117,8 @@ class SignupAPIView(APIView):
         user = Users.objects.create(
             username=email,
             password=make_password(password),
-            email=email
+            email=email,
+            first_name=full_name
         )
 
         UserRoleMapping.objects.create(user=user, role=role)

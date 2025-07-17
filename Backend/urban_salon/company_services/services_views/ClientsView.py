@@ -18,7 +18,7 @@ class ClientDashboardView(APIView):
 
         try:
             # Get all work assigned to the provider
-            work_assigned_qs = ServiceRequest.objects.filter(assigned_provider=user)
+            work_assigned_qs = ServiceRequest.objects.filter(assigned_provider=user, delete_flag=False).order_by('-created_date')
             work_assigned_data = ServiceRequestSerializer(work_assigned_qs, many=True).data
             work_assigned_count = work_assigned_qs.filter(status='PENDING').count()
 

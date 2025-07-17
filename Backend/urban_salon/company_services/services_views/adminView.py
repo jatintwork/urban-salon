@@ -24,11 +24,11 @@ def assigned_request(user):
         role_name = role_mapping.role.name.lower()
 
         if role_name == 'admin':
-            service_obj = ServiceRequest.objects.filter(delete_flag=False).exclude(status='COMPLETED')
+            service_obj = ServiceRequest.objects.filter(delete_flag=False).exclude(status='COMPLETED').order_by('-created_date')
         elif role_name == 'client':
-            service_obj = ServiceRequest.objects.filter(delete_flag=False, assigned_provider=user).exclude(status='COMPLETED')
+            service_obj = ServiceRequest.objects.filter(delete_flag=False, assigned_provider=user).exclude(status='COMPLETED').order_by('-created_date')
         elif role_name == 'user':
-            service_obj = ServiceRequest.objects.filter(delete_flag=False, client=user).exclude(status='COMPLETED')
+            service_obj = ServiceRequest.objects.filter(delete_flag=False, client=user).exclude(status='COMPLETED').order_by('-created_date')
         else:
             service_obj = ServiceRequest.objects.none()
 
@@ -45,7 +45,7 @@ class AdminDashboardView(APIView):
     def get(self, request):
         user = request.user
 
-        all_users = UserRoleMapping.objects.filter(delete_flag=False).exclude(role__name='admin')
+        all_users = UserRoleMapping.objects.filter(delete_flag=False).exclude(role__name='admin').order_by('user__created_date')
 
         total_user_count = all_users.count()
         client_count = all_users.filter(role__name='client').count()
@@ -68,7 +68,7 @@ class AdminDashboardView(APIView):
     def post(self, request):
         try:
             # Get all pending service requests
-            pending_requests = ServiceRequest.objects.filter(delete_flag=False).exclude(status='COMPLETED')
+            pending_requests = ServiceRequest.objects.filter(delete_flag=False).exclude(status='COMPLETED').order_by('-created_date')
             pending_requests_serializer = ServiceRequestSerializer(pending_requests, many=True)
 
             # Get all users list, categorized by role
@@ -121,7 +121,7 @@ class AdminDashboardView(APIView):
 class GetUSerProfile(APIView):
     def get(self, request):
         try:
-            mapping_obj = UserRoleMapping.objects.get(user = request.user, delete_flag=False )
+            mapping_obj = UserRoleMapping.objects.get(user = request.user, delete_flag=False ).order_by('user__created_date')
             serializer = UserRoleMappingSerializer(mapping_obj)
             return Response(serializer.data, status=status.HTTP_200_OK)
             
@@ -154,7 +154,7 @@ class GetUSerProfile(APIView):
 class AllServiceList(APIView):
     def get(self, request):
         try:
-            completed_services = ServiceRequest.objects.filter(status='COMPLETED', delete_flag=False)
+            completed_services = ServiceRequest.objects.filter(status='COMPLETED', delete_flag=False).order_by('-created_date')
             serializer = ServiceRequestSerializer(completed_services, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:

@@ -106,32 +106,35 @@
                     <div class="col-lg-8">
                         <div class="card border-0 shadow rounded-4">
                             <div class="card-body p-4">
-                                <h5 class="card-title text-primary"><i class="fas fa-calendar me-2"></i>My Appointments</h5>
+                                <h5 class="card-title text-primary"><i class="fas fa-calendar me-2"></i>My Service Requests</h5>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Date</th>
                                                 <th>Service</th>
+                                                <th>Date & Time</th>
+                                                <th>Location</th>
                                                 <th>Status</th>
+                                                <th>Price</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Dec 20, 2024</td>
-                                                <td>Nail Care</td>
-                                                <td><span class="badge bg-success">Confirmed</span></td>
-                                                <td><button class="btn btn-sm btn-outline-primary">View</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Dec 22, 2024</td>
-                                                <td>Hair Styling</td>
-                                                <td><span class="badge bg-warning">Pending</span></td>
-                                                <td><button class="btn btn-sm btn-outline-primary">View</button></td>
-                                            </tr>
+                                        <tbody id="serviceRequestsTable">
+                                            <!-- Dynamic content will be loaded here -->
                                         </tbody>
                                     </table>
+                                </div>
+                                <div id="noRequestsMessage" class="text-center py-4 d-none">
+                                    <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">No service requests found</h5>
+                                    <p class="text-muted">You haven't made any service requests yet.</p>
+                                    <a href="service.html" class="btn btn-primary rounded-pill">Book Your First Service</a>
+                                </div>
+                                <div id="loadingMessage" class="text-center py-4 d-none">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2 text-muted">Loading service requests...</p>
                                 </div>
                             </div>
                         </div>
@@ -447,6 +450,259 @@
     <script src="js/main.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/notifications.js"></script>
+
+    <!-- Dashboard Script -->
+    <script>
+        // Function to fetch and display service requests
+        async function loadServiceRequests() {
+            try {
+                // Show loading state
+                const loadingMessage = document.getElementById('loadingMessage');
+                const tableBody = document.getElementById('serviceRequestsTable');
+                const noRequestsMessage = document.getElementById('noRequestsMessage');
+                
+                if (loadingMessage) loadingMessage.classList.remove('d-none');
+                if (tableBody) tableBody.innerHTML = '';
+                if (noRequestsMessage) noRequestsMessage.classList.add('d-none');
+
+                // Get user data from localStorage
+                const userData = localStorage.getItem('urbanSalonUser');
+                if (!userData) {
+                    console.log('No user data found, user not authenticated');
+                    if (loadingMessage) loadingMessage.classList.add('d-none');
+                    return;
+                }
+
+                const user = JSON.parse(userData);
+                console.log('Loading service requests for user:', user.email);
+
+                // Check if access token exists
+                if (!user.access_token) {
+                    console.error('No access token found in user data');
+                    throw new Error('Authentication token not found');
+                }
+
+                const response = await fetch('http://127.0.0.1:7002/services/create-service-request/', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${user.access_token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const serviceRequests = await response.json();
+                console.log('Service requests loaded:', serviceRequests);
+                
+                // Hide loading state
+                if (loadingMessage) loadingMessage.classList.add('d-none');
+                
+                displayServiceRequests(serviceRequests);
+                
+            } catch (error) {
+                console.error('Error fetching service requests:', error);
+                
+                // Hide loading state
+                const loadingMessage = document.getElementById('loadingMessage');
+                if (loadingMessage) loadingMessage.classList.add('d-none');
+                
+                // Show error message
+                const tableBody = document.getElementById('serviceRequestsTable');
+                if (tableBody) {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="text-center text-danger">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Error loading service requests: ${error.message}
+                            </td>
+                        </tr>
+                    `;
+                }
+                
+                if (typeof showNotification === 'function') {
+                    showNotification('Error loading service requests', 'error');
+                } else {
+                    console.error('showNotification function not available');
+                }
+            }
+        }
+
+        // Function to display service requests in the table
+        function displayServiceRequests(requests) {
+            const tableBody = document.getElementById('serviceRequestsTable');
+            const noRequestsMessage = document.getElementById('noRequestsMessage');
+            const loadingMessage = document.getElementById('loadingMessage');
+
+            if (!requests || requests.length === 0) {
+                tableBody.innerHTML = '';
+                noRequestsMessage.classList.remove('d-none');
+                loadingMessage.classList.add('d-none');
+                return;
+            }
+
+            noRequestsMessage.classList.add('d-none');
+            loadingMessage.classList.add('d-none');
+
+            // Sort requests by date (newest first)
+            const sortedRequests = requests.sort((a, b) => 
+                new Date(b.scheduled_datetime) - new Date(a.scheduled_datetime)
+            );
+
+            tableBody.innerHTML = sortedRequests.map(request => {
+                const date = new Date(request.scheduled_datetime);
+                const formattedDate = date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                const statusBadge = getStatusBadge(request.status);
+                const price = parseFloat(request.service.price).toFixed(2);
+
+                return `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="http://127.0.0.1:7002${request.service.image}" 
+                                     alt="${request.service.name}" 
+                                     class="rounded me-3" 
+                                     style="width: 40px; height: 40px; object-fit: cover;">
+                                <div>
+                                    <strong>${request.service.name}</strong>
+                                    <br><small class="text-muted">${request.service.category.name}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>${formattedDate}</td>
+                        <td>${request.location || 'Not specified'}</td>
+                        <td>${statusBadge}</td>
+                        <td><strong>₹${price}</strong></td>
+                        <td>
+                            ${request.status === 'PENDING' ? `
+                                <button class="btn btn-sm btn-outline-danger" onclick="cancelServiceRequest('${request.id}', '${request.service.name}')">
+                                    <i class="fas fa-times me-1"></i>Cancel
+                                </button>
+                            ` : '<span class="text-muted">No actions</span>'}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Function to get appropriate status badge
+        function getStatusBadge(status) {
+            const statusMap = {
+                'PENDING': '<span class="badge bg-warning">Pending</span>',
+                'IN_PROGRESS': '<span class="badge bg-info">In Progress</span>',
+                'COMPLETED': '<span class="badge bg-success">Completed</span>',
+                'CANCELLED': '<span class="badge bg-danger">Cancelled</span>'
+            };
+            return statusMap[status] || '<span class="badge bg-secondary">Unknown</span>';
+        }
+
+        // Function to view request details (placeholder)
+        function viewRequestDetails(requestId) {
+            showNotification('View details functionality coming soon!', 'info');
+            // TODO: Implement detailed view modal
+        }
+
+        // Function to cancel a service request
+        async function cancelServiceRequest(requestId, serviceName) {
+            if (!confirm(`Are you sure you want to cancel the service request for "${serviceName}"? This action cannot be undone.`)) {
+                return;
+            }
+
+            try {
+                const userData = localStorage.getItem('urbanSalonUser');
+                if (!userData) {
+                    showNotification('User not authenticated.', 'error');
+                    return;
+                }
+                const user = JSON.parse(userData);
+
+                if (!user.access_token) {
+                    showNotification('Authentication token not found.', 'error');
+                    return;
+                }
+
+                const response = await fetch('http://127.0.0.1:7002/services/completed_service/', {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${user.access_token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: requestId
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                }
+
+                showNotification(`Service request for "${serviceName}" has been cancelled successfully.`, 'success');
+                
+                // Update the specific row in the table instead of reloading
+                const tableBody = document.getElementById('serviceRequestsTable');
+                const rows = tableBody.querySelectorAll('tr');
+                rows.forEach(row => {
+                    const cancelButton = row.querySelector(`button[onclick*="${requestId}"]`);
+                    if (cancelButton) {
+                        // Remove the cancel button and update status
+                        const actionsCell = row.querySelector('td:last-child');
+                        actionsCell.innerHTML = '<span class="text-muted">No actions</span>';
+                        
+                        // Update status badge
+                        const statusCell = row.querySelector('td:nth-child(4)');
+                        statusCell.innerHTML = '<span class="badge bg-danger">Cancelled</span>';
+                    }
+                });
+                
+            } catch (error) {
+                console.error('Error cancelling service request:', error);
+                showNotification(`Failed to cancel service request: ${error.message}`, 'error');
+            }
+        }
+
+        // Load service requests when dashboard is shown
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Dashboard page loaded, checking authentication...');
+            // Wait for navbar and auth check to complete
+            setTimeout(() => {
+                const userData = localStorage.getItem('urbanSalonUser');
+                if (userData) {
+                    const user = JSON.parse(userData);
+                    console.log('User authenticated:', user.email, 'Role:', user.role);
+                    if (user.role === 'user') {
+                        console.log('Loading service requests for user dashboard...');
+                        loadServiceRequests();
+                    }
+                } else {
+                    console.log('No user data found');
+                }
+            }, 1500); // Increased delay to ensure navbar loads
+        });
+
+        // Also load when auth check completes
+        if (typeof window !== 'undefined') {
+            window.addEventListener('authChecked', function() {
+                const userData = localStorage.getItem('urbanSalonUser');
+                if (userData) {
+                    const user = JSON.parse(userData);
+                    if (user.role === 'user') {
+                        console.log('Auth check completed, loading service requests...');
+                        loadServiceRequests();
+                    }
+                }
+            });
+        }
+    </script>
 
     <!-- Navbar Include Script -->
     <script>

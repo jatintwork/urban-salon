@@ -175,7 +175,7 @@
                     </div>
 
                     <!-- Current Work -->
-                    <div class="col-lg-8">
+                    <div class="col-12">
                         <div class="card border-0 shadow rounded-4">
                             <div class="card-body p-4">
                                 <h5 class="card-title text-primary"><i class="fas fa-briefcase me-2"></i>Current Work Assigned</h5>
@@ -199,28 +199,7 @@
                         </div>
                     </div>
 
-                    <!-- Past Works -->
-                    <div class="col-lg-4">
-                        <div class="card border-0 shadow rounded-4">
-                            <div class="card-body p-4">
-                                <h5 class="card-title text-primary"><i class="fas fa-history me-2"></i>Recent Work</h5>
-                                <div class="list-group list-group-flush">
-                                    <div class="list-group-item d-flex justify-content-between">
-                                        <span>Bridal Makeup</span>
-                                        <span class="badge bg-success">$180</span>
-                                    </div>
-                                    <div class="list-group-item d-flex justify-content-between">
-                                        <span>Facial Treatment</span>
-                                        <span class="badge bg-success">$120</span>
-                                    </div>
-                                    <div class="list-group-item d-flex justify-content-between">
-                                        <span>Hair Styling</span>
-                                        <span class="badge bg-success">$95</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -517,17 +496,7 @@
                     }
                 });
     
-                // --- Recent Work Payments ---
-                const recentWorkList = document.querySelector('#clientDashboard .list-group');
-                recentWorkList.innerHTML = '';
-                data.money_earned_records.forEach(pay => {
-                    recentWorkList.innerHTML += `
-                        <div class="list-group-item d-flex justify-content-between">
-                            <span>${new Date(pay.payment_time).toLocaleDateString()} | ${pay.payment_mode}</span>
-                            <span class="badge bg-success">$${pay.amount}</span>
-                        </div>
-                    `;
-                });
+
     
             } catch (err) {
                 console.error("Client dashboard error:", err);

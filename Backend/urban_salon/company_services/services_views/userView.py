@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 
 from company_services.models import Service, ServiceCategory, ServiceRequest
-from company_services.serializers import ServiceCategorySerializer, ServiceSerializer, UserSerializer
+from company_services.serializers import ServiceCategorySerializer, ServiceRequestSerializer, ServiceSerializer, UserSerializer
 from rest_framework.permissions import AllowAny
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -24,7 +24,7 @@ class AllServicesView(APIView):
     def post(self, request):
         try:
             categories = ServiceCategory.objects.all()
-            services = Service.objects.select_related('category')
+            services = Service.objects.select_related('category').order_by('category__name')
 
             result = {}
 
@@ -62,6 +62,14 @@ class SubServicesView(APIView):
 class CreateServiceRequest(APIView):
     permission_classes = [IsAuthenticated]
 
+    def get(self, request):
+        try:
+            user = request.user
+            service_requests = ServiceRequest.objects.filter(client=user, delete_flag=False).order_by('-created_date')
+            serializer = ServiceRequestSerializer(service_requests, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"status": "error", "message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def post(self, request):
         try:
