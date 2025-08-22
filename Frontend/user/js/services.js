@@ -1,12 +1,28 @@
 // js/services.js
 
 const API_BASE = "http://127.0.0.1:7002/services";
+const API_TIMEOUT = 10000; // 10 seconds timeout
 
-// Fetch all service categories
+// Fetch all service categories with timeout
 async function fetchCategories() {
-    const res = await fetch(`${API_BASE}/all-services/`);
-    if (!res.ok) throw new Error("Failed to fetch categories");
-    return res.json();
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
+    
+    try {
+        const res = await fetch(`${API_BASE}/all-services/`, {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        
+        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        return res.json();
+    } catch (error) {
+        clearTimeout(timeoutId);
+        if (error.name === 'AbortError') {
+            throw new Error('Request timed out. Please try again.');
+        }
+        throw error;
+    }
 }
 
 // Helper to get full image URL
@@ -14,6 +30,198 @@ function getImageUrl(path) {
     if (!path) return 'img/default.jpg';
     if (path.startsWith('http')) return path;
     return `http://127.0.0.1:7002${path}`;
+}
+
+// Create loading skeleton
+function createLoadingSkeleton() {
+    return `
+    <div class="row g-4">
+        <div class="col-lg-6 col-xl-4 mb-4">
+            <div class="service-item">
+                <div class="service-inner">
+                    <div class="service-img">
+                        <div class="bg-light rounded" style="width: 400px; height: 450px; display: flex; align-items: center; justify-content: center;">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-title">
+                        <div class="service-title-name">
+                            <div class="bg-light text-center rounded p-3 mx-5 mb-4" style="height: 40px;"></div>
+                            <div class="bg-light rounded-pill py-3 px-5 mb-4" style="height: 50px;"></div>
+                        </div>
+                        <div class="service-content pb-4">
+                            <div class="bg-light rounded mb-4 py-3" style="height: 30px;"></div>
+                            <div class="px-4">
+                                <div class="bg-light rounded mb-4" style="height: 60px;"></div>
+                                <div class="bg-light rounded-pill py-3 px-5" style="height: 50px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-4 mb-4">
+            <div class="service-item">
+                <div class="service-inner">
+                    <div class="service-img">
+                        <div class="bg-light rounded" style="width: 400px; height: 450px; display: flex; align-items: center; justify-content: center;">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-title">
+                        <div class="service-title-name">
+                            <div class="bg-light text-center rounded p-3 mx-5 mb-4" style="height: 40px;"></div>
+                            <div class="bg-light rounded-pill py-3 px-5 mb-4" style="height: 50px;"></div>
+                        </div>
+                        <div class="service-content pb-4">
+                            <div class="bg-light rounded mb-4 py-3" style="height: 30px;"></div>
+                            <div class="px-4">
+                                <div class="bg-light rounded mb-4" style="height: 60px;"></div>
+                                <div class="bg-light rounded-pill py-3 px-5" style="height: 50px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-4 mb-4">
+            <div class="service-item">
+                <div class="service-inner">
+                    <div class="service-img">
+                        <div class="bg-light rounded" style="width: 400px; height: 450px; display: flex; align-items: center; justify-content: center;">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-title">
+                        <div class="service-title-name">
+                            <div class="bg-light text-center rounded p-3 mx-5 mb-4" style="height: 40px;"></div>
+                            <div class="bg-light rounded-pill py-3 px-5 mb-4" style="height: 50px;"></div>
+                        </div>
+                        <div class="service-content pb-4">
+                            <div class="bg-light rounded mb-4 py-3" style="height: 30px;"></div>
+                            <div class="px-4">
+                                <div class="bg-light rounded mb-4" style="height: 60px;"></div>
+                                <div class="bg-light rounded-pill py-3 px-5" style="height: 50px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+// Create error state with retry button and offline fallback
+function createErrorState(error, retryFunction) {
+    return `
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-triangle fa-2x mb-3 text-danger"></i>
+                <h4 class="alert-heading">Failed to Load Services</h4>
+                <p class="mb-3">${error.message || 'An error occurred while loading services.'}</p>
+                <div class="d-flex gap-2 justify-content-center">
+                    <button class="btn btn-primary" onclick="${retryFunction}">
+                        <i class="fas fa-redo me-2"></i>Try Again
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="showOfflineServices()">
+                        <i class="fas fa-eye me-2"></i>View Offline Services
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+// Show offline services when API is down
+function showOfflineServices() {
+    const container = document.getElementById('service-categories');
+    if (!container) return;
+    
+    const offlineServices = [
+        {
+            name: "Hair Styling",
+            description: "Professional hair cutting, styling, coloring, and treatments. Our expert stylists create the perfect look for any occasion.",
+            image: "img/hair-styling.jpg"
+        },
+        {
+            name: "Nail Care",
+            description: "Comprehensive nail services including manicures, pedicures, nail art, and gel extensions. Perfect for any special event.",
+            image: "img/nails.jpg"
+        },
+        {
+            name: "Skin Treatments",
+            description: "Rejuvenating facials, anti-aging treatments, and skin care solutions tailored to your skin type and concerns.",
+            image: "img/skin.jpg"
+        },
+        {
+            name: "Makeup Services",
+            description: "Professional makeup application for weddings, parties, and special events. Our artists create stunning looks that enhance your natural beauty.",
+            image: "img/bridal.jpg"
+        },
+        {
+            name: "Spa Wellness",
+            description: "Relaxing spa treatments including massages, body wraps, and wellness therapies to rejuvenate your mind and body.",
+            image: "img/spa.jpg"
+        },
+        {
+            name: "Bridal Packages",
+            description: "Complete bridal beauty packages including hair, makeup, nails, and skin treatments for your special day.",
+            image: "img/bridal.jpg"
+        }
+    ];
+    
+    container.innerHTML = `
+        <div class="row g-4">
+            ${offlineServices.map(service => `
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="service-item">
+                        <div class="service-inner">
+                            <div class="service-img">
+                                <img src="${service.image}" class="img-fluid w-100 rounded" alt="${service.name}" width="400" height="450" style="object-fit:cover; width:400px; height:450px;">
+                            </div>
+                            <div class="service-title">
+                                <div class="service-title-name">
+                                    <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+                                        <span class="h4 text-white mb-0">${service.name}</span>
+                                    </div>
+                                    <button class="btn btn-primary border-secondary rounded-pill py-3 px-5 mb-4" onclick="showOfflineMessage()">Explore</button>
+                                </div>
+                                <div class="service-content pb-4">
+                                    <h4 class="text-white mb-4 py-3">${service.name}</h4>
+                                    <div class="px-4">
+                                        <p class="mb-4">${service.description}</p>
+                                        <button class="btn btn-primary border-secondary rounded-pill py-3 px-5" onclick="showOfflineMessage()">Explore</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <div class="alert alert-warning" role="alert">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Offline Mode:</strong> These are sample services. Please check your internet connection and try again for real-time service information.
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Show message when offline service is clicked
+function showOfflineMessage() {
+    alert('This service is currently in offline mode. Please check your internet connection and refresh the page for real-time service information.');
 }
 
 // Render a single category card
@@ -46,21 +254,95 @@ function createCategoryCard(category) {
     `;
 }
 
-// Render all categories into a container
+// Render all categories into a container with loading state
 async function renderCategories(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
+    
+    // Show loading overlay and progress bar
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const loadingProgress = document.getElementById('loading-progress');
+    const progressBar = loadingProgress?.querySelector('.progress-bar');
+    
+    if (loadingOverlay) loadingOverlay.style.display = 'block';
+    if (loadingProgress) loadingProgress.style.display = 'block';
+    
+    // Animate progress bar
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+        if (progress < 90) {
+            progress += Math.random() * 15;
+            if (progressBar) progressBar.style.width = progress + '%';
+        }
+    }, 200);
+    
+    // Show slow loading warning after 5 seconds
+    const slowLoadingTimeout = setTimeout(() => {
+        const slowLoadingWarning = document.getElementById('slow-loading-warning');
+        if (slowLoadingWarning) slowLoadingWarning.style.display = 'block';
+    }, 5000);
+    
     try {
+        // Show loading skeleton in container
+        container.innerHTML = createLoadingSkeleton();
+        
+        // Add a small delay to show loading state (prevents flickering for fast connections)
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
         const categories = await fetchCategories();
+        
+        // Complete progress bar
+        if (progressBar) progressBar.style.width = '100%';
+        clearInterval(progressInterval);
+        clearTimeout(slowLoadingTimeout);
+        
+        // Hide loading indicators
+        if (loadingOverlay) loadingOverlay.style.display = 'none';
+        if (loadingProgress) loadingProgress.style.display = 'none';
+        
+        // Hide slow loading warning
+        const slowLoadingWarning = document.getElementById('slow-loading-warning');
+        if (slowLoadingWarning) slowLoadingWarning.style.display = 'none';
+        
+        if (!categories || categories.length === 0) {
+            container.innerHTML = `
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="alert alert-info" role="alert">
+                        <i class="fas fa-info-circle fa-2x mb-3 text-info"></i>
+                        <h4 class="alert-heading">No Services Available</h4>
+                        <p class="mb-0">Currently no services are available. Please check back later.</p>
+                    </div>
+                </div>
+            </div>
+            `;
+            return;
+        }
+        
+        // Render the actual services
         container.innerHTML = `<div class="row g-4">${categories.map(createCategoryCard).join('')}</div>`;
+        
         // Attach event listeners for explore buttons
         container.querySelectorAll('.explore-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 handleExplore(this.dataset.categoryId);
             });
         });
+        
     } catch (err) {
-        container.innerHTML = `<div class="alert alert-danger">Failed to load services.</div>`;
+        // Complete progress bar and hide loading indicators on error
+        if (progressBar) progressBar.style.width = '100%';
+        clearInterval(progressInterval);
+        clearTimeout(slowLoadingTimeout);
+        if (loadingOverlay) loadingOverlay.style.display = 'none';
+        if (loadingProgress) loadingProgress.style.display = 'none';
+        
+        // Hide slow loading warning
+        const slowLoadingWarning = document.getElementById('slow-loading-warning');
+        if (slowLoadingWarning) slowLoadingWarning.style.display = 'none';
+        
+        console.error('Error loading services:', err);
+        container.innerHTML = createErrorState(err, 'renderCategories("' + containerId + '")');
     }
 }
 
@@ -78,11 +360,26 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-// Fetch sub-services for a category
+// Fetch sub-services for a category with timeout
 async function fetchSubServices(categoryId) {
-    const res = await fetch(`${API_BASE}/sub-services/?category_id=${categoryId}`);
-    if (!res.ok) throw new Error("Failed to fetch sub-services");
-    return res.json();
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
+    
+    try {
+        const res = await fetch(`${API_BASE}/sub-services/?category_id=${categoryId}`, {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        
+        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        return res.json();
+    } catch (error) {
+        clearTimeout(timeoutId);
+        if (error.name === 'AbortError') {
+            throw new Error('Request timed out. Please try again.');
+        }
+        throw error;
+    }
 }
 
 // Render a single sub-service card
@@ -113,24 +410,57 @@ function createSubServiceCard(subService) {
     `;
 }
 
-// Render all sub-services into a container
+// Render all sub-services into a container with loading state
 async function renderSubServices(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
+    
     const categoryId = getQueryParam('category_id');
     if (!categoryId) {
-        container.innerHTML = `<div class="alert alert-warning">No category selected.</div>`;
+        container.innerHTML = `
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="alert alert-warning" role="alert">
+                    <i class="fas fa-exclamation-triangle fa-2x mb-3 text-warning"></i>
+                    <h4 class="alert-heading">No Category Selected</h4>
+                    <p class="mb-0">Please select a service category to view sub-services.</p>
+                </div>
+            </div>
+        </div>
+        `;
         return;
     }
+    
+    // Show loading skeleton immediately
+    container.innerHTML = createLoadingSkeleton();
+    
     try {
+        // Add a small delay to show loading state
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
         const subServices = await fetchSubServices(categoryId);
-        if (!subServices.length) {
-            container.innerHTML = `<div class="alert alert-info">No sub-services found for this category.</div>`;
+        
+        if (!subServices || subServices.length === 0) {
+            container.innerHTML = `
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="alert alert-info" role="alert">
+                        <i class="fas fa-info-circle fa-2x mb-3 text-info"></i>
+                        <h4 class="alert-heading">No Sub-Services Available</h4>
+                        <p class="mb-0">No sub-services found for this category. Please check back later.</p>
+                    </div>
+                </div>
+            </div>
+            `;
             return;
         }
+        
+        // Render the actual sub-services
         container.innerHTML = `<div class="row g-4">${subServices.map(createSubServiceCard).join('')}</div>`;
+        
     } catch (err) {
-        container.innerHTML = `<div class="alert alert-danger">Failed to load sub-services.</div>`;
+        console.error('Error loading sub-services:', err);
+        container.innerHTML = createErrorState(err, 'renderSubServices("' + containerId + '")');
     }
 }
 
@@ -315,6 +645,18 @@ function closeCartDrawer() {
     document.getElementById('cart-drawer-backdrop').classList.remove('open');
 }
 
+// Network status detection
+function checkNetworkStatus() {
+    const networkStatus = document.getElementById('network-status');
+    if (!networkStatus) return;
+    
+    if (!navigator.onLine) {
+        networkStatus.style.display = 'block';
+    } else {
+        networkStatus.style.display = 'none';
+    }
+}
+
 // Attach openCartDrawer to mobile cart button
 window.addEventListener('DOMContentLoaded', function() {
     const mobileCartBtn = document.getElementById('mobile-cart-btn');
@@ -326,6 +668,14 @@ window.addEventListener('DOMContentLoaded', function() {
     if (viewCartBtn) {
         viewCartBtn.addEventListener('click', openCartDrawer);
     }
+    
+    // Check network status
+    checkNetworkStatus();
+    
+    // Listen for network status changes
+    window.addEventListener('online', checkNetworkStatus);
+    window.addEventListener('offline', checkNetworkStatus);
+    
     // Initial UI update
     updateAllCartUI();
 });
@@ -338,4 +688,6 @@ window.addToCartAndStoreId = addToCartAndStoreId;
 window.removeFromCart = removeFromCart;
 window.changeCartQty = changeCartQty;
 window.updateAllCartUI = updateAllCartUI;
-window.closeCartDrawer = closeCartDrawer; 
+window.closeCartDrawer = closeCartDrawer;
+window.showOfflineServices = showOfflineServices;
+window.showOfflineMessage = showOfflineMessage; 
