@@ -14,13 +14,16 @@ class ServiceCategory(BaseModelClass):
 
 class Service(BaseModelClass):
     category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE)
-    name = models.CharField(max_length=150, unique=True)
+    name = models.CharField(max_length=150)
     description = models.TextField(blank=True, null=True)
     precaution = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     duration_minutes = models.IntegerField(default=30)
     image = models.ImageField(upload_to='media/service_images/', null=True, blank=True)
     new_location = models.TextField(null = True, blank= True)
+
+    class Meta:
+        unique_together = ('category', 'name')   # 🔑 Unique per category
 
     def __str__(self):
         return self.name
